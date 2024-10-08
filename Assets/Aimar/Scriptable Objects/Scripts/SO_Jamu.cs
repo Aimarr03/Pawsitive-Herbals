@@ -10,6 +10,7 @@ namespace AimarWork
     public class SO_Jamu : ScriptableObject
     {
         public string nama;
+        public int level = 0;
         public Sprite ikon;
         [TextArea(5, 5)]
         public string deskripsi;

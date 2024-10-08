@@ -26,7 +26,7 @@ namespace AimarWork
             private float KecepatanPutaranMenit;
 
 
-            private bool IsOpen = true;
+            private bool IsOpen = false;
             private int Segmen_Kini = 0;
             public int Segmen_Max = 6;
 
@@ -46,10 +46,7 @@ namespace AimarWork
                 }
                 DurasiKini = 0;
                 DataStatusHariKini = List_DayStateData[0];
-                float RotasiZ = (DataStatusHariKini.startingHour * DerajatRotasiPerJam);
-                TestRotasi.transform.Rotate(0, 0, -RotasiZ);
-                SetRotasiKecepatanJam();
-                SetRotasiKecepatanMenit();
+                
             }
             private void Update()
             {
@@ -90,6 +87,14 @@ namespace AimarWork
                 if(DataStatusHariKini.dayState == DayState.Night)
                 {
                     Segmen_Kini = Segmen_Max;
+                }
+                else
+                {
+                    DurasiKini = 0;
+                    float RotasiZ = (DataStatusHariKini.startingHour * DerajatRotasiPerJam);
+                    TestRotasi.transform.Rotate(0, 0, -RotasiZ);
+                    SetRotasiKecepatanJam();
+                    SetRotasiKecepatanMenit();
                 }
             }
             public void GantiHari()

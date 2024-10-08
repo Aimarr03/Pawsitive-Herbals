@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Kunyit Asam
   ikon: {fileID: 0}
-  deskripsi: 
-  manfaat: 
+  deskripsi: "kjhfkhqk\t"
+  manfaat: 'kqhewrqhurhqir
+
+'
   List_Bahan_Yang_Diperlukan:
   - {fileID: 11400000, guid: b9fa23d991c76fc41b68482dcd859b2d, type: 2}
   List_Bahan_Mentah:
@@ -23,10 +25,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 79b77d094fc25b741b9a795cfb9fa417, type: 2}
   - {fileID: 11400000, guid: 7d87a6061346e7640a58e73c32545018, type: 2}
   - {fileID: 11400000, guid: ce0e115c54983f84eae4a959e5ac1d70, type: 2}
-  List_BahanOlahan:
-    keyValuePairList:
-    - Key: 0
-      Value: {fileID: 0}
+  List_BahanOlahan: []
   terbuka: 0
   kualitas: 0
   base_keuntungan: 0

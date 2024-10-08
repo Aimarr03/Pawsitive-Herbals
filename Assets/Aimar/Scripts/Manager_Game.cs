@@ -10,6 +10,7 @@ namespace AimarWork
         {
             public static Manager_Game instance;
             public int exp_kini;
+            public int uang_kini;
 
             private void Awake()
             {
