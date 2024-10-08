@@ -9,6 +9,7 @@ namespace AimarWork
         public class Manager_Game : MonoBehaviour
         {
             public static Manager_Game instance;
+            public int exp_kini;
 
             private void Awake()
             {

@@ -18,8 +18,8 @@ namespace AimarWork
             public DayStateData DataStatusHariKini;
             public DateTime TanggalKini;
 
-            private int MaksimumJam = 24;
-            private int MaksimumJamAnalog = 12;
+            //private int MaksimumJam = 24;
+            //private int MaksimumJamAnalog = 12;
             private float DerajatRotasiPerJam = 30;
             private float DurasiWaktu = 30;
             private float KecepatanPutaranJam;
@@ -27,7 +27,8 @@ namespace AimarWork
 
 
             private bool IsOpen = true;
-
+            private int Segmen_Kini = 0;
+            public int Segmen_Max = 6;
 
             private float DurasiKini = 0;
             public GameObject TestRotasi;
@@ -52,24 +53,50 @@ namespace AimarWork
             }
             private void Update()
             {
-                if(IsOpen && DurasiKini < DurasiWaktu)
+                switch (DataStatusHariKini.dayState)
+                {
+                    case DayState.Day:
+                        Logika_Siang();
+                        break;
+                    case DayState.Night:
+                        break;
+                }
+                
+            }
+            private void Logika_Siang()
+            {
+                if (IsOpen && DurasiKini < DurasiWaktu)
                 {
                     float RotasiJamPerFrame = Time.deltaTime * KecepatanPutaranJam;
                     float RotasiMenitPerFrame = Time.deltaTime * KecepatanPutaranMenit;
                     DurasiKini += Time.deltaTime;
                     //Debug.Log("Melakukan Rotasi " + RotasiPerFrame);
-                    TestRotasi.transform.Rotate(0,0, -RotasiJamPerFrame);
-                    TestRotasiMenit.transform.Rotate(0,0,-RotasiMenitPerFrame);
+                    TestRotasi.transform.Rotate(0, 0, -RotasiJamPerFrame);
+                    TestRotasiMenit.transform.Rotate(0, 0, -RotasiMenitPerFrame);
                 }
+                else
+                {
+                    IsOpen = false;
+                }
+            }
+            public void BukaToko()
+            {
+                if (DataStatusHariKini.dayState != DayState.Day) return;
+                DurasiKini = 0;
             }
             public void GantiStatusHari()
             {
                 DataStatusHariKini = DataStatusHariKini.dayState == DayState.Day ? List_DayStateData[1] : List_DayStateData[0];
+                if(DataStatusHariKini.dayState == DayState.Night)
+                {
+                    Segmen_Kini = Segmen_Max;
+                }
             }
             public void GantiHari()
             {
                 TanggalKini.AddDays(1);
             }
+            public bool CekAktifitas(int harga) => Segmen_Kini >= harga;
             private void SetRotasiKecepatanJam() => KecepatanPutaranJam = (DataStatusHariKini.maxHour * DerajatRotasiPerJam) / DurasiWaktu;
             private void SetRotasiKecepatanMenit() => KecepatanPutaranMenit = 360/(DurasiWaktu/DataStatusHariKini.maxHour);
         }

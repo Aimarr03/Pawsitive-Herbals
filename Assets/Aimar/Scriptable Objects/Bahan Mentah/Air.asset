@@ -16,8 +16,6 @@ MonoBehaviour:
   deskripsi: 
   ikon_resep: {fileID: 0}
   ikon_gameplay: {fileID: 0}
-  tipe: 1
-  kuantitasKini: 3000
-  tipeKuantitasFormat: 2
-  hargaPerSatuan: 3500
+  kuantitasKini: 1
+  hargaPerSatuan: 1
   terbuka: 0

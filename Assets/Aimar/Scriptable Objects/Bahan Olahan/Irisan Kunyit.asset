@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0fe690660e3a3409b080768dd2b761, type: 3}
-  m_Name: Gula Pasir
+  m_Script: {fileID: 11500000, guid: bd919f55c4a4bb14aaea28470e01f9cb, type: 3}
+  m_Name: Irisan Kunyit
   m_EditorClassIdentifier: 
-  nama: Gula Pasir
+  nama: Irisan Kunyit
   deskripsi: 
   ikon_resep: {fileID: 0}
   ikon_gameplay: {fileID: 0}
-  tipe: 1
-  kuantitasKini: 1000
-  tipeKuantitasFormat: 1
-  hargaPerSatuan: 15500
-  terbuka: 0
+  Bahan_Original:
+  - {fileID: 11400000, guid: ce0e115c54983f84eae4a959e5ac1d70, type: 2}
+  tipePengolahan: 2
+  statusPengolahan: 1
