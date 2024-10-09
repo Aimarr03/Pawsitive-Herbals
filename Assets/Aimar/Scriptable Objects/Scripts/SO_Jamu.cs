@@ -1,4 +1,5 @@
 using AimarWork;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,13 @@ namespace AimarWork
     [CreateAssetMenu(fileName = "Jamu Baru", menuName = "Jamu/Buat Jamu Baru")]
     public class SO_Jamu : ScriptableObject
     {
+        [Serializable]
+        public struct Metode
+        {
+            public ENUM_Tipe_Pengolahan tipePengolahan;
+            public SO_BahanOlahan OutPut;
+            public string langkah;
+        }
         public string nama;
         public int level = 0;
         public Sprite ikon;
@@ -20,7 +28,7 @@ namespace AimarWork
         public List<SO_BahanBase> List_Bahan_Yang_Diperlukan;
         public List<SO_BahanMentah> List_Bahan_Mentah;
         public List<SO_BahanOlahan> List_BahanOlahan;
-        public List<string> List_Metode;
+        public List<Metode> List_Metode;
 
         public int GetBaseKeuntungan()
         {

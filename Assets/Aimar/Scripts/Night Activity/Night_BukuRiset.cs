@@ -98,7 +98,9 @@ public class Night_BukuRiset : MonoBehaviour
             {
                 TextMeshProUGUI metodeKini = Instantiate(metodeFormat, metodeContainer);
                 metodeKini.gameObject.SetActive(true);
-                metodeKini.text = DataJamu.List_Metode[index];
+                
+                SO_Jamu.Metode metode = DataJamu.List_Metode[index];
+                metodeKini.text = metode.langkah;
             }
         }
         else
