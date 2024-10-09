@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23244991717754b4099f0a88eab6052f, type: 3}
+  m_Name: Temulawak
+  m_EditorClassIdentifier: 
+  nama: Temulawak
+  level: 0
+  ikon: {fileID: 0}
+  deskripsi: "hihruihwiojrl\t"
+  manfaat: sfkajbgrjklqwbnkwrlmqe
+  List_Bahan_Yang_Diperlukan:
+  - {fileID: 11400000, guid: cc06a1f6816a5064fb2e82f38e52d1c8, type: 2}
+  List_Bahan_Mentah:
+  - {fileID: 11400000, guid: 4a7434e4406a2844fa905874e711e658, type: 2}
+  - {fileID: 11400000, guid: 7ed2e7f00dd6c6d4985e6d88ed618660, type: 2}
+  - {fileID: 11400000, guid: ce0e115c54983f84eae4a959e5ac1d70, type: 2}
+  - {fileID: 11400000, guid: ddac12f6b7642f04498de0e8edb87784, type: 2}
+  - {fileID: 11400000, guid: fe0ca5ec92fb6d342b5aafb55af8ef10, type: 2}
+  List_BahanOlahan:
+  - {fileID: 11400000, guid: 45888c7f6574f25459a38ef072aea932, type: 2}
+  - {fileID: 11400000, guid: 85848a6573ba96f4f922573972af1ec0, type: 2}
+  List_Metode:
+  - <color=blue><b>Potong</b></color> Temulawak, Jahe, Kunyit
+  - <color=blue><b>Rebus</b></color> Rebus Semua bahan
+  terbuka: 0
+  kualitas: 0
+  base_keuntungan: 0
+  base_exp: 0

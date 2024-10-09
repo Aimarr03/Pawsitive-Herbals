@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23244991717754b4099f0a88eab6052f, type: 3}
-  m_Name: Kunyit Asam
+  m_Name: Beras Kencur
   m_EditorClassIdentifier: 
-  nama: Kunyit Asam
-  level: 5
+  nama: Beras Kencur
+  level: 1
   ikon: {fileID: 0}
   deskripsi: "kjhfkhqk\t"
   manfaat: 'kqhewrqhurhqir
@@ -23,15 +23,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9fa23d991c76fc41b68482dcd859b2d, type: 2}
   List_Bahan_Mentah:
   - {fileID: 11400000, guid: ddac12f6b7642f04498de0e8edb87784, type: 2}
-  - {fileID: 11400000, guid: 79b77d094fc25b741b9a795cfb9fa417, type: 2}
   - {fileID: 11400000, guid: 7d87a6061346e7640a58e73c32545018, type: 2}
-  - {fileID: 11400000, guid: ce0e115c54983f84eae4a959e5ac1d70, type: 2}
+  - {fileID: 11400000, guid: 2b890e5454ce00f4481538280542ea11, type: 2}
+  - {fileID: 11400000, guid: ba25b1b8db961094f9e62ea6b4af2b60, type: 2}
+  - {fileID: 11400000, guid: fe0ca5ec92fb6d342b5aafb55af8ef10, type: 2}
+  - {fileID: 11400000, guid: 7ed2e7f00dd6c6d4985e6d88ed618660, type: 2}
   List_BahanOlahan:
   - {fileID: 11400000, guid: b9fa23d991c76fc41b68482dcd859b2d, type: 2}
   - {fileID: 11400000, guid: e3431d5a4ad94d3418c748b092cc5b4f, type: 2}
   List_Metode:
-  - <color=blue><b>Mengiris</b></color> Kunyit
-  - '<color=blue><b>Rebus</b></color> Semua Bahan '
+  - <color=blue><b>Rebus</b></color> beras
+  - <color=blue><b>Rebus</b></color> semua bahan kecuali rebusan beras
+  - <color=blue><b>Aduk</b></color> Hasil rebusan
+  - <color=blue><b>Blender</b></color> Hasil Adukkan
   terbuka: 1
   kualitas: 0
   base_keuntungan: 0

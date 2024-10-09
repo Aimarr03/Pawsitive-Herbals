@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd919f55c4a4bb14aaea28470e01f9cb, type: 3}
   m_Name: Rebus_Kunyit Asam
   m_EditorClassIdentifier: 
-  nama: Hasil Rebus
+  nama: Rebus Kunyit Asam
   deskripsi: 
   ikon_resep: {fileID: 0}
   ikon_gameplay: {fileID: 0}

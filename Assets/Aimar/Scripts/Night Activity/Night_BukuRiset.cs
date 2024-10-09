@@ -8,13 +8,24 @@ using UnityEngine.UI;
 
 public class Night_BukuRiset : MonoBehaviour
 {
+    [Header("Deskripsi Umum")]
     [SerializeField] private Canvas UI_BukuRiset;
     [SerializeField] private TextMeshProUGUI namaJamu;
     [SerializeField] private TextMeshProUGUI deskripsi;
     [SerializeField] private TextMeshProUGUI manfaat;
-    [SerializeField] private TextMeshProUGUI bahan_bahan;
-    [SerializeField] private TextMeshProUGUI metode;
+
+    [Header("Bahan Bahan")]
+    [SerializeField] private RectTransform bahan_container;
+    [SerializeField] private Image bahanFormat;
+
+    [Header("Metode")]
+    [SerializeField] private RectTransform metodeContainer;
+    [SerializeField] private TextMeshProUGUI metodeFormat;
+
+    [Header("Button")]
     [SerializeField] private Button RisetButton;
+    [SerializeField] private Button SelanjutnyaButton;
+    [SerializeField] private Button SebelumnyaButton;
     private int currentIndex = 0;
     [SerializeField, Header("Data Jamu")]private List<SO_Jamu> Jamus = new List<SO_Jamu>();
     private int maxIndex => Jamus.Count;
@@ -37,9 +48,13 @@ public class Night_BukuRiset : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            UI_BukuRiset.gameObject.SetActive(true);
-            DisplayDataJamu();
+            BukaBukuRiset();   
         }
+    }
+    public void BukaBukuRiset()
+    {
+        UI_BukuRiset.gameObject.SetActive(true);
+        DisplayDataJamu();
     }
     public void TutupBukuRiset()
     {
@@ -48,13 +63,43 @@ public class Night_BukuRiset : MonoBehaviour
     }
     public void DisplayDataJamu()
     {
+        SebelumnyaButton.gameObject.SetActive(currentIndex > 0);
+        SelanjutnyaButton.gameObject.SetActive(currentIndex < maxIndex - 1);
+        for (int index = 0; index < bahan_container.childCount; index++)
+        {
+            Transform bahanKini = bahan_container.transform.GetChild(index);
+            if (bahanKini != bahanFormat.transform)
+            {
+                Destroy(bahanKini.gameObject);
+            }
+        }
+        for (int index = 0; index < metodeContainer.childCount; index++)
+        {
+            Transform metodeKini = metodeContainer.transform.GetChild(index);
+            if (metodeKini != metodeFormat.transform)
+            {
+                Destroy(metodeKini.gameObject);
+            }
+        }
         RisetButton.onClick.RemoveAllListeners();
+        namaJamu.text = DataJamu.nama;
         if (DataJamu.terbuka)
         {
             RisetButton.onClick.AddListener(RisetMeningkatkanJamu);
-            namaJamu.text = DataJamu.nama;
             deskripsi.text = DataJamu.deskripsi;
             manfaat.text = DataJamu.manfaat;
+            for (int index = 0; index < DataJamu.List_Bahan_Mentah.Count; index++)
+            {
+                //Debug.Log("Bahan dibuat");
+                Image bahanKini = Instantiate(bahanFormat, bahan_container);
+                bahanKini.gameObject.SetActive(true);
+            }
+            for (int index = 0; index < DataJamu.List_Metode.Count; index++)
+            {
+                TextMeshProUGUI metodeKini = Instantiate(metodeFormat, metodeContainer);
+                metodeKini.gameObject.SetActive(true);
+                metodeKini.text = DataJamu.List_Metode[index];
+            }
         }
         else
         {
@@ -62,7 +107,17 @@ public class Night_BukuRiset : MonoBehaviour
             manfaat.text = "???";
             deskripsi.text = "???";
             //bahan_bahan.text = "???";
-            metode.text = "???";
+            for(int index = 0; index < 3; index++)
+            {
+                Image bahanKini = Instantiate(bahanFormat, bahan_container);
+                bahanKini.gameObject.SetActive(true);
+            }
+            for(int index = 0; index < 3; index++)
+            {
+                TextMeshProUGUI metodeKini = Instantiate(metodeFormat, metodeContainer);
+                metodeKini.gameObject.SetActive(true);
+                metodeKini.text = "???";
+            }
         }
     }
     private void RisetMembukaJamu()
@@ -76,6 +131,16 @@ public class Night_BukuRiset : MonoBehaviour
     {
         Debug.Log("Riset Ningkatin Jamu");
         DataJamu.level++;
+        DisplayDataJamu();
+    }
+    public void HalamanSelanjutnya()
+    {
+        currentIndex++;
+        DisplayDataJamu();
+    }
+    public void HalamanSebelumnya()
+    {
+        currentIndex--;
         DisplayDataJamu();
     }
 }

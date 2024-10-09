@@ -20,6 +20,7 @@ namespace AimarWork
         public List<SO_BahanBase> List_Bahan_Yang_Diperlukan;
         public List<SO_BahanMentah> List_Bahan_Mentah;
         public List<SO_BahanOlahan> List_BahanOlahan;
+        public List<string> List_Metode;
 
         public int GetBaseKeuntungan()
         {

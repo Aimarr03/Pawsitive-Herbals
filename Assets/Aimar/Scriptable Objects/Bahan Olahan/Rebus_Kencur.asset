@@ -10,12 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd919f55c4a4bb14aaea28470e01f9cb, type: 3}
-  m_Name: Gagal
+  m_Name: Rebus_Kencur
   m_EditorClassIdentifier: 
-  nama: Gagal
+  nama: Rebus Kencur
   deskripsi: 
   ikon_resep: {fileID: 0}
   ikon_gameplay: {fileID: 0}
-  Bahan_Original: []
+  Bahan_Original:
+  - {fileID: 11400000, guid: ba25b1b8db961094f9e62ea6b4af2b60, type: 2}
+  - {fileID: 11400000, guid: 2b890e5454ce00f4481538280542ea11, type: 2}
+  - {fileID: 11400000, guid: fe0ca5ec92fb6d342b5aafb55af8ef10, type: 2}
+  - {fileID: 11400000, guid: 7d87a6061346e7640a58e73c32545018, type: 2}
+  - {fileID: 11400000, guid: 7ed2e7f00dd6c6d4985e6d88ed618660, type: 2}
   tipePengolahan: 0
-  statusPengolahan: 0
+  statusPengolahan: 1
