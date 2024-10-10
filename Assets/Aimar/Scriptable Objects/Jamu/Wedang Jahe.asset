@@ -29,9 +29,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 34928521de63a8d438c80fe13db04ac9, type: 2}
   - {fileID: 11400000, guid: 85848a6573ba96f4f922573972af1ec0, type: 2}
   List_Metode:
-  - <color=blue><b>Potong</b></color> Jahe
-  - <color=blue><b>Rebus</b></color> Rebus Semua bahan
-  terbuka: 0
+  - tipePengolahan: 0
+    OutPut: {fileID: 0}
+    langkah: 
+  - tipePengolahan: 0
+    OutPut: {fileID: 0}
+    langkah: 
+  terbuka: 1
   kualitas: 0
   base_keuntungan: 0
   base_exp: 0

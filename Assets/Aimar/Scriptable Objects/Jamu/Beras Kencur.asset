@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Beras Kencur
   m_EditorClassIdentifier: 
   nama: Beras Kencur
-  level: 1
+  level: 0
   ikon: {fileID: 0}
   deskripsi: "kjhfkhqk\t"
   manfaat: 'kqhewrqhurhqir
@@ -32,11 +32,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9fa23d991c76fc41b68482dcd859b2d, type: 2}
   - {fileID: 11400000, guid: e3431d5a4ad94d3418c748b092cc5b4f, type: 2}
   List_Metode:
-  - <color=blue><b>Rebus</b></color> beras
-  - <color=blue><b>Rebus</b></color> semua bahan kecuali rebusan beras
-  - <color=blue><b>Aduk</b></color> Hasil rebusan
-  - <color=blue><b>Blender</b></color> Hasil Adukkan
-  terbuka: 1
+  - tipePengolahan: 0
+    OutPut: {fileID: 0}
+    langkah: 
+  - tipePengolahan: 0
+    OutPut: {fileID: 0}
+    langkah: 
+  - tipePengolahan: 0
+    OutPut: {fileID: 0}
+    langkah: 
+  - tipePengolahan: 0
+    OutPut: {fileID: 0}
+    langkah: 
+  terbuka: 0
   kualitas: 0
   base_keuntungan: 0
   base_exp: 50

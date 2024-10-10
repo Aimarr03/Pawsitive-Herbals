@@ -29,8 +29,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 45888c7f6574f25459a38ef072aea932, type: 2}
   - {fileID: 11400000, guid: 85848a6573ba96f4f922573972af1ec0, type: 2}
   List_Metode:
-  - <color=blue><b>Potong</b></color> Temulawak, Jahe, Kunyit
-  - <color=blue><b>Rebus</b></color> Rebus Semua bahan
+  - tipePengolahan: 0
+    OutPut: {fileID: 0}
+    langkah: 
+  - tipePengolahan: 0
+    OutPut: {fileID: 0}
+    langkah: 
   terbuka: 0
   kualitas: 0
   base_keuntungan: 0

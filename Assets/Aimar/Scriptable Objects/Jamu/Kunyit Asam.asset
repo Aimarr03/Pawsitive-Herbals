@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Kunyit Asam
   m_EditorClassIdentifier: 
   nama: Kunyit Asam
-  level: 5
+  level: 0
   ikon: {fileID: 0}
   deskripsi: "kjhfkhqk\t"
   manfaat: 'kqhewrqhurhqir
@@ -30,9 +30,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9fa23d991c76fc41b68482dcd859b2d, type: 2}
   - {fileID: 11400000, guid: e3431d5a4ad94d3418c748b092cc5b4f, type: 2}
   List_Metode:
-  - <color=blue><b>Mengiris</b></color> Kunyit
-  - '<color=blue><b>Rebus</b></color> Semua Bahan '
-  terbuka: 1
+  - tipePengolahan: 0
+    OutPut: {fileID: 0}
+    langkah: 
+  - tipePengolahan: 0
+    OutPut: {fileID: 0}
+    langkah: 
+  terbuka: 0
   kualitas: 0
   base_keuntungan: 0
   base_exp: 50
