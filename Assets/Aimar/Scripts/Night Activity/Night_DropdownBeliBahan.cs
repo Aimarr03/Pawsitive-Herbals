@@ -1,4 +1,5 @@
 using AimarWork;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor.U2D.Aseprite;
@@ -24,6 +25,8 @@ public class Night_DropdownBeliBahan : MonoBehaviour
     [Header("Teks Harga Pembelian")]
     [SerializeField] private TextMeshProUGUI teks_hargaperkuantitas;
     [SerializeField] private TextMeshProUGUI teks_totalharga;
+
+    public static event Action MemasukkanPerubahanPemesanan;
     private void Awake()
     {
         kuantitas_pembelianbahan = 0;
@@ -61,6 +64,7 @@ public class Night_DropdownBeliBahan : MonoBehaviour
         teks_hargaperkuantitas.gameObject.SetActive(true);
         teks_totalharga.gameObject.SetActive(true);
 
+        MemasukkanPerubahanPemesanan?.Invoke();
         Debug.Log("Pilihan Bahan Mentah " + pilihanBahanMentah.nama);
     }
     public void Inkremen_Jumlah()
@@ -69,6 +73,7 @@ public class Night_DropdownBeliBahan : MonoBehaviour
         teks_kuantitasbahan.text = kuantitas_pembelianbahan.ToString();
         Cek_Tombol();
         Update_TotalHarga();
+        MemasukkanPerubahanPemesanan?.Invoke();
     }
     public void Dekremen_Jumlah()
     {
@@ -76,6 +81,7 @@ public class Night_DropdownBeliBahan : MonoBehaviour
         teks_kuantitasbahan.text = kuantitas_pembelianbahan.ToString();
         Cek_Tombol();
         Update_TotalHarga();
+        MemasukkanPerubahanPemesanan?.Invoke();
     }
     private void Cek_Tombol()
     {
