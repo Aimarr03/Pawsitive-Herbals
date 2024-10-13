@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace AimarWork
@@ -23,7 +24,20 @@ namespace AimarWork
                 Destroy(gameObject);
             }
         }
-
+        public List<SO_BahanMentah> GetBahanMentah()
+        {
+            List<SO_BahanMentah> List_Bahan_Mentah = new List<SO_BahanMentah>();
+            foreach(SO_Jamu jamu in List_Jamu)
+            {
+                foreach(SO_BahanMentah bahan_mentah in jamu.List_Bahan_Mentah)
+                {
+                    if (List_Bahan_Mentah.Contains(bahan_mentah)) continue;
+                    List_Bahan_Mentah.Add(bahan_mentah);
+                }
+            }
+            List_Bahan_Mentah = List_Bahan_Mentah.OrderBy(bahan => bahan.nama).ToList();
+            return List_Bahan_Mentah;
+        }
         public void SetJamu(SO_Jamu jamu_difokuskan)
         {
             this.jamu_difoksukan = jamu_difokuskan;
