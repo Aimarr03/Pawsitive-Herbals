@@ -8,6 +8,7 @@ namespace AimarWork
     public class PlayerInventory : MonoBehaviour
     {
         public List<SO_BahanBase> ListBahan;
+        public SO_Jamu jamu;
 
         private void Start()
         {

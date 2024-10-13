@@ -9,7 +9,7 @@ namespace AimarWork
         {
             base.Interact(player);
 
-
+            Manager_Jamu.instance.CheckJamu();
         }
     }
 }

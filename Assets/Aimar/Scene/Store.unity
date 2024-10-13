@@ -171,6 +171,7 @@ MonoBehaviour:
   BoilMinigamePrefab: {fileID: 1370646964043975935, guid: 13f7812b17624fe4086152f39c241231, type: 3}
   MixMinigamePrefab: {fileID: 623444340418474990, guid: 66f9324f0d2e8b44a9406d001b1f3026, type: 3}
   CutMinigamePrefab: {fileID: 5403987015214660077, guid: cb8456e7f37320d4ca3643c847a9de85, type: 3}
+  tipe_pengolahan: 0
 --- !u!1001 &171428941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -528,6 +529,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1429076357547816466, guid: b86588ec1abaa7b4b8b8b43dea02a4a1, type: 3}
+      propertyPath: jamuGagal
+      value: 
+      objectReference: {fileID: 11400000, guid: 18e8b3de1f24ba34ba43a09742e3001c, type: 2}
     - target: {fileID: 1502426045263254049, guid: b86588ec1abaa7b4b8b8b43dea02a4a1, type: 3}
       propertyPath: m_Name
       value: Manager_Jamu
@@ -1145,6 +1150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListBahan: []
+  jamu: {fileID: 0}
 --- !u!1 &895832238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,7 +2438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1446827535
 RectTransform:
   m_ObjectHideFlags: 0
