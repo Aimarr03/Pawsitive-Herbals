@@ -1,4 +1,5 @@
 using FadlanWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -18,6 +19,8 @@ namespace AimarWork
 
         PlayerInventory inventory;
         Dictionary<SO_BahanMentah,UI_BahanMentah> Dictionary_UI_BahanMentah;
+
+        public static event Action UpdateBahan;
         public override void Interact(PlayerController player)
         {
             base.Interact(player);
@@ -68,24 +71,19 @@ namespace AimarWork
 
         private void UI_BahanMentah_KurangBahanMentah(SO_BahanMentah obj)
         {
-            pilihanKini.Remove(obj);
-            if(inventory.ListBahan.Contains(obj))
-            {
-                inventory.ListBahan.Remove(obj);
-            }
+            inventory.PenguranganBahan(obj);
+            UpdateBahan?.Invoke();
         }
 
         private void UI_BahanMentah_TambahBahanMentah(SO_BahanMentah obj)
         {
-            pilihanKini.Add(obj);
+            inventory.PenambahanBahan(obj);
         }
 
         public void KonfirmasiPilihan()
         {
             canvas.gameObject.SetActive(false);
-            pilihanKini = pilihanKini.OrderBy(bahan => bahan.nama).ToList();
-
-            inventory.PenambahanBahan(pilihanKini);
+            inventory.PembarisanInventory();
         }
     }
 }

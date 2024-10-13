@@ -13,13 +13,20 @@ public class UI_BahanMentah : MonoBehaviour
 
     public static event Action<SO_BahanMentah> TambahBahanMentah;
     public static event Action<SO_BahanMentah> KurangBahanMentah;
+    public Color lockedCurrentImage;
     private void Awake()
     {
         GambarBahan = GetComponent<Image>();
         button = GetComponent<Button>();
     }
-
-    public Color lockedCurrentImage;
+    private void Start()
+    {
+        Pengambilan_Bahan.UpdateBahan += Pengambilan_Bahan_UpdateBahan;
+    }
+    private void OnDisable()
+    {
+        Pengambilan_Bahan.UpdateBahan -= Pengambilan_Bahan_UpdateBahan;
+    }
 
     public void SetUpBahanMentah(SO_BahanMentah so_bahanMentah)
     {
@@ -27,6 +34,11 @@ public class UI_BahanMentah : MonoBehaviour
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(TambahBahan);
     }
+    private void Pengambilan_Bahan_UpdateBahan()
+    {
+        
+    }
+
     private void TambahBahan()
     {
         Debug.Log("Tambah Bahan Mentah " + so_BahanMentah.nama);

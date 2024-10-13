@@ -39,6 +39,21 @@ namespace AimarWork
             }
             ListBahan = ListBahan.OrderBy(bahan_kini => bahan_kini.nama).ToList();
         }
+        public void PenambahanBahan(SO_BahanMentah bahanMentah)
+        {
+            if (ListBahan.Contains(bahanMentah)) return;
+            ListBahan.Add(bahanMentah);
+            bahanMentah.kuantitasKini--;
+        }
+        public void PenguranganBahan(SO_BahanMentah bahanMentah)
+        {
+            if (ListBahan.Contains(bahanMentah))
+            {
+                ListBahan.Remove(bahanMentah);
+                bahanMentah.kuantitasKini++;
+            }
+        }
+        public void PembarisanInventory() => ListBahan = ListBahan.OrderBy(bahan_kini => bahan_kini.nama).ToList();
     }
 }
 
