@@ -24,7 +24,7 @@ namespace AimarWork
                 Destroy(gameObject);
             }
         }
-        public List<SO_BahanMentah> GetBahanMentah()
+        public List<SO_BahanMentah> GetSemuaBahanMentah()
         {
             List<SO_BahanMentah> List_Bahan_Mentah = new List<SO_BahanMentah>();
             foreach(SO_Jamu jamu in List_Jamu)

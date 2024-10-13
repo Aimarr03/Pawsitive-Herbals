@@ -9,9 +9,9 @@ namespace FadlanWork
     {
         public string minigameCode;
 
-        public override void Interact()
+        public override void Interact(PlayerController player)
         {
-            base.Interact();
+            base.Interact(player);
 
             StoreMinigameManager.Instance.StartMinigame(minigameCode);
         }

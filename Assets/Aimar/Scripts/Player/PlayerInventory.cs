@@ -22,7 +22,17 @@ namespace AimarWork
         }
         public void PenambahanBahan(List<SO_BahanBase> penambahan_bahan)
         {
-            foreach (SO_BahanBase bahan in ListBahan)
+            foreach (SO_BahanBase bahan in penambahan_bahan)
+            {
+                if (ListBahan.Contains(bahan)) continue;
+                ListBahan.Add(bahan);
+            }
+            ListBahan = ListBahan.OrderBy(bahan_kini => bahan_kini.nama).ToList();
+        }
+        public void PenambahanBahan(List<SO_BahanMentah> penambahan_bahan)
+        {
+            Debug.Log("Player Menambah Inventory");
+            foreach (SO_BahanBase bahan in penambahan_bahan)
             {
                 if (ListBahan.Contains(bahan)) continue;
                 ListBahan.Add(bahan);

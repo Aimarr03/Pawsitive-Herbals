@@ -6,7 +6,7 @@ namespace FadlanWork
 {
     public abstract class BaseInteractableObject : MonoBehaviour
     {
-        public virtual void Interact()
+        public virtual void Interact(PlayerController player)
         {
             Debug.Log(gameObject.name + " interacted.");
         }

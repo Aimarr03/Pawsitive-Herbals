@@ -5,9 +5,9 @@ namespace AimarWork
 {
     public class Penyelesaian_Jamu : BaseInteractableObject
     {
-        public override void Interact()
+        public override void Interact(PlayerController player)
         {
-            base.Interact();
+            base.Interact(player);
 
 
         }
