@@ -1,3 +1,4 @@
+using AimarWork;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace FadlanWork
         public GameObject MixMinigamePrefab;
         public GameObject CutMinigamePrefab;
 
+        public ENUM_Tipe_Pengolahan tipe_pengolahan;
+        public static event Action<ENUM_Tipe_Pengolahan> SelesaiMengolah;
         public bool IsMinigameActive {get; private set;}
         public GameObject ActiveMinigameObject {get; private set;}
 
@@ -33,15 +36,19 @@ namespace FadlanWork
 
             switch(minigameName){
                 case "blend":
+                    tipe_pengolahan = ENUM_Tipe_Pengolahan.Memblender;
                     ActiveMinigameObject = Instantiate(BlendMinigamePrefab);
                     break;
                 case "mix":
+                    tipe_pengolahan = ENUM_Tipe_Pengolahan.Mengaduk;
                     ActiveMinigameObject = Instantiate(MixMinigamePrefab);
                     break;
                 case "cut":
+                    tipe_pengolahan = ENUM_Tipe_Pengolahan.Memotong;
                     ActiveMinigameObject = Instantiate(CutMinigamePrefab);
                     break;
                 case "boil":
+                    tipe_pengolahan = ENUM_Tipe_Pengolahan.Merebus;
                     ActiveMinigameObject = Instantiate(BoilMinigamePrefab);
                     break;
             }
@@ -55,7 +62,7 @@ namespace FadlanWork
                 return;
             
             Destroy(ActiveMinigameObject);
-
+            SelesaiMengolah?.Invoke(tipe_pengolahan);
             IsMinigameActive = false;
         }
     }

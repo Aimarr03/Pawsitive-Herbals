@@ -11,6 +11,7 @@ namespace AimarWork
         public SO_Jamu jamu_difoksukan;
         public SO_BahanOlahan olahanGagal;
         private Queue<SO_Jamu.Metode> langkah_langkah_pengolahan;
+        private PlayerInventory playerInventory;
 
         public static Manager_Jamu instance;
         private void Awake()
@@ -23,6 +24,12 @@ namespace AimarWork
             {
                 Destroy(gameObject);
             }
+
+            playerInventory = FindObjectOfType<PlayerInventory>();
+        }
+        private void Start()
+        {
+            SetJamu(List_Jamu[1]);
         }
         public List<SO_BahanMentah> GetSemuaBahanMentah()
         {
@@ -64,7 +71,15 @@ namespace AimarWork
             for(int index = 0; index <output.Bahan_Original.Count; index++)
             {
                 SO_BahanBase cek_bahan = output.Bahan_Original[index];
-                //Mau melakukan pengecekkan inventory player
+                if (!playerInventory.ListBahan.Contains(cek_bahan))
+                {
+                    benar = false;
+                    break;
+                }
+                else
+                {
+                    playerInventory.ListBahan.Remove(cek_bahan);
+                }
             }
             return benar && metode_kini.tipePengolahan == tipePengolahan ? output : olahanGagal;
         }

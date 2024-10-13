@@ -1,3 +1,4 @@
+using FadlanWork;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,6 +8,15 @@ namespace AimarWork
     public class PlayerInventory : MonoBehaviour
     {
         public List<SO_BahanBase> ListBahan;
+
+        private void Start()
+        {
+            StoreMinigameManager.SelesaiMengolah += StoreMinigameManager_SelesaiMengolah;
+        }
+        private void OnDisable()
+        {
+            StoreMinigameManager.SelesaiMengolah -= StoreMinigameManager_SelesaiMengolah;
+        }
 
         public void RemoveBahan()
         {
@@ -54,6 +64,11 @@ namespace AimarWork
             }
         }
         public void PembarisanInventory() => ListBahan = ListBahan.OrderBy(bahan_kini => bahan_kini.nama).ToList();
+
+        private void StoreMinigameManager_SelesaiMengolah(ENUM_Tipe_Pengolahan obj)
+        {
+            ListBahan.Add(Manager_Jamu.instance.SelesaiProsesOlahan(obj));
+        }
     }
 }
 
