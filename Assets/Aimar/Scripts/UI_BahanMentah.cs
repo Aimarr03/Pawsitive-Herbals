@@ -24,7 +24,6 @@ public class UI_BahanMentah : MonoBehaviour
     public void SetUpBahanMentah(SO_BahanMentah so_bahanMentah)
     {
         so_BahanMentah = so_bahanMentah;
-        UpdateBahanMentah();
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(TambahBahan);
     }
@@ -46,8 +45,17 @@ public class UI_BahanMentah : MonoBehaviour
         button.onClick.RemoveListener(KurangBahan);
         button.onClick.AddListener(TambahBahan);
     }
-    private void UpdateBahanMentah()
+    public void UpdateBahanMentah(bool adaBahanMentahDiPlayerInventory)
     {
-
+        button.onClick.RemoveAllListeners();
+        IndikasiDipilih.gameObject.SetActive(adaBahanMentahDiPlayerInventory);
+        if (adaBahanMentahDiPlayerInventory)
+        {
+            button.onClick.AddListener(KurangBahan);
+        }
+        else
+        {
+            button.onClick.AddListener(TambahBahan);
+        }
     }
 }
