@@ -44,3 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e3946aefdd4924ebf5591b85cc4e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  List_Jamu:
+  - {fileID: 11400000, guid: 85311251436a78041b9ca959c528b8a6, type: 2}
+  - {fileID: 11400000, guid: d084e000e8749e9469093c73edaf1e76, type: 2}
+  - {fileID: 11400000, guid: d24fa139d57fd0f4ba3a99f2002d32cf, type: 2}
+  - {fileID: 11400000, guid: 76470b710627bb84ca9fb6f5f6799170, type: 2}
+  jamu_difoksukan: {fileID: 0}
+  olahanGagal: {fileID: 11400000, guid: 869e1bbf4e80ff742b5b147695af6e82, type: 2}

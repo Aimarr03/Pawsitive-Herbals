@@ -6,6 +6,7 @@ namespace AimarWork
 {
     public class Manager_Jamu : MonoBehaviour
     {
+        public List<SO_Jamu> List_Jamu;
         public SO_Jamu jamu_difoksukan;
         public SO_BahanOlahan olahanGagal;
         private Queue<SO_Jamu.Metode> langkah_langkah_pengolahan;
@@ -28,6 +29,18 @@ namespace AimarWork
             this.jamu_difoksukan = jamu_difokuskan;
             langkah_langkah_pengolahan = new Queue<SO_Jamu.Metode>(jamu_difoksukan.List_Metode);
         }
+        public void PemesananJamu()
+        {
+            SO_Jamu jamu_dicari = List_Jamu[Random.Range(0, List_Jamu.Count)];
+            if (!jamu_dicari.CheckJamuMasihAda() || !jamu_dicari.terbuka)
+            {
+                PemesananJamu();
+            }
+            else
+            {
+                SetJamu(jamu_dicari);
+            }
+        }
 
         public SO_BahanOlahan SelesaiProsesOlahan(ENUM_Tipe_Pengolahan tipePengolahan)
         {
@@ -39,7 +52,7 @@ namespace AimarWork
                 SO_BahanBase cek_bahan = output.Bahan_Original[index];
                 //Mau melakukan pengecekkan inventory player
             }
-            return benar ? output : olahanGagal;
+            return benar && metode_kini.tipePengolahan == tipePengolahan ? output : olahanGagal;
         }
     }
 }

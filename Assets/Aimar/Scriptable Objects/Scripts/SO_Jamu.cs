@@ -65,6 +65,14 @@ namespace AimarWork
             }
             return true;
         }
+        public bool CheckJamuMasihAda()
+        {
+            foreach(SO_BahanMentah bahan_kini in List_Bahan_Mentah)
+            {
+                if (bahan_kini.kuantitasKini == 0) return false;
+            }
+            return true;
+        }
     }
 }
 

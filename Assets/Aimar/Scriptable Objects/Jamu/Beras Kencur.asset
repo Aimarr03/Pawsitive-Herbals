@@ -20,7 +20,7 @@ MonoBehaviour:
 
 '
   List_Bahan_Yang_Diperlukan:
-  - {fileID: 11400000, guid: b9fa23d991c76fc41b68482dcd859b2d, type: 2}
+  - {fileID: 11400000, guid: c96feb199f357e148a1513e58347dc69, type: 2}
   List_Bahan_Mentah:
   - {fileID: 11400000, guid: ddac12f6b7642f04498de0e8edb87784, type: 2}
   - {fileID: 11400000, guid: 7d87a6061346e7640a58e73c32545018, type: 2}
@@ -33,17 +33,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e3431d5a4ad94d3418c748b092cc5b4f, type: 2}
   List_Metode:
   - tipePengolahan: 0
-    OutPut: {fileID: 0}
-    langkah: 
+    OutPut: {fileID: 11400000, guid: ae57805d4340edd409cbf2e2646c5dfa, type: 2}
+    langkah: Merebus Beras
   - tipePengolahan: 0
-    OutPut: {fileID: 0}
-    langkah: 
-  - tipePengolahan: 0
-    OutPut: {fileID: 0}
-    langkah: 
-  - tipePengolahan: 0
-    OutPut: {fileID: 0}
-    langkah: 
+    OutPut: {fileID: 11400000, guid: c61771f09fe014e46a04f943affa64d9, type: 2}
+    langkah: Merebus Bahan-Bahan selain Beras
+  - tipePengolahan: 1
+    OutPut: {fileID: 11400000, guid: f0197f27e1f31a447ab73eb558448380, type: 2}
+    langkah: 'Mengaduk hasil rebusan '
+  - tipePengolahan: 3
+    OutPut: {fileID: 11400000, guid: c96feb199f357e148a1513e58347dc69, type: 2}
+    langkah: Memblender Hasil Adukkan
   terbuka: 0
   kualitas: 0
   base_keuntungan: 0
