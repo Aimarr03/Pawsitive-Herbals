@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Gula Pasir
   deskripsi: 
-  ikon_resep: {fileID: 0}
-  ikon_gameplay: {fileID: 0}
-  kuantitasKini: 10
+  ikon_resep: {fileID: 21300000, guid: 44c0a33f541107c4fb77463aad9c916d, type: 3}
+  ikon_gameplay: {fileID: 21300000, guid: 44c0a33f541107c4fb77463aad9c916d, type: 3}
+  kuantitasKini: 9
   hargaPerSatuan: 1000
   terbuka: 0

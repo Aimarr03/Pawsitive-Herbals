@@ -19,7 +19,7 @@ namespace AimarWork
             StoreMinigameManager.SelesaiMengolah -= StoreMinigameManager_SelesaiMengolah;
         }
 
-        public void RemoveBahan()
+        public void BersihkanSemuaBahanDiInventory()
         {
             ListBahan.Clear();
         }

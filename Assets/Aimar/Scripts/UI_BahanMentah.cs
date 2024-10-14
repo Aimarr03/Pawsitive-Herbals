@@ -31,6 +31,10 @@ public class UI_BahanMentah : MonoBehaviour
     public void SetUpBahanMentah(SO_BahanMentah so_bahanMentah)
     {
         so_BahanMentah = so_bahanMentah;
+        if(so_BahanMentah.ikon_resep != null)
+        {
+            GambarBahan.sprite = so_BahanMentah.ikon_resep;
+        }
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(TambahBahan);
     }

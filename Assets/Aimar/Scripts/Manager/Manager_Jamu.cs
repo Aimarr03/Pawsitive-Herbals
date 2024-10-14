@@ -1,7 +1,9 @@
 using JetBrains.Annotations;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Rendering.CameraUI;
 
 namespace AimarWork
 {
@@ -11,8 +13,16 @@ namespace AimarWork
         public SO_Jamu jamu_difokuskan;
 
         public SO_Jamu jamuGagal;
-        public SO_BahanOlahan olahanGagal;
         private Queue<SO_Jamu.Metode> langkah_langkah_pengolahan;
+
+        [Title("Tipe-Tipe Bahan Olahan")]
+        public List<SO_BahanOlahan> List_BlenderOlahan;
+        public List<SO_BahanOlahan> List_MotongOlahan;
+        public List<SO_BahanOlahan> List_RebusOlahan;
+        public List<SO_BahanOlahan> List_AdukOlahan;
+        public Dictionary<ENUM_Tipe_Pengolahan, List<SO_BahanOlahan>> Dictionary_BahanOlahan;
+
+        public SO_BahanOlahan olahanGagal;
         private PlayerInventory playerInventory;
 
         public static Manager_Jamu instance;
@@ -26,7 +36,13 @@ namespace AimarWork
             {
                 Destroy(gameObject);
             }
-
+            Dictionary_BahanOlahan = new Dictionary<ENUM_Tipe_Pengolahan, List<SO_BahanOlahan>>
+            {
+                {ENUM_Tipe_Pengolahan.Memblender, List_BlenderOlahan },
+                {ENUM_Tipe_Pengolahan.Memotong, List_MotongOlahan},
+                {ENUM_Tipe_Pengolahan.Merebus, List_RebusOlahan},
+                {ENUM_Tipe_Pengolahan.Mengaduk, List_AdukOlahan}
+            };
             playerInventory = FindObjectOfType<PlayerInventory>();
         }
         private void Start()
@@ -67,24 +83,50 @@ namespace AimarWork
 
         public SO_BahanOlahan SelesaiProsesOlahan(ENUM_Tipe_Pengolahan tipePengolahan)
         {
-            SO_Jamu.Metode metode_kini = langkah_langkah_pengolahan.Dequeue();
-            SO_BahanOlahan output = metode_kini.OutPut;
-            bool benar = true;
-            for(int index = 0; index <output.Bahan_Original.Count; index++)
+            List<SO_BahanOlahan> List_BahanOlahan = Dictionary_BahanOlahan[tipePengolahan];
+            List<SO_BahanBase> List_PengambilanBahan = new List<SO_BahanBase>();
+            int bufferIndex = 0;
+            foreach(SO_BahanOlahan bahanOlahan in List_BahanOlahan)
             {
-                SO_BahanBase cek_bahan = output.Bahan_Original[index];
-                if (!playerInventory.ListBahan.Contains(cek_bahan))
+                List<SO_BahanBase> List_BahanDibutuhkan = bahanOlahan.Bahan_Original;
+                bool pengecekkan = true;
+                for (int index = 0; index < List_BahanDibutuhkan.Count; index++)
                 {
-                    benar = false;
+                    SO_BahanBase cek_bahan = List_BahanDibutuhkan[index];
+                    bufferIndex = index;
+                    if(!playerInventory.ListBahan.Contains(cek_bahan))
+                    {
+                        pengecekkan = false;
+                        break;
+                    }
+                }
+                if (pengecekkan)
+                {
+                    List_PengambilanBahan = List_BahanOlahan[bufferIndex].Bahan_Original;
                     break;
                 }
                 else
                 {
-                    playerInventory.ListBahan.Remove(cek_bahan);
+                    bufferIndex++;
                 }
+                
             }
-            if (benar) Debug.Log($"Behasil Melakukan Pemrosesan {tipePengolahan} mendapatkan {output}");
-            return benar && metode_kini.tipePengolahan == tipePengolahan ? output : olahanGagal;
+            if(List_PengambilanBahan.Count == 0)
+            {
+                Debug.Log("Gagal Membuat Olahan");
+                return olahanGagal;    
+            }
+            else
+            {
+                for (int index = 0; index < List_PengambilanBahan.Count; index++)
+                {
+                    playerInventory.ListBahan.Remove(List_PengambilanBahan[index]);
+                }
+                Debug.Log("Berhasil Membuat Olahan " + List_BahanOlahan[bufferIndex].name);
+                return List_BahanOlahan[bufferIndex];
+            }
+            
+            
         }
 
         public void CheckJamu()

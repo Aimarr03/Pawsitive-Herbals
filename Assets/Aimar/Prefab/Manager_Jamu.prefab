@@ -49,5 +49,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d084e000e8749e9469093c73edaf1e76, type: 2}
   - {fileID: 11400000, guid: d24fa139d57fd0f4ba3a99f2002d32cf, type: 2}
   - {fileID: 11400000, guid: 76470b710627bb84ca9fb6f5f6799170, type: 2}
-  jamu_difoksukan: {fileID: 0}
+  jamu_difokuskan: {fileID: 0}
+  jamuGagal: {fileID: 11400000, guid: 18e8b3de1f24ba34ba43a09742e3001c, type: 2}
+  List_BlenderOlahan:
+  - {fileID: 11400000, guid: c96feb199f357e148a1513e58347dc69, type: 2}
+  List_MotongOlahan:
+  - {fileID: 11400000, guid: 34928521de63a8d438c80fe13db04ac9, type: 2}
+  - {fileID: 11400000, guid: e3431d5a4ad94d3418c748b092cc5b4f, type: 2}
+  - {fileID: 11400000, guid: 45888c7f6574f25459a38ef072aea932, type: 2}
+  List_RebusOlahan:
+  - {fileID: 11400000, guid: ae57805d4340edd409cbf2e2646c5dfa, type: 2}
+  - {fileID: 11400000, guid: c61771f09fe014e46a04f943affa64d9, type: 2}
+  - {fileID: 11400000, guid: b9fa23d991c76fc41b68482dcd859b2d, type: 2}
+  - {fileID: 11400000, guid: cc06a1f6816a5064fb2e82f38e52d1c8, type: 2}
+  - {fileID: 11400000, guid: 85848a6573ba96f4f922573972af1ec0, type: 2}
+  List_AdukOlahan:
+  - {fileID: 11400000, guid: f0197f27e1f31a447ab73eb558448380, type: 2}
   olahanGagal: {fileID: 11400000, guid: 869e1bbf4e80ff742b5b147695af6e82, type: 2}

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Air
   deskripsi: 
-  ikon_resep: {fileID: 0}
-  ikon_gameplay: {fileID: 0}
-  kuantitasKini: 1
+  ikon_resep: {fileID: 21300000, guid: 8c7f353c844ecba4fa3059ad84d8bf65, type: 3}
+  ikon_gameplay: {fileID: 21300000, guid: 8c7f353c844ecba4fa3059ad84d8bf65, type: 3}
+  kuantitasKini: -1
   hargaPerSatuan: 1
   terbuka: 0
