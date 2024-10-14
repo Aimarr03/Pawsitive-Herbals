@@ -1719,6 +1719,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 200668093}
     m_Modifications:
+    - target: {fileID: 1653166867936107307, guid: 4641f8a93d7b3e84b86f30cb25854163, type: 3}
+      propertyPath: minigameNames.Array.data[0]
+      value: test
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653166867936107307, guid: 4641f8a93d7b3e84b86f30cb25854163, type: 3}
+      propertyPath: minigameNames.Array.data[1]
+      value: test2
+      objectReference: {fileID: 0}
     - target: {fileID: 5348508432696784917, guid: 4641f8a93d7b3e84b86f30cb25854163, type: 3}
       propertyPath: m_Name
       value: Blend
