@@ -27,6 +27,7 @@ namespace AimarWork
 
         public int pelangganMax = 0;
         public int pelangganDihidangkan = 0;
+        public int uangDiperoleh;
 
         public static Manager_TokoJamu instance;
         private void Awake()

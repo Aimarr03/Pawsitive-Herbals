@@ -68,11 +68,9 @@ namespace FadlanWork
         }
 
 
-    void Update()
-    {
-        if (Manager_Waktu.instance.IsPaused) return;
-        switch (currentState)
+        void Update()
         {
+            if (Manager_Waktu.instance.IsPaused) return;
             switch (currentState)
             {
                 case CustomerState.WaitingInQueue:
@@ -169,7 +167,7 @@ namespace FadlanWork
 
             orderAsked = true;
 
-            Manager_Jamu.instance.PemesananJamu();
+            Manager_TokoJamu.instance.PemesananJamu();
 
             if (thinkingCoroutine != null)
                 StopCoroutine(thinkingCoroutine);
@@ -180,7 +178,7 @@ namespace FadlanWork
         IEnumerator ThinkingForOrder()
         {
             yield return new WaitForSeconds(UnityEngine.Random.Range(2, 3));
-            Debug.Log("Order: " + Manager_Jamu.instance.jamu_difoksukan.nama);
+            Debug.Log("Order: " + Manager_TokoJamu.instance.jamu_difokuskan.nama);
         }
 
         IEnumerator ImpatienceEmotion()

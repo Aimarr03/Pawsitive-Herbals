@@ -6,9 +6,9 @@ namespace FadlanWork
 {
     public class CashierInteract : BaseInteractableObject
     {
-        public override void Interact()
+        public override void Interact(PlayerController player)
         {
-            base.Interact();
+            base.Interact(player);
 
             Customer firstCustomer = CustomersQueueManager.Instance.GetFirst();
             if (firstCustomer != null)

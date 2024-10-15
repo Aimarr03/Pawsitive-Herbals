@@ -14,9 +14,9 @@ namespace FadlanWork
 
         private Coroutine openingCoroutine;
 
-        public override void Interact()
+        public override void Interact(PlayerController player)
         {
-            base.Interact();
+            base.Interact(player);
 
             if (openingCoroutine != null)
                 StopCoroutine(openingCoroutine);

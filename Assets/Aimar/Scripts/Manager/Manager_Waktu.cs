@@ -81,6 +81,7 @@ namespace AimarWork
             {
                 if (DataStatusHariKini.dayState != DayState.Day) return;
                 DurasiKini = 0;
+                IsOpen = true;
             }
             public void GantiStatusHari()
             {
@@ -103,6 +104,8 @@ namespace AimarWork
                 TanggalKini.AddDays(1);
             }
             public bool CekAktifitas(int harga) => Segmen_Kini >= harga;
+
+            public bool CekTokoBuka() => IsOpen;
             private void SetRotasiKecepatanJam() => KecepatanPutaranJam = (DataStatusHariKini.maxHour * DerajatRotasiPerJam) / DurasiWaktu;
             private void SetRotasiKecepatanMenit() => KecepatanPutaranMenit = 360/(DurasiWaktu/DataStatusHariKini.maxHour);
 
