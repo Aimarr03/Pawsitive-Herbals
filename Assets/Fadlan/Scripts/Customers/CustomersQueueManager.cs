@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AimarWork;
 using UnityEngine;
 
 namespace FadlanWork
@@ -59,6 +60,11 @@ namespace FadlanWork
             CustomersQueue.Remove(customer);
             OnQueueChanged?.Invoke();
             Destroy(customer.gameObject, 3);
+        }
+
+        public Customer GetFirst()
+        {
+            return CustomersQueue.First();
         }
     }
 }
