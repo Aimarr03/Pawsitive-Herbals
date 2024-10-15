@@ -1,13 +1,11 @@
-using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.Rendering.CameraUI;
 
 namespace AimarWork
 {
-    public class Manager_Jamu : MonoBehaviour
+    public class Manager_TokoJamu : MonoBehaviour
     {
         public List<SO_Jamu> List_Jamu;
         public SO_Jamu jamu_difokuskan;
@@ -27,7 +25,10 @@ namespace AimarWork
         private float kualitas = 0f;
         private int maxIndex = 1;
 
-        public static Manager_Jamu instance;
+        public int pelangganMax = 0;
+        public int pelangganDihidangkan = 0;
+
+        public static Manager_TokoJamu instance;
         private void Awake()
         {
             if(instance == null)

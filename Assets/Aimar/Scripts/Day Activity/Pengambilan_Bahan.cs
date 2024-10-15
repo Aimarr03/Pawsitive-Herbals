@@ -51,7 +51,7 @@ namespace AimarWork
             UI_BahanMentah.TambahBahanMentah += UI_BahanMentah_TambahBahanMentah;
             UI_BahanMentah.KurangBahanMentah += UI_BahanMentah_KurangBahanMentah;
             
-            List_BahanMentah = Manager_Jamu.instance.GetSemuaBahanMentah();
+            List_BahanMentah = Manager_TokoJamu.instance.GetSemuaBahanMentah();
             Dictionary_UI_BahanMentah = new Dictionary<SO_BahanMentah, UI_BahanMentah>();
             foreach(SO_BahanMentah bahanMentah in List_BahanMentah)
             {

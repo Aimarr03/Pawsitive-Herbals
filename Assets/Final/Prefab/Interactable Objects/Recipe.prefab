@@ -461,7 +461,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4014870660046554462}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1878517712498135918}
+        m_TargetAssemblyTypeName: Penglihatan_Resep, Assembly-CSharp
+        m_MethodName: NextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2898484807001787150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,7 +1036,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3602803609873259003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1878517712498135918}
+        m_TargetAssemblyTypeName: Penglihatan_Resep, Assembly-CSharp
+        m_MethodName: TutupResep
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5049369835924717686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1349,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7646552391246925497}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1878517712498135918}
+        m_TargetAssemblyTypeName: Penglihatan_Resep, Assembly-CSharp
+        m_MethodName: PrevPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5400694815357719236
 GameObject:
   m_ObjectHideFlags: 0

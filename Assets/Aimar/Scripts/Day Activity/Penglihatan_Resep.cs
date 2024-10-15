@@ -30,7 +30,7 @@ public class Penglihatan_Resep : BaseInteractableObject
     private void Start()
     {
         List_Resep_Jamu = new List<SO_Jamu>();
-        foreach(SO_Jamu jamu in Manager_Jamu.instance.List_Jamu)
+        foreach(SO_Jamu jamu in Manager_TokoJamu.instance.List_Jamu)
         {
             if (!jamu.terbuka) continue;
             List_Resep_Jamu.Add(jamu);
@@ -63,7 +63,10 @@ public class Penglihatan_Resep : BaseInteractableObject
         {
             Image currentBahan = Instantiate(formatGambar, containerGambarBahanBahan);
             currentBahan.gameObject.SetActive(true);
-            currentBahan.sprite = bahanMentah.ikon_gameplay;
+            if (bahanMentah.ikon_gameplay != null) 
+            {
+                currentBahan.sprite = bahanMentah.ikon_gameplay;
+            }
         }
         
         

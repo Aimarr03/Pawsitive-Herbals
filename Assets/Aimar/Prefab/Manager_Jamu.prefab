@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 152455706045419549}
-  - component: {fileID: 1429076357547816466}
+  - component: {fileID: 7965198926856452592}
   m_Layer: 0
   m_Name: Manager_Jamu
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1429076357547816466
+--- !u!114 &7965198926856452592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1502426045263254049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e3946aefdd4924ebf5591b85cc4e27, type: 3}
+  m_Script: {fileID: 11500000, guid: 168d53d61c11aa643ad12b78e48c2295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   List_Jamu:
@@ -65,4 +65,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 85848a6573ba96f4f922573972af1ec0, type: 2}
   List_AdukOlahan:
   - {fileID: 11400000, guid: f0197f27e1f31a447ab73eb558448380, type: 2}
-  olahanGagal: {fileID: 11400000, guid: 869e1bbf4e80ff742b5b147695af6e82, type: 2}
+  olahanGagal: {fileID: 0}
+  pelangganMax: 0
+  pelangganDihidangkan: 0

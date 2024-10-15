@@ -84,7 +84,7 @@ namespace AimarWork
 
         private void StoreMinigameManager_SelesaiMengolah(ENUM_Tipe_Pengolahan tipe, float score)
         {
-            ListBahan.Add(Manager_Jamu.instance.SelesaiProsesOlahan(tipe, score));
+            ListBahan.Add(Manager_TokoJamu.instance.SelesaiProsesOlahan(tipe, score));
 
             List_Berubah?.Invoke(ListBahan);
         }
