@@ -30,13 +30,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9fa23d991c76fc41b68482dcd859b2d, type: 2}
   - {fileID: 11400000, guid: e3431d5a4ad94d3418c748b092cc5b4f, type: 2}
   List_Metode:
+  - tipePengolahan: 2
+    OutPut: {fileID: 11400000, guid: e3431d5a4ad94d3418c748b092cc5b4f, type: 2}
+    langkah: Memotong Kunyit
   - tipePengolahan: 0
-    OutPut: {fileID: 0}
-    langkah: 
-  - tipePengolahan: 0
-    OutPut: {fileID: 0}
-    langkah: 
-  terbuka: 0
+    OutPut: {fileID: 11400000, guid: b9fa23d991c76fc41b68482dcd859b2d, type: 2}
+    langkah: Merebus Bahan-Bahan
+  multiplierBaseKeuntungan: 1.4
+  terbuka: 1
   kualitas: 0
   base_keuntungan: 0
   base_exp: 50

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using AimarWork.GameManagerLogic;
 using FadlanWork;
 using UnityEngine;
 using UnityEngine.AI;
@@ -51,6 +52,7 @@ public class Customer : MonoBehaviour
 
     void Update()
     {
+        if (Manager_Waktu.instance.IsPaused) return;
         switch (currentState)
         {
             case CustomerState.WaitingInQueue:

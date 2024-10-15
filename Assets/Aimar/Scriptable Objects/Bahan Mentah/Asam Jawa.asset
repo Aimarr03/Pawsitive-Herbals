@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Asam Jawa
   deskripsi: 
-  ikon_resep: {fileID: 0}
-  ikon_gameplay: {fileID: 0}
-  tipe: 0
-  kuantitasKini: 20
-  tipeKuantitasFormat: 0
+  ikon_resep: {fileID: 21300000, guid: b754be7d323c1114d8d64f585af1ae05, type: 3}
+  ikon_gameplay: {fileID: 21300000, guid: b754be7d323c1114d8d64f585af1ae05, type: 3}
+  kuantitasKini: 18
   hargaPerSatuan: 1600
   terbuka: 0

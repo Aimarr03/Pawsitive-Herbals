@@ -124,7 +124,7 @@ namespace FadlanWork
 
         private void CloseGame()
         {
-            StoreMinigameManager.Instance.EndMinigame();
+            StoreMinigameManager.Instance.EndMinigame(score/BlendPerfectTime);
         }
     }
 }

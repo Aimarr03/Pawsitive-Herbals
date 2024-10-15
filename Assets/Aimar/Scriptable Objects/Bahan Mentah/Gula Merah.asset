@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Gula Merah
   deskripsi: 
-  ikon_resep: {fileID: 0}
-  ikon_gameplay: {fileID: 0}
-  kuantitasKini: 10
+  ikon_resep: {fileID: 21300000, guid: 1255a0d934f52874283fd9450b2f2e74, type: 3}
+  ikon_gameplay: {fileID: 21300000, guid: 1255a0d934f52874283fd9450b2f2e74, type: 3}
+  kuantitasKini: 9
   hargaPerSatuan: 1500
   terbuka: 0

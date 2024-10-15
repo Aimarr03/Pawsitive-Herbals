@@ -29,7 +29,8 @@ namespace AimarWork
         public List<SO_BahanMentah> List_Bahan_Mentah;
         public List<SO_BahanOlahan> List_BahanOlahan;
         public List<Metode> List_Metode;
-
+        [Range(1, 2f)]
+        public float multiplierBaseKeuntungan = 1f;
         public int GetBaseKeuntungan()
         {
             int base_keuntungan = 0;
@@ -37,7 +38,7 @@ namespace AimarWork
             {
                 base_keuntungan += bahan.hargaPerSatuan;
             }
-            return base_keuntungan;
+            return (int)(base_keuntungan *multiplierBaseKeuntungan);
         }
         public List<SO_BahanOlahan> GetBahanOlahan(ENUM_Tipe_Pengolahan enum_tipe_pengolahan)
         {
@@ -62,6 +63,14 @@ namespace AimarWork
             for (int i = 0; i < List_BahanPembuatan.Count; i++)
             {
                 if (List_BahanPembuatan[i] != List_Bahan_Yang_Diperlukan[i]) return false;
+            }
+            return true;
+        }
+        public bool CheckJamuMasihAda()
+        {
+            foreach(SO_BahanMentah bahan_kini in List_Bahan_Mentah)
+            {
+                if (bahan_kini.kuantitasKini == 0) return false;
             }
             return true;
         }

@@ -29,13 +29,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 45888c7f6574f25459a38ef072aea932, type: 2}
   - {fileID: 11400000, guid: 85848a6573ba96f4f922573972af1ec0, type: 2}
   List_Metode:
+  - tipePengolahan: 2
+    OutPut: {fileID: 11400000, guid: 45888c7f6574f25459a38ef072aea932, type: 2}
+    langkah: Memotong Temulawak, Jahe, dan Kunyit
   - tipePengolahan: 0
-    OutPut: {fileID: 0}
-    langkah: 
-  - tipePengolahan: 0
-    OutPut: {fileID: 0}
-    langkah: 
-  terbuka: 0
+    OutPut: {fileID: 11400000, guid: cc06a1f6816a5064fb2e82f38e52d1c8, type: 2}
+    langkah: Merebus Semua Bahan
+  multiplierBaseKeuntungan: 1.35
+  terbuka: 1
   kualitas: 0
   base_keuntungan: 0
   base_exp: 0
