@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd919f55c4a4bb14aaea28470e01f9cb, type: 3}
+  m_Name: Rebus_Temulawak
+  m_EditorClassIdentifier: 
+  nama: Irisan Temulawak Jahe  Kunyit
+  deskripsi: 
+  ikon_resep: {fileID: 0}
+  ikon_gameplay: {fileID: 0}
+  Bahan_Original:
+  - {fileID: 11400000, guid: 45888c7f6574f25459a38ef072aea932, type: 2}
+  - {fileID: 11400000, guid: ddac12f6b7642f04498de0e8edb87784, type: 2}
+  - {fileID: 11400000, guid: fe0ca5ec92fb6d342b5aafb55af8ef10, type: 2}
+  tipePengolahan: 0
+  statusPengolahan: 1

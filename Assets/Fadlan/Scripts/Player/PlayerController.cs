@@ -1,3 +1,4 @@
+using AimarWork;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,9 @@ namespace FadlanWork
     public class PlayerController : MonoBehaviour
     {
         public static PlayerController Instance { get; private set;}
+        public float InteractDistance = 1.5f;
+        public PlayerInventory inventory;
 
-        public float InteractDistance = 1f;
 
         private NavMeshAgent agent;
         private Camera mainCamera;
@@ -20,6 +22,7 @@ namespace FadlanWork
         void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
+            inventory = GetComponent<PlayerInventory>();
             mainCamera = Camera.main;
 
             if (Instance != null)
@@ -60,7 +63,7 @@ namespace FadlanWork
                 float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
                 if (distanceToTarget <= InteractDistance)
                 {
-                    targetObject.Interact();
+                    targetObject.Interact(this);
                     targetObject = null;
                 }
             }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AimarWork;
+using AimarWork.GameManagerLogic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -66,7 +67,11 @@ namespace FadlanWork
                 StopCoroutine(thinkingCoroutine);
         }
 
-        void Update()
+
+    void Update()
+    {
+        if (Manager_Waktu.instance.IsPaused) return;
+        switch (currentState)
         {
             switch (currentState)
             {
