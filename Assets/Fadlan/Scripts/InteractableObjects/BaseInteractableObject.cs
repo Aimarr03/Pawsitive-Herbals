@@ -6,6 +6,7 @@ namespace FadlanWork
 {
     public abstract class BaseInteractableObject : MonoBehaviour
     {
+        public Vector2 StandPositionOffset;
         public virtual void Interact()
         {
             Debug.Log(gameObject.name + " interacted.");

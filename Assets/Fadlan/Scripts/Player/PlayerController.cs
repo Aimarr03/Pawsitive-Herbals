@@ -8,7 +8,9 @@ namespace FadlanWork
 {
     public class PlayerController : MonoBehaviour
     {
-        public float InteractDistance = 1.5f;
+        public static PlayerController Instance { get; private set;}
+
+        public float InteractDistance = 1f;
 
         private NavMeshAgent agent;
         private Camera mainCamera;
@@ -19,6 +21,11 @@ namespace FadlanWork
         {
             agent = GetComponent<NavMeshAgent>();
             mainCamera = Camera.main;
+
+            if (Instance != null)
+                throw new System.Exception("More than one instance of PlayerController");
+
+            Instance = this;
         }
 
         void Start()
@@ -49,7 +56,8 @@ namespace FadlanWork
         {
             if (targetObject != null)
             {
-                float distanceToTarget = Vector3.Distance(transform.position, targetObject.transform.position);
+                Vector3 targetPosition = targetObject.transform.position + new Vector3(targetObject.StandPositionOffset.x, targetObject.StandPositionOffset.y, 0);
+                float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
                 if (distanceToTarget <= InteractDistance)
                 {
                     targetObject.Interact();
@@ -68,7 +76,8 @@ namespace FadlanWork
                 if (hit.collider.TryGetComponent<BaseInteractableObject>(out var interactable))
                 {
                     targetObject = interactable;
-                    MoveToTarget(interactable.transform.position);
+                    Vector3 targetPosition = targetObject.transform.position + new Vector3(targetObject.StandPositionOffset.x, targetObject.StandPositionOffset.y, 0);
+                    MoveToTarget(targetPosition);
                 }
             }
             else
