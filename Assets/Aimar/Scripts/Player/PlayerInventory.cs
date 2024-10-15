@@ -1,4 +1,5 @@
 using FadlanWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace AimarWork
     {
         public List<SO_BahanBase> ListBahan;
         public SO_Jamu jamu;
-
+        public static event Action<List<SO_BahanBase>> List_Berubah;
         private void Start()
         {
             StoreMinigameManager.SelesaiMengolah += StoreMinigameManager_SelesaiMengolah;
@@ -22,6 +23,8 @@ namespace AimarWork
         public void BersihkanSemuaBahanDiInventory()
         {
             ListBahan.Clear();
+            jamu = null;
+            List_Berubah?.Invoke(ListBahan);
         }
         public bool CheckBahan(SO_BahanMentah bahan_dicek)
         {
@@ -39,6 +42,8 @@ namespace AimarWork
                 ListBahan.Add(bahan);
             }
             ListBahan = ListBahan.OrderBy(bahan_kini => bahan_kini.nama).ToList();
+            
+            List_Berubah?.Invoke(ListBahan);
         }
         public void PenambahanBahan(List<SO_BahanMentah> penambahan_bahan)
         {
@@ -49,12 +54,16 @@ namespace AimarWork
                 ListBahan.Add(bahan);
             }
             ListBahan = ListBahan.OrderBy(bahan_kini => bahan_kini.nama).ToList();
+            
+            List_Berubah?.Invoke(ListBahan);
         }
         public void PenambahanBahan(SO_BahanMentah bahanMentah)
         {
             if (ListBahan.Contains(bahanMentah)) return;
             ListBahan.Add(bahanMentah);
             bahanMentah.kuantitasKini--;
+            
+            List_Berubah?.Invoke(ListBahan);
         }
         public void PenguranganBahan(SO_BahanMentah bahanMentah)
         {
@@ -62,13 +71,22 @@ namespace AimarWork
             {
                 ListBahan.Remove(bahanMentah);
                 bahanMentah.kuantitasKini++;
+                
+                List_Berubah?.Invoke(ListBahan);
             }
         }
-        public void PembarisanInventory() => ListBahan = ListBahan.OrderBy(bahan_kini => bahan_kini.nama).ToList();
+        public void PembarisanInventory()
+        {
+            ListBahan = ListBahan.OrderBy(bahan_kini => bahan_kini.nama).ToList();
+
+            List_Berubah?.Invoke(ListBahan);
+        }
 
         private void StoreMinigameManager_SelesaiMengolah(ENUM_Tipe_Pengolahan obj)
         {
             ListBahan.Add(Manager_Jamu.instance.SelesaiProsesOlahan(obj));
+
+            List_Berubah?.Invoke(ListBahan);
         }
     }
 }

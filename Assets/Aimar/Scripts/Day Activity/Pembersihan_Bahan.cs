@@ -1,18 +1,18 @@
+using FadlanWork;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pembersihan_Bahan : MonoBehaviour
+namespace AimarWork
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Pembersihan_Bahan : BaseInteractableObject
     {
-        
-    }
+        public override void Interact(PlayerController player)
+        {
+            base.Interact(player);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            player.inventory.BersihkanSemuaBahanDiInventory();
+        }
     }
 }
+

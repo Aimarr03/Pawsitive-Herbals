@@ -1,4 +1,5 @@
 using AimarWork;
+using AimarWork.GameManagerLogic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace FadlanWork
 
         public void StartMinigame(string minigameName)
         {
+            Manager_Waktu.instance.IsPaused = true;
             if (IsMinigameActive)
                 return;
 
@@ -64,6 +66,7 @@ namespace FadlanWork
             Destroy(ActiveMinigameObject);
             SelesaiMengolah?.Invoke(tipe_pengolahan);
             IsMinigameActive = false;
+            Manager_Waktu.instance.IsPaused = false;
         }
     }
 }

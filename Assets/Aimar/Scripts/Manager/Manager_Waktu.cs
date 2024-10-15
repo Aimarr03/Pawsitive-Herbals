@@ -17,6 +17,7 @@ namespace AimarWork
             };
             public DayStateData DataStatusHariKini;
             public DateTime TanggalKini;
+            public bool IsPaused = false;
 
             //private int MaksimumJam = 24;
             //private int MaksimumJamAnalog = 12;
@@ -104,6 +105,11 @@ namespace AimarWork
             public bool CekAktifitas(int harga) => Segmen_Kini >= harga;
             private void SetRotasiKecepatanJam() => KecepatanPutaranJam = (DataStatusHariKini.maxHour * DerajatRotasiPerJam) / DurasiWaktu;
             private void SetRotasiKecepatanMenit() => KecepatanPutaranMenit = 360/(DurasiWaktu/DataStatusHariKini.maxHour);
+
+            public void IncrementPausedSegment()
+            {
+
+            }
         }
         public struct DayStateData
         {
