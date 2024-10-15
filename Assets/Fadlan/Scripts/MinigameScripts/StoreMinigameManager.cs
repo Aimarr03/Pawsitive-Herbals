@@ -18,7 +18,7 @@ namespace FadlanWork
         public GameObject CutMinigamePrefab;
 
         public ENUM_Tipe_Pengolahan tipe_pengolahan;
-        public static event Action<ENUM_Tipe_Pengolahan> SelesaiMengolah;
+        public static event Action<ENUM_Tipe_Pengolahan, float> SelesaiMengolah;
         public bool IsMinigameActive {get; private set;}
         public GameObject ActiveMinigameObject {get; private set;}
 
@@ -58,13 +58,13 @@ namespace FadlanWork
             IsMinigameActive = true;
         }
 
-        public void EndMinigame()
+        public void EndMinigame(float score)
         {
             if (!IsMinigameActive)
                 return;
             
             Destroy(ActiveMinigameObject);
-            SelesaiMengolah?.Invoke(tipe_pengolahan);
+            SelesaiMengolah?.Invoke(tipe_pengolahan, score);
             IsMinigameActive = false;
             Manager_Waktu.instance.IsPaused = false;
         }

@@ -24,6 +24,8 @@ namespace AimarWork
 
         public SO_BahanOlahan olahanGagal;
         private PlayerInventory playerInventory;
+        private float kualitas = 0f;
+        private int maxIndex = 1;
 
         public static Manager_Jamu instance;
         private void Awake()
@@ -66,6 +68,8 @@ namespace AimarWork
         public void SetJamu(SO_Jamu jamu_difokuskan)
         {
             this.jamu_difokuskan = jamu_difokuskan;
+            kualitas = 0;
+            maxIndex = 0;
             langkah_langkah_pengolahan = new Queue<SO_Jamu.Metode>(this.jamu_difokuskan.List_Metode);
         }
         public void PemesananJamu()
@@ -81,8 +85,10 @@ namespace AimarWork
             }
         }
 
-        public SO_BahanOlahan SelesaiProsesOlahan(ENUM_Tipe_Pengolahan tipePengolahan)
+        public SO_BahanOlahan SelesaiProsesOlahan(ENUM_Tipe_Pengolahan tipePengolahan, float kualitas)
         {
+            maxIndex++;
+            this.kualitas = (this.kualitas + kualitas) / maxIndex;
             List<SO_BahanOlahan> List_BahanOlahan = Dictionary_BahanOlahan[tipePengolahan];
             List<SO_BahanBase> List_PengambilanBahan = new List<SO_BahanBase>();
             int bufferIndex = 0;
@@ -124,11 +130,34 @@ namespace AimarWork
                 }
                 Debug.Log("Berhasil Membuat Olahan " + List_BahanOlahan[bufferIndex].name);
                 return List_BahanOlahan[bufferIndex];
-            }
-            
-            
+            }   
         }
-
+        public int GetKeuntungan()
+        {
+            SO_Jamu jamuDijual = playerInventory.jamu;
+            int keuntungan = jamuDijual.GetBaseKeuntungan();
+            if(kualitas < 0.75f)
+            {
+                return (int)(keuntungan * 0.75f);
+            }
+            else if(kualitas >= 0.75f && kualitas < .85f)
+            {
+                return (int)(keuntungan * 0.9f);
+            }
+            else if(kualitas >= 85 && kualitas <= 0.95)
+            {
+                return (int)(keuntungan * 1f);
+            }
+            else if(kualitas >= 0.95)
+            {
+                return (int)(keuntungan * 1.25f);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        
         public void CheckJamu()
         {
             playerInventory.jamu = jamu_difokuskan.CheckBahan(playerInventory.ListBahan) ? jamu_difokuskan : jamuGagal;

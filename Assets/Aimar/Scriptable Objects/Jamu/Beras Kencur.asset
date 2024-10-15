@@ -44,7 +44,8 @@ MonoBehaviour:
   - tipePengolahan: 3
     OutPut: {fileID: 11400000, guid: c96feb199f357e148a1513e58347dc69, type: 2}
     langkah: Memblender Hasil Adukkan
-  terbuka: 0
+  multiplierBaseKeuntungan: 1.5
+  terbuka: 1
   kualitas: 0
   base_keuntungan: 0
   base_exp: 50

@@ -35,7 +35,8 @@ MonoBehaviour:
   - tipePengolahan: 0
     OutPut: {fileID: 11400000, guid: cc06a1f6816a5064fb2e82f38e52d1c8, type: 2}
     langkah: Merebus Semua Bahan
-  terbuka: 0
+  multiplierBaseKeuntungan: 1.35
+  terbuka: 1
   kualitas: 0
   base_keuntungan: 0
   base_exp: 0
