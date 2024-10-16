@@ -26,7 +26,9 @@ public class Night_DropdownBeliBahan : MonoBehaviour
     [SerializeField] private TextMeshProUGUI teks_hargaperkuantitas;
     [SerializeField] private TextMeshProUGUI teks_totalharga;
 
+
     public static event Action MemasukkanPerubahanPemesanan;
+    public static event Action<Night_DropdownBeliBahan> Event_MengurangiBahan;
     private void Awake()
     {
         kuantitas_pembelianbahan = 0;
@@ -56,7 +58,7 @@ public class Night_DropdownBeliBahan : MonoBehaviour
         kuantitas_pembelianbahan = 1;
         
         teks_kuantitasbahan.text = kuantitas_pembelianbahan.ToString();
-        teks_hargaperkuantitas.text = $"Rp. {pilihanBahanMentah.hargaPerSatuan.ToString("N2")}";
+        teks_hargaperkuantitas.text = $"{pilihanBahanMentah.hargaPerSatuan.ToString("N0")}";
         
         Update_TotalHarga();
         
@@ -90,6 +92,11 @@ public class Night_DropdownBeliBahan : MonoBehaviour
     }
     private void Update_TotalHarga()
     {
-        teks_totalharga.text = $"Rp. {totalharga.ToString("N2")}";
+        teks_totalharga.text = $"{totalharga.ToString("N0")}";
+    }
+
+    public void MengurangiBahan()
+    {
+        Event_MengurangiBahan?.Invoke(this);
     }
 }

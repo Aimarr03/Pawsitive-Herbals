@@ -24,8 +24,13 @@ namespace AimarWork
         [SerializeField] private Canvas UI_Container;
         [SerializeField] private TextMeshProUGUI text_TotalHarga;
         [SerializeField] private Button button_Pesan;
+        [SerializeField] private Button button_TambahPesanan;
+        [SerializeField] private TextMeshProUGUI JumlahPemesanan;
 
+        private string STRING_bisa_pesan = "Tambah Pesanan";
+        private string STRING_tidak_bisa_pesan= "Tidak Bisa Pesan";
         private int TotalBiaya = 0;
+        private int maksPesanan = 10;
         private void Awake()
         {
             List_BahanMentah = new List<SO_BahanMentah>();
@@ -36,11 +41,12 @@ namespace AimarWork
         private void Start()
         {
             Night_DropdownBeliBahan.MemasukkanPerubahanPemesanan += PerubahanPemesanan;
+            Night_DropdownBeliBahan.Event_MengurangiBahan += Night_DropdownBeliBahan_Event_MengurangiBahan;
         }
-
         private void OnDisable()
         {
             Night_DropdownBeliBahan.MemasukkanPerubahanPemesanan -= PerubahanPemesanan;
+            Night_DropdownBeliBahan.Event_MengurangiBahan -= Night_DropdownBeliBahan_Event_MengurangiBahan;
         }
         private void OnMouseEnter()
         {
@@ -110,9 +116,17 @@ namespace AimarWork
                 if (beliBahan.kuantitas_pembelianbahan == 0) pengecekkanBisaPesan = false;
                 TotalBiaya += beliBahan.totalharga;
             }
-            text_TotalHarga.text = $"Total Harga: RP. {TotalBiaya.ToString("N2")}";
+            text_TotalHarga.text = $"Total Harga: Rp. {TotalBiaya.ToString("N2")}";
             button_Pesan.interactable = pengecekkanBisaPesan;
 
+        }
+
+        private void Night_DropdownBeliBahan_Event_MengurangiBahan(Night_DropdownBeliBahan obj)
+        {
+            List_Pembelian.Remove(obj);
+            Destroy(obj.gameObject);
+            PerubahanPemesanan();
+            UpdateTombolMenambahPesanan();
         }
 
         public void MenambahkanDaftarBeli()
@@ -120,7 +134,23 @@ namespace AimarWork
             Night_DropdownBeliBahan tipe_pembelian_daftar = Instantiate(formatPembelian, PembelianContainer);
             tipe_pembelian_daftar.gameObject.SetActive(true);
             if (!List_Pembelian.Contains(tipe_pembelian_daftar)) List_Pembelian.Add(tipe_pembelian_daftar);
+            UpdateTombolMenambahPesanan();
         }
+        private void UpdateTombolMenambahPesanan()
+        {
+            if(List_Pembelian.Count < maksPesanan)
+            {
+                button_TambahPesanan.interactable = true;
+                button_TambahPesanan.GetComponent<TextMeshProUGUI>().text = STRING_bisa_pesan;
+            }
+            else
+            {
+                button_TambahPesanan.interactable = false;
+                button_TambahPesanan.transform.GetComponent<TextMeshProUGUI>().text = STRING_tidak_bisa_pesan;
+            }
+            JumlahPemesanan.text = $"maksimal pemesanan {List_Pembelian.Count}/{maksPesanan}";
+        }
+        
         #region Interaksi Mulai Pembelian
         public void Membuka_UI_Pembelian()
         {
