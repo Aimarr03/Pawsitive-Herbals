@@ -23,7 +23,8 @@ MonoBehaviour:
   List_Metode: []
   multiplierBase: 1.4
   multiplierPerLevel: 0.5
-  terbuka: 1
+  terbuka: 0
   kualitas: 0
   base_keuntungan: 0
   base_exp: 0
+  exp_dibuka: 0

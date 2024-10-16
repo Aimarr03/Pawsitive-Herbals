@@ -1,3 +1,5 @@
+using AimarWork.GameManagerLogic;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -10,25 +12,44 @@ namespace AimarWork
 {
     public class Night_BukuRiset : MonoBehaviour
     {
-        [Header("Deskripsi Umum")]
+        [TitleGroup("Deskripsi Umum")]
         [SerializeField] private Canvas UI_BukuRiset;
         [SerializeField] private TextMeshProUGUI namaJamu;
         [SerializeField] private TextMeshProUGUI deskripsi;
         [SerializeField] private TextMeshProUGUI manfaat;
 
-        [Header("Bahan Bahan")]
+        [TitleGroup("Bahan Bahan")]
         [SerializeField] private RectTransform bahan_container;
         [SerializeField] private Image bahanFormat;
 
-        [Header("Metode")]
+        [TitleGroup("Metode")]
         [SerializeField] private RectTransform metodeContainer;
         [SerializeField] private TextMeshProUGUI metodeFormat;
 
-        [Header("Button")]
+        [TitleGroup("Button")]
         [SerializeField] private Button RisetButton;
         [SerializeField] private Button SelanjutnyaButton;
         [SerializeField] private Button SebelumnyaButton;
         private int currentIndex = 0;
+
+        [TitleGroup("Container Bintang dan Profit")]
+        [SerializeField] private TextMeshProUGUI text_profit;
+        [SerializeField] private RectTransform bintangContainer;
+        [SerializeField] private Image bintangFormat;
+
+        [TitleGroup("Container Kebutuhan Untuk Riset")]
+        [TitleGroup("Container Kebutuhan Untuk Riset/Buka Jamu")]
+        [SerializeField] private RectTransform Buka_Jamu;
+        [SerializeField] private TextMeshProUGUI text_BukaExp;
+        
+        [TitleGroup("Container Kebutuhan Untuk Riset/Ningkat Jamu")]
+        [SerializeField] private RectTransform Ningkat_Jamu;
+        [SerializeField] private TextMeshProUGUI text_NingkatExp;
+        [SerializeField] private RectTransform Container_BahanYangDiperlukan;
+        [SerializeField] private RectTransform formatBahanYangDiperlukan;
+        [SerializeField] private Color color_tidakAda;
+        [SerializeField] private float alpha_tidakAda;
+
         [SerializeField, Header("Data Jamu")] private List<SO_Jamu> Jamus = new List<SO_Jamu>();
         private int maxIndex => Jamus.Count;
         private SO_Jamu DataJamu => Jamus[currentIndex];
@@ -80,6 +101,7 @@ namespace AimarWork
         {
             SebelumnyaButton.gameObject.SetActive(currentIndex > 0);
             SelanjutnyaButton.gameObject.SetActive(currentIndex < maxIndex - 1);
+            
             for (int index = 0; index < bahan_container.childCount; index++)
             {
                 Transform bahanKini = bahan_container.transform.GetChild(index);
@@ -96,8 +118,29 @@ namespace AimarWork
                     Destroy(metodeKini.gameObject);
                 }
             }
+            for(int index = 0; index < Container_BahanYangDiperlukan.childCount; index++)
+            {
+                Transform BahanRisetKini = Container_BahanYangDiperlukan.transform.GetChild(index);
+                if (BahanRisetKini != formatBahanYangDiperlukan.transform)
+                {
+                    Destroy(BahanRisetKini.gameObject);
+                }
+            }
             RisetButton.onClick.RemoveAllListeners();
             namaJamu.text = DataJamu.nama;
+            
+            
+            Buka_Jamu.gameObject.SetActive(false);
+            Ningkat_Jamu.gameObject.SetActive(false);
+
+            int indexBintang = 0;
+            int expDibutuhkan = DataJamu.GetExpDiperlukan();
+            foreach (RectTransform bintangKini in bintangContainer)
+            {
+                bintangKini.gameObject.SetActive(indexBintang < DataJamu.level);
+                indexBintang++;
+            }
+
             if (DataJamu.terbuka)
             {
                 RisetButton.onClick.AddListener(RisetMeningkatkanJamu);
@@ -108,6 +151,7 @@ namespace AimarWork
                     //Debug.Log("Bahan dibuat");
                     Image bahanKini = Instantiate(bahanFormat, bahan_container);
                     bahanKini.gameObject.SetActive(true);
+                    bahanKini.sprite = DataJamu.List_Bahan_Mentah[index].ikon_gameplay;
                 }
                 for (int index = 0; index < DataJamu.List_Metode.Count; index++)
                 {
@@ -115,18 +159,42 @@ namespace AimarWork
                     metodeKini.gameObject.SetActive(true);
 
                     SO_Jamu.Metode metode = DataJamu.List_Metode[index];
-                    metodeKini.text = metode.langkah;
+                    metodeKini.text = "/u2022 "+metode.langkah;
                 }
+                text_profit.text = "Profit: " + DataJamu.GetBaseKeuntungan();
+                Ningkat_Jamu.gameObject.SetActive(true);
+
+                text_NingkatExp.text = $"EXP: {expDibutuhkan}";
+                bool resepLengkap = true;
+                bool exp_cukup = Manager_Game.instance.exp_kini >= expDibutuhkan;
+                foreach (SO_BahanMentah bahanMentah in DataJamu.List_Bahan_Mentah)
+                {
+                    RectTransform BahanYangDibutuhkan = Instantiate(formatBahanYangDiperlukan, Container_BahanYangDiperlukan);
+                    BahanYangDibutuhkan.gameObject.SetActive(true);
+                    Image komponenGambar = BahanYangDibutuhkan.GetChild(0).GetComponent<Image>();
+                    if (bahanMentah.ikon_gameplay != null)
+                    {
+                        komponenGambar.sprite = bahanMentah.ikon_gameplay;
+                    }
+                    if (bahanMentah.kuantitasKini == 0)
+                    {
+                        komponenGambar.color = color_tidakAda;
+                        resepLengkap = false;
+                    }
+                }
+                RisetButton.interactable = resepLengkap && exp_cukup;
             }
             else
             {
                 RisetButton.onClick.AddListener(RisetMembukaJamu);
                 manfaat.text = "???";
                 deskripsi.text = "???";
+                text_profit.text = "Profit: ???";
                 //bahan_bahan.text = "???";
                 for (int index = 0; index < 3; index++)
                 {
                     Image bahanKini = Instantiate(bahanFormat, bahan_container);
+                    bahanKini.color = color_tidakAda;
                     bahanKini.gameObject.SetActive(true);
                 }
                 for (int index = 0; index < 3; index++)
@@ -135,6 +203,11 @@ namespace AimarWork
                     metodeKini.gameObject.SetActive(true);
                     metodeKini.text = "???";
                 }
+
+                Buka_Jamu.gameObject.SetActive(true);
+                
+                text_BukaExp.text = $"EXP: {expDibutuhkan}";
+                RisetButton.interactable = Manager_Game.instance.exp_kini >= expDibutuhkan;
             }
         }
         private void RisetMembukaJamu()
@@ -143,12 +216,18 @@ namespace AimarWork
             DataJamu.terbuka = true;
             DataJamu.level++;
             DisplayDataJamu();
+            Manager_Game.instance.exp_kini -= DataJamu.GetExpDiperlukan();
         }
         private void RisetMeningkatkanJamu()
         {
             Debug.Log("Riset Ningkatin Jamu");
             DataJamu.level++;
             DisplayDataJamu();
+            foreach(SO_BahanMentah bahanMentah in DataJamu.List_Bahan_Mentah)
+            {
+                bahanMentah.kuantitasKini--;
+            }
+            Manager_Game.instance.exp_kini -= DataJamu.GetExpDiperlukan();
         }
         public void HalamanSelanjutnya()
         {

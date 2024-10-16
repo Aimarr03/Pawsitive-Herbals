@@ -42,6 +42,7 @@ namespace AimarWork
         public int kualitas;
         public int base_keuntungan;
         public int base_exp;
+        public int exp_dibuka;
 
         #region Cek Keuntungan dan EXP
         [Button("Test Keuntungan Berapa")]
@@ -59,12 +60,28 @@ namespace AimarWork
             base_keuntungan = GetBaseKeuntungan();
             Debug.Log("Dengan Multiplier " + base_keuntungan);
         }
+        
         [Button("Text Exp Berapa")]
         public void CheckExp()
         {
-            Debug.Log("Exp adalah " + GetBaseExp());
+            Debug.Log("Exp adalah " + GetExpProfit());
         }
-        public int GetBaseExp() => (int)(base_exp * (multiplierBase + (multiplierPerLevel * level)));
+        [Button("Text Exp Dibutuhkan Untuk Diriset")]
+        public void CheckExpDibutuhkan()
+        {
+            Debug.Log("Exp adalah " + GetExpDiperlukan());
+        }
+
+        public int GetExpDiperlukan()
+        {
+            int rawExp = (int)(exp_dibuka * (multiplierBase + (multiplierPerLevel * level)));
+            int remainder = rawExp % 100;
+            rawExp = rawExp - remainder;
+            rawExp += remainder > 50 ? 100 : 0;
+            return rawExp;
+        }
+        
+        public int GetExpProfit() => (int)(base_exp * (multiplierBase + (multiplierPerLevel * level)));
         public int GetBaseKeuntungan()
         {
             int base_keuntungan = 0;

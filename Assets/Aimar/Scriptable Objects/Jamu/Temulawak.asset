@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Temulawak
   m_EditorClassIdentifier: 
   nama: Temulawak
-  level: 1
+  level: 0
   ikon: {fileID: 0}
   deskripsi: "hihruihwiojrl\t"
   manfaat: sfkajbgrjklqwbnkwrlmqe
@@ -37,7 +37,8 @@ MonoBehaviour:
     langkah: Merebus Semua Bahan
   multiplierBase: 1.3
   multiplierPerLevel: 0.5
-  terbuka: 1
+  terbuka: 0
   kualitas: 0
   base_keuntungan: 12000
   base_exp: 80
+  exp_dibuka: 720
