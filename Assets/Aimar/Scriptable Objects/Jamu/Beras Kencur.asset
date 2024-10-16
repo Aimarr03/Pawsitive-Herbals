@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Beras Kencur
   m_EditorClassIdentifier: 
   nama: Beras Kencur
-  level: 0
+  level: 1
   ikon: {fileID: 0}
   deskripsi: "kjhfkhqk\t"
   manfaat: 'kqhewrqhurhqir
@@ -44,8 +44,9 @@ MonoBehaviour:
   - tipePengolahan: 3
     OutPut: {fileID: 11400000, guid: c96feb199f357e148a1513e58347dc69, type: 2}
     langkah: Memblender Hasil Adukkan
-  multiplierBaseKeuntungan: 1.5
+  multiplierBase: 1.4
+  multiplierPerLevel: 0.6
   terbuka: 1
   kualitas: 0
-  base_keuntungan: 0
-  base_exp: 50
+  base_keuntungan: 16500
+  base_exp: 200

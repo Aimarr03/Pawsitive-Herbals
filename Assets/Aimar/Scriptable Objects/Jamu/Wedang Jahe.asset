@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wedang Jahe
   m_EditorClassIdentifier: 
   nama: Wedang Jahe
-  level: 0
+  level: 2
   ikon: {fileID: 0}
   deskripsi: "fjkhafiuqurqhiqwebn\t"
   manfaat: "nkfhqhriu\tqhriqjrklqnrkqew"
@@ -35,8 +35,9 @@ MonoBehaviour:
   - tipePengolahan: 0
     OutPut: {fileID: 11400000, guid: 85848a6573ba96f4f922573972af1ec0, type: 2}
     langkah: Merebus Semua Bahans
-  multiplierBaseKeuntungan: 1.3
+  multiplierBase: 1.2
+  multiplierPerLevel: 0.4
   terbuka: 1
   kualitas: 0
-  base_keuntungan: 0
+  base_keuntungan: 12000
   base_exp: 0

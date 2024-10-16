@@ -1,4 +1,5 @@
 using AimarWork;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace AimarWork
             public SO_BahanOlahan OutPut;
             public string langkah;
         }
+        [Title("General Data")]
         public string nama;
         public int level = 0;
         public Sprite ikon;
@@ -24,36 +26,68 @@ namespace AimarWork
         public string deskripsi;
         [TextArea(5, 5)]
         public string manfaat;
-
+        
+        [Title("Bahan Bahan Yang Relevansi")]
         public List<SO_BahanBase> List_Bahan_Yang_Diperlukan;
         public List<SO_BahanMentah> List_Bahan_Mentah;
         public List<SO_BahanOlahan> List_BahanOlahan;
         public List<Metode> List_Metode;
-        [Range(1, 2f)]
-        public float multiplierBaseKeuntungan = 1f;
-        public int GetBaseKeuntungan()
-        {
-            int base_keuntungan = 0;
-            foreach(SO_BahanMentah bahan in List_Bahan_Mentah)
-            {
-                base_keuntungan += bahan.hargaPerSatuan;
-            }
-            return (int)(base_keuntungan *multiplierBaseKeuntungan);
-        }
-        public List<SO_BahanOlahan> GetBahanOlahan(ENUM_Tipe_Pengolahan enum_tipe_pengolahan)
-        {
-            List<SO_BahanOlahan> List_TipeBahanOlahan = new List<SO_BahanOlahan>();
-            foreach(SO_BahanOlahan bahan_olahan in List_BahanOlahan)
-            {
-                if(bahan_olahan.tipePengolahan == enum_tipe_pengolahan) List_TipeBahanOlahan.Add(bahan_olahan);
-            }
-            return List_TipeBahanOlahan;
-        }
 
+        [Title("Data Keuntungan dan EXP")]
+        [Range(1, 2f)]
+        public float multiplierBase = 1f;
+        [Range(0.3f,1f)]
+        public float multiplierPerLevel = 0.5f;
         public bool terbuka;
         public int kualitas;
         public int base_keuntungan;
         public int base_exp;
+
+        #region Cek Keuntungan dan EXP
+        [Button("Test Keuntungan Berapa")]
+        public void CheckKeuntungan()
+        {
+            Debug.Log("Perbandingan Keuntungan");
+            int rawBaseKeuntungan = 0;
+            foreach (SO_BahanMentah bahan in List_Bahan_Mentah)
+            {
+                rawBaseKeuntungan += bahan.hargaPerSatuan;
+            }
+            Debug.Log("Raw Keuntungan! " + rawBaseKeuntungan);
+            
+            
+            base_keuntungan = GetBaseKeuntungan();
+            Debug.Log("Dengan Multiplier " + base_keuntungan);
+        }
+        [Button("Text Exp Berapa")]
+        public void CheckExp()
+        {
+            Debug.Log("Exp adalah " + GetBaseExp());
+        }
+        public int GetBaseExp() => (int)(base_exp * (multiplierBase + (multiplierPerLevel * level)));
+        public int GetBaseKeuntungan()
+        {
+            int base_keuntungan = 0;
+            foreach (SO_BahanMentah bahan in List_Bahan_Mentah)
+            {
+                base_keuntungan += bahan.hargaPerSatuan;
+            }
+
+            int totalRaw = (int)(base_keuntungan * (multiplierBase + (level * multiplierPerLevel)));
+            int sisaSeratusan = totalRaw % 1000;
+
+            if (sisaSeratusan > 500)
+            {
+                totalRaw = totalRaw - sisaSeratusan + 1000;
+            }
+            else if (sisaSeratusan <= 500)
+            {
+                totalRaw = totalRaw - sisaSeratusan + 500;
+            }
+
+            return totalRaw;
+        }
+        #endregion
 
         public bool CheckBahan(List<SO_BahanBase> List_BahanPembuatan)
         {

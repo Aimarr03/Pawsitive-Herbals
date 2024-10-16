@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Kunyit Asam
   m_EditorClassIdentifier: 
   nama: Kunyit Asam
-  level: 0
+  level: 1
   ikon: {fileID: 0}
   deskripsi: "kjhfkhqk\t"
   manfaat: 'kqhewrqhurhqir
@@ -36,8 +36,9 @@ MonoBehaviour:
   - tipePengolahan: 0
     OutPut: {fileID: 11400000, guid: b9fa23d991c76fc41b68482dcd859b2d, type: 2}
     langkah: Merebus Bahan-Bahan
-  multiplierBaseKeuntungan: 1.4
+  multiplierBase: 1.2
+  multiplierPerLevel: 0.35
   terbuka: 1
   kualitas: 0
-  base_keuntungan: 0
+  base_keuntungan: 9000
   base_exp: 50

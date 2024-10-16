@@ -21,7 +21,8 @@ MonoBehaviour:
   List_Bahan_Mentah: []
   List_BahanOlahan: []
   List_Metode: []
-  multiplierBaseKeuntungan: 1
+  multiplierBase: 1.4
+  multiplierPerLevel: 0.5
   terbuka: 1
   kualitas: 0
   base_keuntungan: 0

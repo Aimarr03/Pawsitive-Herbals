@@ -12,7 +12,11 @@ namespace FadlanWork
         public override void Interact(PlayerController player)
         {
             base.Interact(player);
-
+            if(player.inventory.ListBahan.Count == 0)
+            {
+                Debug.Log("Player Inventory is Empty!");
+                return;
+            }
             StoreMinigameManager.Instance.StartMinigame(minigameCode);
         }
     }

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
@@ -140,29 +141,43 @@ namespace AimarWork
             int keuntungan = jamuDijual.GetBaseKeuntungan();
             if(kualitas < 0.75f)
             {
-                return (int)(keuntungan * 0.75f);
+                keuntungan = (int)(keuntungan * 0.75f);
             }
             else if(kualitas >= 0.75f && kualitas < .85f)
             {
-                return (int)(keuntungan * 0.9f);
+                keuntungan = (int)(keuntungan * 0.9f);
             }
             else if(kualitas >= 85 && kualitas <= 0.95)
             {
-                return (int)(keuntungan * 1f);
+                keuntungan = (int)(keuntungan * 1f);
             }
             else if(kualitas >= 0.95)
             {
-                return (int)(keuntungan * 1.25f);
+                keuntungan = (int)(keuntungan * 1.25f);
             }
             else
             {
-                return 0;
+                keuntungan = 0;
             }
+            
+            int sisapuluhan = keuntungan % 100;
+            keuntungan = keuntungan - sisapuluhan;
+            return keuntungan;
         }
         
         public void CheckJamu()
         {
-            playerInventory.jamu = jamu_difokuskan.CheckBahan(playerInventory.ListBahan) ? jamu_difokuskan : jamuGagal;
+            SO_Jamu jamu_fokus = null;
+            foreach(SO_Jamu jamuKini in List_Jamu)
+            {
+                if (!jamuKini.terbuka) continue;
+                if (jamuKini.CheckBahan(playerInventory.ListBahan))
+                {
+                    jamu_difokuskan = jamuKini;
+                    break;
+                }
+            }
+            playerInventory.jamu = jamu_fokus != null ? jamu_fokus : jamuGagal;
             playerInventory.ListBahan.Clear();
         }
     }
