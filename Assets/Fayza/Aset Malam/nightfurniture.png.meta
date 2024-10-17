@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2c052b14aba87c448bfa2f7ed4550a2f
+guid: 486487024bf747346b4855605bbcd99d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Telefon
+      name: Jam
       rect:
         serializedVersion: 2
-        x: 649
-        y: 595
-        width: 209
-        height: 197
+        x: 1267
+        y: 903
+        width: 135
+        height: 164
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e48fd634656177b4da8c31f4715aebb7
-      internalID: -2076985922
+      spriteID: 75a8fe38230b05e4a991f8b678265f57
+      internalID: -1783410796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ranjang
+      name: Meja Belajar
       rect:
         serializedVersion: 2
-        x: 1403
-        y: 639
-        width: 248
-        height: 444
+        x: 646
+        y: 186
+        width: 235
+        height: 630
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e790e7bc56f7b1419fc389297784161
-      internalID: 1164264557
+      spriteID: c833328ec71332a4ebe6fffac0d7ad94
+      internalID: -385930806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buku Riset
+      name: Kursi
       rect:
         serializedVersion: 2
-        x: 676
-        y: 349
-        width: 157
-        height: 163
+        x: 951
+        y: 348
+        width: 140
+        height: 220
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d233338a52b9239478f224dc0507d2bd
-      internalID: 272124399
+      spriteID: e0d9720a2a144f143ad7fe2adbba73e6
+      internalID: 56098374
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Buku Riset: 272124399
-      Ranjang: 1164264557
-      Telefon: -2076985922
+      Jam: -1783410796
+      Kursi: 56098374
+      Meja Belajar: -385930806
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

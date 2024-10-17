@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2c052b14aba87c448bfa2f7ed4550a2f
+guid: 01ff8b698201f1c4289459eaf676ab4e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,64 +110,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Telefon
+      name: Gajah
       rect:
         serializedVersion: 2
-        x: 649
-        y: 595
+        x: 0
+        y: 442
+        width: 365
+        height: 370
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59bfdc5fc45317a4c9a22e2f7ab9a11f
+      internalID: 667833158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beruang
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 425
+        width: 219
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02518aaaf20765d4e9807f616f02f397
+      internalID: -1046277169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Harimau
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 438
+        width: 251
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d14d4f462081644598ddaecc0230aac
+      internalID: 498030651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Badak
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 439
         width: 209
-        height: 197
+        height: 354
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e48fd634656177b4da8c31f4715aebb7
-      internalID: -2076985922
+      spriteID: a71d9d2c87fd2a1439d3e5ccf1ba0c1a
+      internalID: 1961597058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ranjang
+      name: Cendrawasih
       rect:
         serializedVersion: 2
-        x: 1403
-        y: 639
-        width: 248
-        height: 444
+        x: 53
+        y: 3
+        width: 320
+        height: 313
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e790e7bc56f7b1419fc389297784161
-      internalID: 1164264557
+      spriteID: 624f73338d4e5b34a9e317a8d11a35b8
+      internalID: -371353655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buku Riset
+      name: Anoa
       rect:
         serializedVersion: 2
-        x: 676
-        y: 349
-        width: 157
-        height: 163
+        x: 379
+        y: 0
+        width: 252
+        height: 334
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d233338a52b9239478f224dc0507d2bd
-      internalID: 272124399
+      spriteID: efeb597d12fc37f488954be03e3e097c
+      internalID: -646912620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jalak
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 1
+        width: 349
+        height: 347
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88210f4ba4ab1944e85475a58a9581f6
+      internalID: -1299191156
       vertices: []
       indices: 
       edges: []
@@ -183,9 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Buku Riset: 272124399
-      Ranjang: 1164264557
-      Telefon: -2076985922
+      Anoa: -646912620
+      Badak: 1961597058
+      Beruang: -1046277169
+      Cendrawasih: -371353655
+      Gajah: 667833158
+      Harimau: 498030651
+      Jalak: -1299191156
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
