@@ -295,7 +295,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869966895
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 56098374, guid: 486487024bf747346b4855605bbcd99d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -781,7 +781,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869966895
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1164264557, guid: 2c052b14aba87c448bfa2f7ed4550a2f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1025,7 +1025,7 @@ MonoBehaviour:
   m_Intensity: 2.4
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000af59c581d1918a9025c3219c5fe7efc83338b653df922b31
+  m_ApplyToSortingLayers: 00000000d1918a9025c3219c5fe7efc83338b653
   m_LightCookieSprite: {fileID: 21300000, guid: 6c8d1eee7ccea7e40bdf44e94dfc312b, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1241,7 +1241,7 @@ MonoBehaviour:
   m_LightType: 1
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.663
-  m_Color: {r: 0, g: 0.6107804, b: 0.98490566, a: 1}
+  m_Color: {r: 0.68490565, g: 0.8807413, b: 1, a: 1}
   m_Intensity: 0.69
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
@@ -1347,7 +1347,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1675508955
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 547de1adc712df24aa0fdb70a91a11c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1499,7 +1499,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869966895
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -385930806, guid: 486487024bf747346b4855605bbcd99d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1624,7 +1624,7 @@ MonoBehaviour:
   m_Intensity: 0.8
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000d1918a9025c3219c5fe7efc83338b653df922b31e79da4d9
+  m_ApplyToSortingLayers: 00000000d1918a9025c3219c5fe7efc83338b653e79da4d9
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1802,7 +1802,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869966895
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1783410796, guid: 486487024bf747346b4855605bbcd99d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1886,7 +1886,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -643523097
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b8172f70a3a69614e826a6779ac06a4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1970,7 +1970,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869966895
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4e3c9b56cdae448498a115ca73d0abb7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2071,7 +2071,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -643523097
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -2188,8 +2188,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 12
-      minScalar: 5
+      scalar: 24
+      minScalar: 12
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2359,8 +2359,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
-      minScalar: 0.07
+      scalar: 0.06
+      minScalar: 0.04
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2676,7 +2676,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 100
+    maxNumParticles: 300
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -2995,7 +2995,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
