@@ -34,8 +34,8 @@ namespace FadlanWork
 
         void Start()
         {
-            PerfectRectTransform.anchorMin = new Vector2(TimingPosition - PerfectRange / 2, PerfectRectTransform.anchorMin.y);
-            PerfectRectTransform.anchorMax = new Vector2(TimingPosition + PerfectRange / 2, PerfectRectTransform.anchorMax.y);
+            PerfectRectTransform.anchorMin = new Vector2(PerfectRectTransform.anchorMin.x, TimingPosition - PerfectRange / 2);
+            PerfectRectTransform.anchorMax = new Vector2(PerfectRectTransform.anchorMax.x, TimingPosition + PerfectRange / 2);
 
             TimingSlider.value = boilTiming;
         }
@@ -81,8 +81,8 @@ namespace FadlanWork
 
                 BoilText.text = $"Boil {boilCounter}/{BoilCount}";
 
-                PerfectRectTransform.anchorMin = new Vector2(TimingPosition - PerfectRange / 2, PerfectRectTransform.anchorMin.y);
-                PerfectRectTransform.anchorMax = new Vector2(TimingPosition + PerfectRange / 2, PerfectRectTransform.anchorMax.y);
+                PerfectRectTransform.anchorMin = new Vector2(PerfectRectTransform.anchorMin.x, TimingPosition - PerfectRange / 2);
+                PerfectRectTransform.anchorMax = new Vector2(PerfectRectTransform.anchorMax.x, TimingPosition + PerfectRange / 2);
 
                 TimingSlider.value = boilTiming;
             }
