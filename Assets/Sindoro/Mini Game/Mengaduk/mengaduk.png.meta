@@ -43,9 +43,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
-  spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -108,7 +108,490 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: mengaduk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 945
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac630ae585c0eda409b215db6f6d6999
+      internalID: -555491796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_1
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 0
+        width: 966
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a0dcdc2029acc24dbd228370f93c16b
+      internalID: 63899893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_2
+      rect:
+        serializedVersion: 2
+        x: 1967
+        y: 0
+        width: 923
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8da721c7b9fda24ca4e88dba14c60df
+      internalID: -763670216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_3
+      rect:
+        serializedVersion: 2
+        x: 2964
+        y: 0
+        width: 949
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cada84aac23d8614cbff4076d772c77a
+      internalID: 97626753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_4
+      rect:
+        serializedVersion: 2
+        x: 3965
+        y: 0
+        width: 995
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e329cceda1bd424d916e5c8e1b3e3a6
+      internalID: 811745274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_5
+      rect:
+        serializedVersion: 2
+        x: 4995
+        y: 0
+        width: 918
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa30892dd2a42ec4e9e22ced9a25f473
+      internalID: 1666298256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_6
+      rect:
+        serializedVersion: 2
+        x: 5987
+        y: 0
+        width: 921
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee3b600cbb8514c4185d43560ddd295e
+      internalID: -1052035336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_7
+      rect:
+        serializedVersion: 2
+        x: 6943
+        y: 0
+        width: 961
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 472f5da14cc68e249b35fe4935d45a5e
+      internalID: 1837306518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_8
+      rect:
+        serializedVersion: 2
+        x: 7913
+        y: 0
+        width: 965
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51b504b4ff14cf24883e24dd1db279f4
+      internalID: 909586007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_9
+      rect:
+        serializedVersion: 2
+        x: 8881
+        y: 1
+        width: 967
+        height: 1079
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d5bdf2ec1b74e1498d3c785af09b0bd
+      internalID: 861280462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_10
+      rect:
+        serializedVersion: 2
+        x: 9901
+        y: 5
+        width: 922
+        height: 1075
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44c68a39d91704949affb1157461df81
+      internalID: 1207592587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_11
+      rect:
+        serializedVersion: 2
+        x: 10891
+        y: 0
+        width: 941
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a450d06d99f478942b12f985a78b70c1
+      internalID: 2028543027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_12
+      rect:
+        serializedVersion: 2
+        x: 11898
+        y: 0
+        width: 999
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eec6e092d55e45f439cad7d0c55242b0
+      internalID: 1151475824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_13
+      rect:
+        serializedVersion: 2
+        x: 12928
+        y: 0
+        width: 919
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0619c9a89309e91479315caa6d3ca444
+      internalID: -1013075396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_14
+      rect:
+        serializedVersion: 2
+        x: 13928
+        y: 0
+        width: 907
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 483dc52cc80f5754d8103f7f033ad3ca
+      internalID: 1401429217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_15
+      rect:
+        serializedVersion: 2
+        x: 14878
+        y: 0
+        width: 951
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa3454f887966cf478362efc2ae82ef1
+      internalID: 851170778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_16
+      rect:
+        serializedVersion: 2
+        x: 15834
+        y: 8
+        width: 968
+        height: 1072
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9d372e05125bc644b73a52d46bc198b
+      internalID: 1226661635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_17
+      rect:
+        serializedVersion: 2
+        x: 16828
+        y: 4
+        width: 940
+        height: 1076
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66416218a9d832c4f9e4a24977450da1
+      internalID: -1508306552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_18
+      rect:
+        serializedVersion: 2
+        x: 17834
+        y: 0
+        width: 917
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd943374e9f0b814ab302bb101604801
+      internalID: -2123979737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_19
+      rect:
+        serializedVersion: 2
+        x: 18824
+        y: 4
+        width: 940
+        height: 1076
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ceb87e23b3c48d4681769c479f19f7a
+      internalID: 1732860676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_20
+      rect:
+        serializedVersion: 2
+        x: 19823
+        y: 8
+        width: 1003
+        height: 1072
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 635dd9151228ddc43aaf196ec2f31ee8
+      internalID: -2015367332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_21
+      rect:
+        serializedVersion: 2
+        x: 20864
+        y: 0
+        width: 921
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49681c4f5e4d8c24aaedf68a212e19eb
+      internalID: 527766921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mengaduk_22
+      rect:
+        serializedVersion: 2
+        x: 21849
+        y: 0
+        width: 919
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8bbbc88d807cc47a41102deabba4a9
+      internalID: -1337658712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +602,30 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mengaduk_0: -555491796
+      mengaduk_1: 63899893
+      mengaduk_10: 1207592587
+      mengaduk_11: 2028543027
+      mengaduk_12: 1151475824
+      mengaduk_13: -1013075396
+      mengaduk_14: 1401429217
+      mengaduk_15: 851170778
+      mengaduk_16: 1226661635
+      mengaduk_17: -1508306552
+      mengaduk_18: -2123979737
+      mengaduk_19: 1732860676
+      mengaduk_2: -763670216
+      mengaduk_20: -2015367332
+      mengaduk_21: 527766921
+      mengaduk_22: -1337658712
+      mengaduk_3: 97626753
+      mengaduk_4: 811745274
+      mengaduk_5: 1666298256
+      mengaduk_6: -1052035336
+      mengaduk_7: 1837306518
+      mengaduk_8: 909586007
+      mengaduk_9: 861280462
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

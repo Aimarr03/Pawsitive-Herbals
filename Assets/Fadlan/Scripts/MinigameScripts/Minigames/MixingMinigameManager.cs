@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using TMPro;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace FadlanWork
         [SerializeField] private Slider TimingSlider;
         [SerializeField] private RectTransform PerfectRectTransform;
         [SerializeField] private TextMeshProUGUI MixText;
+        [SerializeField] private Animator mixAnimator;
 
         [Header("Minigame Config")]
         public float MixSpeed = 1f;
@@ -26,6 +28,10 @@ namespace FadlanWork
         public float PerfectRange = 0.25f;
         public int MixCount = 4;
         public int MaxTurnCount = 8;
+
+        [Title("Format Max Mixing")]
+        [SerializeField] private RectTransform FormatMixing;
+        [SerializeField] private RectTransform containerMaxMixing;
 
         private float mixTiming = 0f;
         private int mixCounter = 0;
@@ -35,11 +41,15 @@ namespace FadlanWork
         private float timingPosition = 0.5f;
 
         private GameState currentState = GameState.NotStarted;
-
+        private void Awake()
+        {
+            mixAnimator = GetComponent<Animator>();
+        }
         void Start()
         {
             PerfectRectTransform.anchorMin = new Vector2(timingPosition - PerfectRange / 2, PerfectRectTransform.anchorMin.y);
             PerfectRectTransform.anchorMax = new Vector2(timingPosition + PerfectRange / 2, PerfectRectTransform.anchorMax.y);
+            containerMaxMixing.gameObject.SetActive(false);
         }
 
         void Update()
@@ -64,11 +74,13 @@ namespace FadlanWork
             {
                 direction = -1;
                 turnCounter++;
+                UpdateMaxMixing();
             }
             else if (mixTiming <= 0f)
             {
                 direction = 1;
                 turnCounter++;
+                UpdateMaxMixing();
             }
 
             if (turnCounter >= MaxTurnCount)
@@ -141,10 +153,12 @@ namespace FadlanWork
             score = 0;
             TimingSlider.value = mixTiming;
             NextMix();
+            ResettingMaxMixing();
         }
 
         private void HandleMixPress()
         {
+            mixAnimator.SetTrigger("Mixing");
             if (Mathf.Abs(mixTiming - timingPosition) <= PerfectRange / 2)
             {
                 PerfectMix();
@@ -158,6 +172,30 @@ namespace FadlanWork
         private void CloseGame()
         {
             StoreMinigameManager.Instance.EndMinigame(score/mixCounter);
+        }
+        private void ResettingMaxMixing()
+        {
+            for(int index = 0; index < containerMaxMixing.childCount; index++)
+            {
+                Transform childFormat = containerMaxMixing.transform.GetChild(index);
+                if(childFormat != FormatMixing.transform)
+                {
+                    Destroy(childFormat.gameObject);
+                }
+            }
+            for(int index = 0; index < MaxTurnCount; index++)
+            {
+                Transform childFormat = Instantiate(FormatMixing, containerMaxMixing);
+                childFormat.gameObject.SetActive(true);
+            }
+            containerMaxMixing.gameObject.SetActive(true);
+        }
+        private void UpdateMaxMixing()
+        {
+            int bufferIndex = MaxTurnCount - turnCounter + 1;
+            Transform childMix = containerMaxMixing.GetChild(bufferIndex);
+            Image activeVisual = childMix.GetChild(1).GetComponent<Image>();
+            activeVisual.gameObject.SetActive(false);
         }
     }
 }
