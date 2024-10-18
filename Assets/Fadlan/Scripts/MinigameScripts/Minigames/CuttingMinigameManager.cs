@@ -24,6 +24,7 @@ namespace FadlanWork
 
         [Header("UI Components")]
         [SerializeField] private GameObject CutTimingPrefab;
+        [SerializeField] private Sprite spritePrefab;
         [SerializeField] private Transform CutTimingParent;
         [SerializeField] private RectTransform PerfectRectTransform;
         [SerializeField] private TextMeshProUGUI CutText;
@@ -40,9 +41,14 @@ namespace FadlanWork
         private float nextCutSpawnTime = 0f;
         private int score = 0;
         private List<CutTiming> cutTimings = new();
+        private Animator cuttingAnimator;
 
         private GameState currentState = GameState.NotStarted;
 
+        private void Awake()
+        {
+            cuttingAnimator = GetComponent<Animator>();
+        }
         void Start()
         {
             PerfectRectTransform.anchorMin = new Vector2(PerfectRectTransform.anchorMin.x, 1 - (TimingPosition + PerfectRange / 2));
@@ -84,6 +90,7 @@ namespace FadlanWork
             };
 
             cutTiming.TimingSlider = cutTiming.TimingGameObject.GetComponent<Slider>();
+            cutTiming.TimingGameObject.transform.GetChild(0).GetComponent<Image>().sprite = spritePrefab;
             if (cutTiming.TimingSlider == null)
             {
                 Debug.LogError("CutTimingPrefab does not have a Slider component.");
@@ -189,6 +196,7 @@ namespace FadlanWork
 
         private void HandleCutPress()
         {
+            cuttingAnimator.SetTrigger("Cutting");
             CheckForCuts();
         }
 
