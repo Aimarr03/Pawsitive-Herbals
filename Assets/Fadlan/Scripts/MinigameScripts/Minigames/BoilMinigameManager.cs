@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using TMPro;
 using UnityEngine;
@@ -26,6 +27,9 @@ namespace FadlanWork
         public float PerfectRange = 0.2f;
         public int BoilCount = 3;
 
+        [Title("Visual Representation Duration")]
+        public Image ClockVisual;
+        
         private float boilTiming = 0f;
         private int boilCounter = 0;
         private int score = 0;
@@ -146,6 +150,10 @@ namespace FadlanWork
         private void CloseGame()
         {
             StoreMinigameManager.Instance.EndMinigame(score/BoilCount);
+        }
+        private void UpdateVisualTimer()
+        {
+
         }
     }
 }

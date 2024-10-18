@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using TMPro;
 using UnityEngine;
@@ -28,6 +29,9 @@ namespace FadlanWork
         public float BlendEndTime = 8f;
         public float PerfectRange = 0.25f;
         public float TimingPosition = 0.7f;
+
+        [Title("Visual Representation")]
+        public Image timerVisual;
 
         private float blendTiming = 0f;
         private float blendTimer = 0f;
@@ -82,6 +86,7 @@ namespace FadlanWork
             }
 
             blendTimer += Time.deltaTime;
+            UpdateTimerVisual();
             if (blendTimer >= BlendEndTime)
             {
                 EndBlend();
@@ -132,6 +137,13 @@ namespace FadlanWork
         private void CloseGame()
         {
             StoreMinigameManager.Instance.EndMinigame(score/BlendPerfectTime);
+        }
+        private void UpdateTimerVisual()
+        {
+            timerVisual.fillAmount = 1 - (blendTimer / BlendEndTime);
+            Color timerColor = timerVisual.color;
+            timerColor.a = 1 - (blendTimer / BlendEndTime);
+            timerVisual.color = timerColor;
         }
     }
 }
