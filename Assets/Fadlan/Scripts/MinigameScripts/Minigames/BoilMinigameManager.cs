@@ -28,7 +28,7 @@ namespace FadlanWork
         public int BoilCount = 3;
 
         [Title("Visual Representation Duration")]
-        public Image ClockVisual;
+        public TextMeshProUGUI textVisual;
         
         private float boilTiming = 0f;
         private int boilCounter = 0;
@@ -42,6 +42,7 @@ namespace FadlanWork
             PerfectRectTransform.anchorMax = new Vector2(PerfectRectTransform.anchorMax.x, TimingPosition + PerfectRange / 2);
 
             TimingSlider.value = boilTiming;
+            textVisual.text = "--/--";
         }
 
         void Update()
@@ -89,6 +90,7 @@ namespace FadlanWork
                 PerfectRectTransform.anchorMax = new Vector2(PerfectRectTransform.anchorMax.x, TimingPosition + PerfectRange / 2);
 
                 TimingSlider.value = boilTiming;
+                textVisual.text = $"{boilCounter}/{BoilCount}";
             }
             else
             {
@@ -132,6 +134,7 @@ namespace FadlanWork
             boilCounter = 0;
             score = 0;
             TimingSlider.value = boilTiming;
+            textVisual.text = $"{boilCounter}/{BoilCount}";
             NextBoil();
         }
 
