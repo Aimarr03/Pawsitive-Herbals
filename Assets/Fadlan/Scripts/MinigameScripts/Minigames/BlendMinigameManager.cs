@@ -18,6 +18,7 @@ namespace FadlanWork
         [SerializeField] private Slider TimingSlider;
         [SerializeField] private RectTransform PerfectRectTransform;
         [SerializeField] private TextMeshProUGUI BlendText;
+        private Animator blenderAnimator;
 
         [Header("Minigame Config")]
 
@@ -33,6 +34,11 @@ namespace FadlanWork
         private float score = 0f;
 
         private GameState currentState = GameState.NotStarted;
+
+        private void Awake()
+        {
+            blenderAnimator = GetComponent<Animator>();
+        }
 
         void Start()
         {
@@ -119,6 +125,7 @@ namespace FadlanWork
         private void GainBlend()
         {
             blendTiming += BlendGainPerClick;
+            blenderAnimator.SetTrigger("Numbuk");
             blendTiming = Mathf.Clamp(blendTiming, 0f, 1f);
         }
 
