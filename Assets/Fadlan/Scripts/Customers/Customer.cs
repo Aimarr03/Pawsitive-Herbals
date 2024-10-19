@@ -40,12 +40,14 @@ namespace FadlanWork
         private Coroutine thinkingCoroutine;
 
         private Animator customerAnimator;
+        private Vector3 targetPosition;
         [SerializeField] private SpriteRenderer visualCustomer;
         void Awake()
         {
             currentPatience = QueuePatience;
             agent = GetComponent<NavMeshAgent>();
             customerAnimator = GetComponent<Animator>();
+            targetPosition = transform.position;
         }
 
         void Start()
@@ -75,7 +77,7 @@ namespace FadlanWork
         {
             if (Manager_Waktu.instance.IsPaused) return;
             if (StoreMinigameManager.Instance.IsMinigameActive) return;
-            
+            customerAnimator.SetBool("Moving", Vector3.Distance(transform.position, targetPosition) > 0.01f);
             switch (currentState)
             {
                 case CustomerState.WaitingInQueue:
@@ -93,7 +95,7 @@ namespace FadlanWork
         private void HandleWaitingInQueue()
         {
             agent.SetDestination(queuePosition);
-
+            targetPosition = queuePosition;
             currentPatience -= Time.deltaTime;
 
             if (!impatient && currentPatience <= TurnImpatientPatience)
@@ -138,7 +140,9 @@ namespace FadlanWork
 
         private void HandleLeaving()
         {
-            agent.SetDestination(CustomersQueueManager.Instance.QueueSpawnTransform.position);
+            Vector3 targetPos = CustomersQueueManager.Instance.QueueSpawnTransform.position;
+            agent.SetDestination(targetPos);
+            targetPosition = targetPos;
         }
 
         void QueueChanged()

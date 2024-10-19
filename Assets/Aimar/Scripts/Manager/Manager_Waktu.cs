@@ -32,8 +32,8 @@ namespace AimarWork
             public int Segmen_Max = 6;
 
             private float DurasiKini = 0;
-            public GameObject TestRotasi;
-            public GameObject TestRotasiMenit;
+            public GameObject RotasiJarumJam;
+            public GameObject RotasiJarumMenit;
 
             private void Awake()
             {
@@ -69,8 +69,8 @@ namespace AimarWork
                     float RotasiMenitPerFrame = Time.deltaTime * KecepatanPutaranMenit;
                     DurasiKini += Time.deltaTime;
                     //Debug.Log("Melakukan Rotasi " + RotasiPerFrame);
-                    /*TestRotasi.transform.Rotate(0, 0, -RotasiJamPerFrame);
-                    TestRotasiMenit.transform.Rotate(0, 0, -RotasiMenitPerFrame);*/
+                    RotasiJarumJam.transform.Rotate(0, 0, -RotasiJamPerFrame);
+                    RotasiJarumMenit.transform.Rotate(0, 0, -RotasiMenitPerFrame);
                 }
                 else
                 {
@@ -94,7 +94,7 @@ namespace AimarWork
                 {
                     DurasiKini = 0;
                     float RotasiZ = (DataStatusHariKini.startingHour * DerajatRotasiPerJam);
-                    TestRotasi.transform.Rotate(0, 0, -RotasiZ);
+                    RotasiJarumJam.transform.Rotate(0, 0, -RotasiZ);
                     SetRotasiKecepatanJam();
                     SetRotasiKecepatanMenit();
                 }
