@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Background
   - Water
   - UI
-  - 
-  - 
+  - Particles & Effect
+  - Player
   - 
   - 
   - 
@@ -41,7 +41,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
+  - name: Background 1
     uniqueID: 3651444199
     locked: 0
   - name: Middleground

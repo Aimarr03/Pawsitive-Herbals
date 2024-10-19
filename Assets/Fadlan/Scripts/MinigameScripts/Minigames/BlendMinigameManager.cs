@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using TMPro;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace FadlanWork
         [SerializeField] private Slider TimingSlider;
         [SerializeField] private RectTransform PerfectRectTransform;
         [SerializeField] private TextMeshProUGUI BlendText;
+        private Animator blenderAnimator;
 
         [Header("Minigame Config")]
 
@@ -28,11 +30,19 @@ namespace FadlanWork
         public float PerfectRange = 0.25f;
         public float TimingPosition = 0.7f;
 
+        [Title("Visual Representation")]
+        public Image timerVisual;
+
         private float blendTiming = 0f;
         private float blendTimer = 0f;
         private float score = 0f;
 
         private GameState currentState = GameState.NotStarted;
+
+        private void Awake()
+        {
+            blenderAnimator = GetComponent<Animator>();
+        }
 
         void Start()
         {
@@ -76,6 +86,7 @@ namespace FadlanWork
             }
 
             blendTimer += Time.deltaTime;
+            UpdateTimerVisual();
             if (blendTimer >= BlendEndTime)
             {
                 EndBlend();
@@ -119,12 +130,20 @@ namespace FadlanWork
         private void GainBlend()
         {
             blendTiming += BlendGainPerClick;
+            blenderAnimator.SetTrigger("Numbuk");
             blendTiming = Mathf.Clamp(blendTiming, 0f, 1f);
         }
 
         private void CloseGame()
         {
             StoreMinigameManager.Instance.EndMinigame(score/BlendPerfectTime);
+        }
+        private void UpdateTimerVisual()
+        {
+            timerVisual.fillAmount = 1 - (blendTimer / BlendEndTime);
+            Color timerColor = timerVisual.color;
+            timerColor.a = 1 - (blendTimer / BlendEndTime);
+            timerVisual.color = timerColor;
         }
     }
 }

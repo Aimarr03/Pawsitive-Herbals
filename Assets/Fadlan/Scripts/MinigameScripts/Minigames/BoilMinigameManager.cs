@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using TMPro;
 using UnityEngine;
@@ -26,6 +27,9 @@ namespace FadlanWork
         public float PerfectRange = 0.2f;
         public int BoilCount = 3;
 
+        [Title("Visual Representation Duration")]
+        public TextMeshProUGUI textVisual;
+        
         private float boilTiming = 0f;
         private int boilCounter = 0;
         private int score = 0;
@@ -34,10 +38,11 @@ namespace FadlanWork
 
         void Start()
         {
-            PerfectRectTransform.anchorMin = new Vector2(TimingPosition - PerfectRange / 2, PerfectRectTransform.anchorMin.y);
-            PerfectRectTransform.anchorMax = new Vector2(TimingPosition + PerfectRange / 2, PerfectRectTransform.anchorMax.y);
+            PerfectRectTransform.anchorMin = new Vector2(PerfectRectTransform.anchorMin.x, TimingPosition - PerfectRange / 2);
+            PerfectRectTransform.anchorMax = new Vector2(PerfectRectTransform.anchorMax.x, TimingPosition + PerfectRange / 2);
 
             TimingSlider.value = boilTiming;
+            textVisual.text = "--/--";
         }
 
         void Update()
@@ -81,10 +86,11 @@ namespace FadlanWork
 
                 BoilText.text = $"Boil {boilCounter}/{BoilCount}";
 
-                PerfectRectTransform.anchorMin = new Vector2(TimingPosition - PerfectRange / 2, PerfectRectTransform.anchorMin.y);
-                PerfectRectTransform.anchorMax = new Vector2(TimingPosition + PerfectRange / 2, PerfectRectTransform.anchorMax.y);
+                PerfectRectTransform.anchorMin = new Vector2(PerfectRectTransform.anchorMin.x, TimingPosition - PerfectRange / 2);
+                PerfectRectTransform.anchorMax = new Vector2(PerfectRectTransform.anchorMax.x, TimingPosition + PerfectRange / 2);
 
                 TimingSlider.value = boilTiming;
+                textVisual.text = $"{boilCounter}/{BoilCount}";
             }
             else
             {
@@ -128,6 +134,7 @@ namespace FadlanWork
             boilCounter = 0;
             score = 0;
             TimingSlider.value = boilTiming;
+            textVisual.text = $"{boilCounter}/{BoilCount}";
             NextBoil();
         }
 
@@ -146,6 +153,10 @@ namespace FadlanWork
         private void CloseGame()
         {
             StoreMinigameManager.Instance.EndMinigame(score/BoilCount);
+        }
+        private void UpdateVisualTimer()
+        {
+
         }
     }
 }
