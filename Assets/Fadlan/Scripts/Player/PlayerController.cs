@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 namespace FadlanWork
 {
@@ -18,17 +19,20 @@ namespace FadlanWork
         private Camera mainCamera;
         private Vector3 target;
         private BaseInteractableObject targetObject = null;
-
+        private Animator playerAnimator;
+        private Vector3 TargetPosition;
         void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
             inventory = GetComponent<PlayerInventory>();
+            playerAnimator = GetComponent<Animator>();
             mainCamera = Camera.main;
 
             if (Instance != null)
                 throw new System.Exception("More than one instance of PlayerController");
 
             Instance = this;
+            TargetPosition = transform.position;
         }
 
         void Start()
@@ -45,6 +49,10 @@ namespace FadlanWork
 
         void CheckMove()
         {
+            if (Vector3.Distance(transform.position, TargetPosition) < 0.01)
+            {
+                playerAnimator.SetBool("Moving", false);
+            }
             if (!Input.GetMouseButtonDown(0))
                 return;
             if (EventSystem.current.IsPointerOverGameObject())
@@ -64,6 +72,7 @@ namespace FadlanWork
                 if (distanceToTarget <= InteractDistance)
                 {
                     targetObject.Interact(this);
+                    
                     targetObject = null;
                 }
             }
@@ -81,18 +90,21 @@ namespace FadlanWork
                     targetObject = interactable;
                     Vector3 targetPosition = targetObject.transform.position + new Vector3(targetObject.StandPositionOffset.x, targetObject.StandPositionOffset.y, 0);
                     MoveToTarget(targetPosition);
+                    playerAnimator.SetBool("Moving", true);
                 }
             }
             else
             {
                 targetObject = null;
                 MoveToTarget(mainCamera.ScreenToWorldPoint(Input.mousePosition));
+                playerAnimator.SetBool("Moving", true);
             }
         }
 
         void MoveToTarget(Vector3 targetPosition)
         {
             targetPosition.z = transform.position.z;
+            TargetPosition = targetPosition;
             agent.SetDestination(targetPosition);
         }
     }

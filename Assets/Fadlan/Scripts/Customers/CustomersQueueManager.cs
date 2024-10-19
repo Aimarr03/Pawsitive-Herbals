@@ -1,8 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AimarWork;
+using AimarWork.GameManagerLogic;
 using UnityEngine;
 
 namespace FadlanWork
@@ -17,7 +17,12 @@ namespace FadlanWork
         public GameObject customerPrefab;
 
         public List<Customer> CustomersQueue = new();
+        public List<SO_Customer> List_Data_Customer;
+        
         public event Action OnQueueChanged;
+        public float durationToSpawn;
+        public int maxQueue = 5;
+        public float currentDuration;
 
         void Awake()
         {
@@ -29,15 +34,27 @@ namespace FadlanWork
 
         void Start()
         {
-            for (int i = 0; i < 5; i++)
+            
+        }
+        private void Update()
+        {
+            if (Manager_Waktu.instance.IsPaused) return;
+            
+            if (!Manager_Waktu.instance.CekTokoBuka() && CustomersQueue.Count < maxQueue) return;
+            currentDuration += Time.deltaTime;
+            if(currentDuration > durationToSpawn)
             {
+                currentDuration = 0;
                 NewCustomer();
             }
         }
-
         public void NewCustomer()
         {
             Customer customer = Instantiate(customerPrefab).GetComponent<Customer>();
+
+            SO_Customer randomizeData = List_Data_Customer[UnityEngine.Random.Range(0, List_Data_Customer.Count)];
+            customer.SetUpData(randomizeData);
+
             customer.transform.SetParent(QueueSpawnTransform);
             customer.transform.position = QueueSpawnTransform.position;
 

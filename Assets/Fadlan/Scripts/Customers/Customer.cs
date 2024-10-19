@@ -39,10 +39,13 @@ namespace FadlanWork
         private Coroutine impatientCoroutine;
         private Coroutine thinkingCoroutine;
 
+        private Animator customerAnimator;
+        [SerializeField] private SpriteRenderer visualCustomer;
         void Awake()
         {
             currentPatience = QueuePatience;
             agent = GetComponent<NavMeshAgent>();
+            customerAnimator = GetComponent<Animator>();
         }
 
         void Start()
@@ -71,6 +74,8 @@ namespace FadlanWork
         void Update()
         {
             if (Manager_Waktu.instance.IsPaused) return;
+            if (StoreMinigameManager.Instance.IsMinigameActive) return;
+            
             switch (currentState)
             {
                 case CustomerState.WaitingInQueue:
@@ -193,6 +198,11 @@ namespace FadlanWork
                 yield return new WaitForSeconds(0.5f);
             }
             ImpatientObject.SetActive(false);
+        }
+
+        public void SetUpData(SO_Customer data)
+        {
+            visualCustomer.sprite = data.tipeKarakter;
         }
     }
 }

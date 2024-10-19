@@ -1124,7 +1124,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1404450867
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_Sprite: {fileID: -1456204773, guid: e970ebd0595055c44b7957bb66b09d26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c74481d111662f4d9670883716145c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StandPositionOffset: {x: 0, y: 0}
+  StandPositionOffset: {x: -1, y: 0}
   List_Resep_Jamu: []
   canvas: {fileID: 3690706512043430997}
   namaJamu: {fileID: 6713259140401121746}

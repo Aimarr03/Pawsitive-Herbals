@@ -69,8 +69,8 @@ namespace AimarWork
                     float RotasiMenitPerFrame = Time.deltaTime * KecepatanPutaranMenit;
                     DurasiKini += Time.deltaTime;
                     //Debug.Log("Melakukan Rotasi " + RotasiPerFrame);
-                    TestRotasi.transform.Rotate(0, 0, -RotasiJamPerFrame);
-                    TestRotasiMenit.transform.Rotate(0, 0, -RotasiMenitPerFrame);
+                    /*TestRotasi.transform.Rotate(0, 0, -RotasiJamPerFrame);
+                    TestRotasiMenit.transform.Rotate(0, 0, -RotasiMenitPerFrame);*/
                 }
                 else
                 {
