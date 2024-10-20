@@ -33,6 +33,7 @@ namespace AimarWork
         public int pelangganMax = 0;
         public int pelangganDihidangkan = 0;
         public int uangDiperoleh;
+        public int expDiperoleh;
 
         public static Manager_TokoJamu instance;
         [Title("Data Waktu")]
@@ -108,8 +109,14 @@ namespace AimarWork
             {
                 Debug.Log("Jamu Dihidangkan benar");
                 int uangDiperoleh = GetKeuntungan();
-                uangDiperoleh += uangDiperoleh;
-                Manager_Game.instance.GetProfit(uangDiperoleh);
+                this.uangDiperoleh += uangDiperoleh;
+                Manager_Game.instance.TambahProfit(uangDiperoleh);
+
+                int expDiperoleh = GetEXP();
+                this.expDiperoleh += expDiperoleh;
+                Manager_Game.instance.TambahExp(expDiperoleh);
+
+                
                 customer.GettingDeliveredRightJamu();
                 pelangganDihidangkan++;
             }
@@ -239,10 +246,38 @@ namespace AimarWork
             keuntungan = keuntungan - sisapuluhan;
             return keuntungan;
         }
+        public int GetEXP()
+        {
+            SO_Jamu jamuDijual = playerInventory.jamu;
+            int exp = jamuDijual.GetExpProfit();
+            if (kualitas < 0.75f)
+            {
+                exp = (int)(exp * 0.75f);
+            }
+            else if (kualitas >= 0.75f && kualitas < .85f)
+            {
+                exp = (int)(exp * 0.9f);
+            }
+            else if (kualitas >= 85 && kualitas <= 0.95)
+            {
+                exp = (int)(exp * 1f);
+            }
+            else if (kualitas >= 0.95)
+            {
+                exp = (int)(exp * 1.25f);
+            }
+            else
+            {
+                exp = 0;
+            }
+
+            int sisapuluhan = exp % 100;
+            exp = exp - sisapuluhan;
+            return exp;
+        }
         
         public void CheckJamu()
         {
-            SO_Jamu jamu_fokus = null;
             bool benar = false;
             foreach(SO_Jamu jamuKini in List_Jamu)
             {

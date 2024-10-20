@@ -42,7 +42,7 @@ namespace AimarWork
             {
                 OnPauseInvoke?.Invoke();
             }
-            public void GetProfit(int profit)
+            public void TambahProfit(int profit)
             {
                 uang_kini += profit;
                 OnChangeUang?.Invoke();
@@ -51,6 +51,14 @@ namespace AimarWork
             {
                 uang_kini -= biaya;
                 OnChangeUang?.Invoke();
+            }
+            public void TambahExp(int exp)
+            {
+                exp_kini += exp;
+            }
+            public void GunakanExp(int exp)
+            {
+                exp_kini -= exp;
             }
         }
     }

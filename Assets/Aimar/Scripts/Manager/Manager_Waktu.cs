@@ -24,6 +24,7 @@ namespace AimarWork
             public int Segmen_Max = 6;
 
             public event Action OnChangeStatusHari;
+            public event Action ChangeHari;
             
 
             private void Awake()
@@ -38,7 +39,7 @@ namespace AimarWork
                 }
                 
                 DataStatusHariKini = List_DayStateData[0];
-                
+                TanggalKini = new DateTime(2024, 10, 1);
             }
 
 
