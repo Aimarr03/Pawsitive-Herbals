@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 2581171496640749914}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.54, y: -2.74, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -244,6 +244,8 @@ MonoBehaviour:
   ImpatientObject: {fileID: 5923422340831610255}
   currentPatience: 0
   queueNumber: -1
+  wantToOrder: 0
+  jamu_inginDibeli: {fileID: 0}
   visualCustomer: {fileID: 2271043338529332021}
 --- !u!50 &-8417596078632992394
 Rigidbody2D:

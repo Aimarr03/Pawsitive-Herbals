@@ -69,3 +69,6 @@ MonoBehaviour:
   pelangganMax: 0
   pelangganDihidangkan: 0
   uangDiperoleh: 0
+  RotasiJarumJam: {fileID: 0}
+  RotasiJarumMenit: {fileID: 0}
+  DurasiWaktu: 180

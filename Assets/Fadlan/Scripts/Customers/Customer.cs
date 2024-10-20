@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AimarWork;
 using AimarWork.GameManagerLogic;
 using UnityEngine;
@@ -28,6 +29,8 @@ namespace FadlanWork
         [Header("Customer Info")]
         public float currentPatience;
         public int queueNumber = -1;
+        public bool wantToOrder = false;
+        public SO_Jamu jamu_inginDibeli = null;
 
         private int lastQueueNumber;
         private Vector3 queuePosition;
@@ -75,9 +78,11 @@ namespace FadlanWork
 
         void Update()
         {
-            if (Manager_Waktu.instance.IsPaused) return;
+            if (Manager_Game.instance.IsPaused) return;
             if (StoreMinigameManager.Instance.IsMinigameActive) return;
-            customerAnimator.SetBool("Moving", Vector3.Distance(transform.position, targetPosition) > 0.01f);
+            customerAnimator.SetBool("Moving", Vector2.Distance(transform.position, targetPosition) > 0.1f);
+            /*Debug.Log(transform.position);
+            Debug.Log(targetPosition);*/
             switch (currentState)
             {
                 case CustomerState.WaitingInQueue:
@@ -137,6 +142,19 @@ namespace FadlanWork
                 CustomersQueueManager.Instance.DequeueCustomer();
             }
         }
+        private IEnumerator MakingAnOrder()
+        {
+            Debug.Log("Customer sedang menuju ke kasir");
+            while (Vector2.Distance(transform.position, targetPosition) > 0.2f)
+            {
+                yield return null;
+            }
+            Debug.Log("Customer sedang berpikir");
+            yield return new WaitForSeconds(1);
+            wantToOrder = true;
+            Debug.Log("Customer siap memesan");
+            jamu_inginDibeli = Manager_TokoJamu.instance.MencariPemesanan();
+        }
 
         private void HandleLeaving()
         {
@@ -151,7 +169,10 @@ namespace FadlanWork
             queuePosition = new Vector3(CustomersQueueManager.Instance.QueueLineTransform.position.x + (queueNumber * CustomersQueueManager.Instance.QueueSpacing),
                                         CustomersQueueManager.Instance.QueueLineTransform.position.y,
                                         CustomersQueueManager.Instance.QueueLineTransform.position.z);
-
+            queuePosition.z = 0;
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            targetPosition = queuePosition;
+            targetPosition.z = 0;
             if (queueNumber < lastQueueNumber)
             {
                 currentPatience += MovePatienceIncrease;
@@ -163,7 +184,9 @@ namespace FadlanWork
             {
                 currentState = CustomerState.Ordering;
                 currentPatience = OrderPatience;
+                //MakingAnOrder();
                 impatient = false;
+                StartCoroutine(MakingAnOrder());
             }
 
             lastQueueNumber = queueNumber;
@@ -171,12 +194,13 @@ namespace FadlanWork
 
         public void AskOrder()
         {
-            if (orderAsked)
+            if (orderAsked || !wantToOrder)
                 return;
-
+            Debug.Log("Customer ingin memesan " + jamu_inginDibeli.nama);
+            wantToOrder = false;
             orderAsked = true;
-
-            Manager_TokoJamu.instance.PemesananJamu();
+            //await Task.Delay(1000);
+            Manager_TokoJamu.instance.SetJamu(jamu_inginDibeli);
 
             if (thinkingCoroutine != null)
                 StopCoroutine(thinkingCoroutine);

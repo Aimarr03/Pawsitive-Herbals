@@ -38,9 +38,9 @@ namespace FadlanWork
         }
         private void Update()
         {
-            if (Manager_Waktu.instance.IsPaused) return;
+            if (Manager_Game.instance.IsPaused) return;
             
-            if (!Manager_Waktu.instance.CekTokoBuka() && CustomersQueue.Count < maxQueue) return;
+            if (!Manager_TokoJamu.instance.CekTokoBuka() && CustomersQueue.Count < maxQueue) return;
             currentDuration += Time.deltaTime;
             if(currentDuration > durationToSpawn)
             {

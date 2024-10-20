@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using AimarWork;
 using AimarWork.GameManagerLogic;
 using FadlanWork;
 using UnityEngine;
@@ -52,7 +53,7 @@ namespace FadlanWork
             if (!cancelled)
             {
                 Debug.Log("Opened");
-                Manager_Waktu.instance.BukaToko();
+                Manager_TokoJamu.instance.BukaToko();
             }
             else
             {

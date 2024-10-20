@@ -13,7 +13,10 @@ namespace FadlanWork
             Customer firstCustomer = CustomersQueueManager.Instance.GetFirst();
             if (firstCustomer != null)
             {
-                firstCustomer.AskOrder();
+                if (firstCustomer.wantToOrder)
+                {
+                    firstCustomer.AskOrder();
+                }
             }
         }
     }

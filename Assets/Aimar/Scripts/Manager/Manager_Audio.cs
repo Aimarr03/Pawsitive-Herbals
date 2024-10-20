@@ -37,8 +37,8 @@ namespace AimarWork
         {
             SFXSource.PlayOneShot(audioClip);
         }
-        public void ToggleSFX(bool value) => SFXSource.mute = value;
-        public void ToggleMusic(bool value) => MusicSource.mute = value;
+        public void ToggleSFX(bool value) => SFXSource.mute = !value;
+        public void ToggleMusic(bool value) => MusicSource.mute = !value;
     }
 }
 
