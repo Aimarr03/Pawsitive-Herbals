@@ -1,3 +1,5 @@
+using AimarWork;
+using AimarWork.GameManagerLogic;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +18,11 @@ namespace FadlanWork
                 if (firstCustomer.wantToOrder)
                 {
                     firstCustomer.AskOrder();
+                }
+                else if(player.inventory.jamu != null)
+                {
+                    Debug.Log("Memberikan Jamu ke Customer");
+                    Manager_TokoJamu.instance.HandleMenghidangiJamu(firstCustomer);
                 }
             }
         }

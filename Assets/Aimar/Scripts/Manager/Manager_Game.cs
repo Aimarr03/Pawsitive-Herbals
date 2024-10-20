@@ -14,7 +14,7 @@ namespace AimarWork
             public int uang_kini;
             public bool IsPaused = false;
             public event Action OnPauseInvoke;
-            
+            public event Action OnChangeUang;
             private void Awake()
             {
                 if(instance == null)
@@ -41,6 +41,16 @@ namespace AimarWork
             private void Pause_performed(InputAction.CallbackContext obj)
             {
                 OnPauseInvoke?.Invoke();
+            }
+            public void GetProfit(int profit)
+            {
+                uang_kini += profit;
+                OnChangeUang?.Invoke();
+            }
+            public void GunakanUang(int biaya)
+            {
+                uang_kini -= biaya;
+                OnChangeUang?.Invoke();
             }
         }
     }

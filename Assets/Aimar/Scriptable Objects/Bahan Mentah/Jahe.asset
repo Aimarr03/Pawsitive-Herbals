@@ -16,6 +16,6 @@ MonoBehaviour:
   deskripsi: 
   ikon_resep: {fileID: 21300000, guid: 33db1b218672178438ebe754a121b678, type: 3}
   ikon_gameplay: {fileID: 21300000, guid: 33db1b218672178438ebe754a121b678, type: 3}
-  kuantitasKini: 9
+  kuantitasKini: 100
   hargaPerSatuan: 1500
   terbuka: 0

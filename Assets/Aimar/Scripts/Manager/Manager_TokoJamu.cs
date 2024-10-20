@@ -1,4 +1,5 @@
 using AimarWork.GameManagerLogic;
+using FadlanWork;
 using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
@@ -78,6 +79,11 @@ namespace AimarWork
             SetJam();
             SetRotasiKecepatanJam();
             SetRotasiKecepatanMenit();
+            CustomersQueueManager.Instance.OnAddedQueue += Instance_OnQueueChanged;
+        }
+        private void OnDisable()
+        {
+            CustomersQueueManager.Instance.OnAddedQueue -= Instance_OnQueueChanged;
         }
         private void Update()
         {
@@ -90,6 +96,31 @@ namespace AimarWork
                 case DayState.Night:
                     break;
             }
+        }
+        private void Instance_OnQueueChanged()
+        {
+            pelangganMax++;
+        }
+        public void HandleMenghidangiJamu(Customer customer)
+        {
+            Debug.Log($"{jamu_difokuskan} {playerInventory.jamu}");
+            if (CheckJamuBenar())
+            {
+                Debug.Log("Jamu Dihidangkan benar");
+                int uangDiperoleh = GetKeuntungan();
+                uangDiperoleh += uangDiperoleh;
+                Manager_Game.instance.GetProfit(uangDiperoleh);
+                customer.GettingDeliveredRightJamu();
+                pelangganDihidangkan++;
+            }
+            else
+            {
+                Debug.Log("Jamu Dihidangkan salah");
+                customer.GettingDeliveredWrongJamu();
+            }
+            playerInventory.BersihkanSemuaBahanDiInventory();
+            jamu_difokuskan = null;
+            
         }
         #region Logika Jamu
         public List<SO_BahanMentah> GetSemuaBahanMentah()
@@ -126,6 +157,10 @@ namespace AimarWork
                 Debug.Log($"{jamu_dicari.nama} Terbuka {jamu_dicari.terbuka} Ada {jamu_dicari.CheckJamuMasihAda()}");
             } while (!jamu_dicari.terbuka || !jamu_dicari.CheckJamuMasihAda());
             return jamu_dicari;
+        }
+        public bool CheckJamuBenar()
+        {
+            return jamu_difokuskan == playerInventory.jamu;
         }
 
         public SO_BahanOlahan SelesaiProsesOlahan(ENUM_Tipe_Pengolahan tipePengolahan, float kualitas)
@@ -208,16 +243,19 @@ namespace AimarWork
         public void CheckJamu()
         {
             SO_Jamu jamu_fokus = null;
+            bool benar = false;
             foreach(SO_Jamu jamuKini in List_Jamu)
             {
+                Debug.Log("Pengecekkan" + jamuKini.name);
                 if (!jamuKini.terbuka) continue;
                 if (jamuKini.CheckBahan(playerInventory.ListBahan))
                 {
-                    jamu_difokuskan = jamuKini;
+                    Debug.Log("Dapat Jamu yang Benar");
+                    benar = true;
                     break;
                 }
             }
-            playerInventory.jamu = jamu_fokus != null ? jamu_fokus : jamuGagal;
+            playerInventory.jamu = benar? jamu_difokuskan : jamuGagal;
             playerInventory.ListBahan.Clear();
         }
         #endregion

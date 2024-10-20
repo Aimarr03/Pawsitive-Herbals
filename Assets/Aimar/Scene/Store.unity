@@ -7869,6 +7869,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 200668093}
     m_Modifications:
+    - target: {fileID: 401060691822646517, guid: 9b739f90be044e14285ec598d932691a, type: 3}
+      propertyPath: StandPositionOffset.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1680283730414674047, guid: 9b739f90be044e14285ec598d932691a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.219999
@@ -7929,6 +7933,10 @@ PrefabInstance:
     - target: {fileID: 5341834921511246314, guid: b63e6e59c30fa1c4ca8372bc8a6f5948, type: 3}
       propertyPath: m_Name
       value: Bell
+      objectReference: {fileID: 0}
+    - target: {fileID: 6254210835744724923, guid: b63e6e59c30fa1c4ca8372bc8a6f5948, type: 3}
+      propertyPath: StandPositionOffset.x
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 9156701598153160410, guid: b63e6e59c30fa1c4ca8372bc8a6f5948, type: 3}
       propertyPath: m_LocalPosition.x

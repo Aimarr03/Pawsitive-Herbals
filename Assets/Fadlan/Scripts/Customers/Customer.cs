@@ -45,6 +45,9 @@ namespace FadlanWork
         private Animator customerAnimator;
         private Vector3 targetPosition;
         [SerializeField] private SpriteRenderer visualCustomer;
+
+
+        public static event Action<bool> DihidangkanBenar;
         void Awake()
         {
             currentPatience = QueuePatience;
@@ -60,13 +63,13 @@ namespace FadlanWork
 
             currentState = CustomerState.WaitingInQueue;
 
-            CustomersQueueManager.Instance.OnQueueChanged += QueueChanged;
+            CustomersQueueManager.Instance.OnAddedQueue += QueueChanged;
             QueueChanged();
         }
 
         void OnDestroy()
         {
-            CustomersQueueManager.Instance.OnQueueChanged -= QueueChanged;
+            CustomersQueueManager.Instance.OnAddedQueue -= QueueChanged;
 
             if (impatientCoroutine != null)
                 StopCoroutine(impatientCoroutine);
@@ -140,6 +143,7 @@ namespace FadlanWork
             {
                 currentState = CustomerState.Leaving;
                 CustomersQueueManager.Instance.DequeueCustomer();
+                DihidangkanBenar?.Invoke(false);
             }
         }
         private IEnumerator MakingAnOrder()
@@ -202,8 +206,7 @@ namespace FadlanWork
             //await Task.Delay(1000);
             Manager_TokoJamu.instance.SetJamu(jamu_inginDibeli);
 
-            if (thinkingCoroutine != null)
-                StopCoroutine(thinkingCoroutine);
+            if (thinkingCoroutine != null) StopCoroutine(thinkingCoroutine);
 
             thinkingCoroutine = StartCoroutine(ThinkingForOrder());
         }
@@ -226,6 +229,22 @@ namespace FadlanWork
                 yield return new WaitForSeconds(0.5f);
             }
             ImpatientObject.SetActive(false);
+        }
+        public void GettingDeliveredRightJamu()
+        {
+            Debug.Log("Customer Bahagia!");
+            currentState = CustomerState.Leaving;
+            CustomersQueueManager.Instance.DequeueCustomer();
+            DihidangkanBenar?.Invoke(true);
+            StopAllCoroutines();
+        }
+        public void GettingDeliveredWrongJamu()
+        {
+            Debug.Log("Customer Sedih!");
+            currentState = CustomerState.Leaving;
+            CustomersQueueManager.Instance.DequeueCustomer();
+            DihidangkanBenar?.Invoke(false);
+            StopAllCoroutines();
         }
 
         public void SetUpData(SO_Customer data)

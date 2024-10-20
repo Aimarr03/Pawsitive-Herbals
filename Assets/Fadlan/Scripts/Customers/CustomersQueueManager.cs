@@ -19,7 +19,7 @@ namespace FadlanWork
         public List<Customer> CustomersQueue = new();
         public List<SO_Customer> List_Data_Customer;
         
-        public event Action OnQueueChanged;
+        public event Action OnAddedQueue;
         public float durationToSpawn;
         public int maxQueue = 5;
         public float currentDuration;
@@ -40,7 +40,7 @@ namespace FadlanWork
         {
             if (Manager_Game.instance.IsPaused) return;
             
-            if (!Manager_TokoJamu.instance.CekTokoBuka() && CustomersQueue.Count < maxQueue) return;
+            if (!Manager_TokoJamu.instance.CekTokoBuka() || CustomersQueue.Count >= maxQueue) return;
             currentDuration += Time.deltaTime;
             if(currentDuration > durationToSpawn)
             {
@@ -59,7 +59,7 @@ namespace FadlanWork
             customer.transform.position = QueueSpawnTransform.position;
 
             CustomersQueue.Add(customer);
-            OnQueueChanged?.Invoke();
+            OnAddedQueue?.Invoke();
         }
 
         public int GetQueueNumber(Customer customer)
@@ -75,7 +75,6 @@ namespace FadlanWork
         public void RemoveCustomer(Customer customer)
         {
             CustomersQueue.Remove(customer);
-            OnQueueChanged?.Invoke();
             Destroy(customer.gameObject, 3);
         }
 
