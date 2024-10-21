@@ -75,7 +75,7 @@ namespace FadlanWork
         public void RemoveCustomer(Customer customer)
         {
             CustomersQueue.Remove(customer);
-            Destroy(customer.gameObject, 3);
+            Destroy(customer.gameObject, 1.8f);
         }
 
         public Customer GetFirst()

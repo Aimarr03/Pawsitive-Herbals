@@ -1,10 +1,9 @@
 using AimarWork.GameManagerLogic;
 using FadlanWork;
-using JetBrains.Annotations;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 namespace AimarWork
@@ -32,6 +31,7 @@ namespace AimarWork
 
         public int pelangganMax = 0;
         public int pelangganDihidangkan = 0;
+        public float kualitasPerforma => pelangganDihidangkan / pelangganMax;
         public int uangDiperoleh;
         public int expDiperoleh;
 
@@ -48,6 +48,7 @@ namespace AimarWork
         private float KecepatanPutaranMenit;
         private float DerajatRotasiPerJam = 30;
 
+        public event Action<SO_Jamu> MenghidangkanDenganBenar;
         private void Awake()
         {
             if(instance == null)
@@ -118,6 +119,7 @@ namespace AimarWork
 
                 
                 customer.GettingDeliveredRightJamu();
+                MenghidangkanDenganBenar?.Invoke(jamu_difokuskan);
                 pelangganDihidangkan++;
             }
             else
@@ -160,7 +162,7 @@ namespace AimarWork
             {
                 buffer++;
                 if (buffer > 8) break;
-                jamu_dicari = Jamu_Terbuka[Random.Range(0, Jamu_Terbuka.Count)];
+                jamu_dicari = Jamu_Terbuka[UnityEngine.Random.Range(0, Jamu_Terbuka.Count)];
                 Debug.Log($"{jamu_dicari.nama} Terbuka {jamu_dicari.terbuka} Ada {jamu_dicari.CheckJamuMasihAda()}");
             } while (!jamu_dicari.terbuka || !jamu_dicari.CheckJamuMasihAda());
             return jamu_dicari;

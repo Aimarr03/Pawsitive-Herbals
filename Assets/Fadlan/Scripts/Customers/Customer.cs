@@ -48,6 +48,7 @@ namespace FadlanWork
 
 
         public static event Action<bool> DihidangkanBenar;
+        public static event Action PergiDariToko;
         void Awake()
         {
             currentPatience = QueuePatience;
@@ -70,7 +71,7 @@ namespace FadlanWork
         void OnDestroy()
         {
             CustomersQueueManager.Instance.OnAddedQueue -= QueueChanged;
-
+            PergiDariToko?.Invoke();
             if (impatientCoroutine != null)
                 StopCoroutine(impatientCoroutine);
 
