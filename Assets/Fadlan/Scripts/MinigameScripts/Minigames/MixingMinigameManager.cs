@@ -32,6 +32,7 @@ namespace FadlanWork
         [Title("Format Max Mixing")]
         [SerializeField] private RectTransform FormatMixing;
         [SerializeField] private RectTransform containerMaxMixing;
+        public Button CancelButton;
 
         private float mixTiming = 0f;
         private int mixCounter = 0;
@@ -50,6 +51,7 @@ namespace FadlanWork
             PerfectRectTransform.anchorMin = new Vector2(timingPosition - PerfectRange / 2, PerfectRectTransform.anchorMin.y);
             PerfectRectTransform.anchorMax = new Vector2(timingPosition + PerfectRange / 2, PerfectRectTransform.anchorMax.y);
             containerMaxMixing.gameObject.SetActive(false);
+            CancelButton.onClick.AddListener(StoreMinigameManager.Instance.CancelMiniGame);
         }
 
         void Update()
@@ -153,6 +155,7 @@ namespace FadlanWork
             score = 0;
             TimingSlider.value = mixTiming;
             NextMix();
+            CancelButton.interactable = false;
             ResettingMaxMixing();
         }
 

@@ -56,7 +56,11 @@ namespace FadlanWork
 
             IsMinigameActive = true;
         }
-
+        public void CancelMiniGame()
+        {
+            Destroy(ActiveMinigameObject);
+            IsMinigameActive = false;
+        }
         public void EndMinigame(float score)
         {
             if (!IsMinigameActive)
