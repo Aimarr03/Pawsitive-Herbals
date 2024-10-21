@@ -31,6 +31,9 @@ namespace AimarWork
 
         public int pelangganMax = 0;
         public int pelangganDihidangkan = 0;
+
+        public AudioClip SebelumTokoBuka;
+        public AudioClip SetelahTokoBuka;
         public float kualitasPerforma() 
         { 
             float kalkulasi = (pelangganDihidangkan * 1f) / pelangganMax;
@@ -86,6 +89,7 @@ namespace AimarWork
             SetRotasiKecepatanJam();
             SetRotasiKecepatanMenit();
             CustomersQueueManager.Instance.OnAddedQueue += Instance_OnQueueChanged;
+            Manager_Audio.instance.PlayMusic(SebelumTokoBuka);
         }
         private void OnDisable()
         {
@@ -323,6 +327,7 @@ namespace AimarWork
             Debug.Log("Buka Toko Jamu!");
             DurasiKini = 0;
             IsOpen = true;
+            Manager_Audio.instance.PlayMusic(SetelahTokoBuka);
         }
         
         public bool CekTokoBuka() => IsOpen;

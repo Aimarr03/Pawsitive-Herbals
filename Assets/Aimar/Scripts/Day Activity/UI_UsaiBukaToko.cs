@@ -113,6 +113,7 @@ public class UI_UsaiBukaToko : MonoBehaviour
     }
     public void LoadSceneBedroom()
     {
+        Manager_Waktu.instance.GantiStatusHari();
         Manager_Game.instance.LoadSceneWithSave(Manager_Game.instance.SCENE_BEDROOM);
     }
 }

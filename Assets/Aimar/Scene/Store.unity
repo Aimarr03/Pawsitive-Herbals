@@ -1260,14 +1260,6 @@ PrefabInstance:
       value: Manager_Jamu
       objectReference: {fileID: 0}
     - target: {fileID: 7965198926856452592, guid: b86588ec1abaa7b4b8b8b43dea02a4a1, type: 3}
-      propertyPath: TokoBuka
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7965198926856452592, guid: b86588ec1abaa7b4b8b8b43dea02a4a1, type: 3}
-      propertyPath: DurasiWaktu
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7965198926856452592, guid: b86588ec1abaa7b4b8b8b43dea02a4a1, type: 3}
       propertyPath: RotasiJarumJam
       value: 
       objectReference: {fileID: 74417467}

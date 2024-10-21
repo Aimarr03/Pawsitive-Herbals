@@ -10,12 +10,14 @@ public class UI_MainMenu : MonoBehaviour
     public Button ContinueButton;
     public RectTransform OptionsContainer;
     public RectTransform CreditsContainer;
+    public AudioClip BGM;
     private void Start()
     {
         Manager_Data.instance.LoadGame();
         OptionsContainer.gameObject.SetActive(false);
         CreditsContainer.gameObject.SetActive(false);
         ContinueButton.interactable = Manager_Data.instance.HasGameData();
+        Manager_Audio.instance.PlayMusic(BGM);
     }
     public void NewGame() => Manager_Game.instance.NewGame();
     public void LoadGame() => Manager_Game.instance.LoadGame();

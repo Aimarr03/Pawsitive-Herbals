@@ -63,6 +63,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b98698fd94d2d1488e7601df5bb518b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  List_DayStateData:
+  - dayState: 0
+    startingHour: 7
+    maxHour: 8
+  - dayState: 1
+    startingHour: 4
+    maxHour: 6
+  DataStatusHariKini:
+    dayState: 0
+    startingHour: 0
+    maxHour: 0
   Segmen_Max: 6
 --- !u!114 &9002384096421107627
 MonoBehaviour:
@@ -138,7 +149,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
