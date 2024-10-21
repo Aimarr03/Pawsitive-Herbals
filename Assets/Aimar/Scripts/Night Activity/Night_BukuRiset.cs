@@ -1,4 +1,5 @@
 using AimarWork.GameManagerLogic;
+using FadlanWork;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using UnityEngine.UI;
 
 namespace AimarWork
 {
-    public class Night_BukuRiset : MonoBehaviour
+    public class Night_BukuRiset : BaseInteractableObject
     {
         [TitleGroup("Deskripsi Umum")]
         [SerializeField] private Canvas UI_BukuRiset;
@@ -75,7 +76,7 @@ namespace AimarWork
             }
             Debug.Log("Mouse Exit");
         }
-        private void OnMouseDown()
+        /*private void OnMouseDown()
         {
             if (EventSystem.current.IsPointerOverGameObject())
             {
@@ -83,9 +84,13 @@ namespace AimarWork
             }
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("Enter Buku Riset");
-                BukaBukuRiset();
+                
             }
+        }*/
+        public override void Interact(PlayerController player)
+        {
+            base.Interact(player);
+            BukaBukuRiset();
         }
         public void BukaBukuRiset()
         {

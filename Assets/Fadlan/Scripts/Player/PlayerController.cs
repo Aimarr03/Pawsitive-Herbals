@@ -57,8 +57,11 @@ namespace FadlanWork
                 return;
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
-            if (StoreMinigameManager.Instance.IsMinigameActive)
-                return;
+            if (StoreMinigameManager.Instance != null)
+            {
+                if (StoreMinigameManager.Instance.IsMinigameActive) return;
+            }
+                
 
             Move();
         }

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f179db55b92a84d951903bd72a76a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StandPositionOffset: {x: 0.5, y: 0}
   UI_BukuRiset: {fileID: 1041151104394233046}
   namaJamu: {fileID: 4542097219499196169}
   deskripsi: {fileID: 8323976771786883658}

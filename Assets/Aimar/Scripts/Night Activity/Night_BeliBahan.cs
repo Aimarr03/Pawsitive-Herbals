@@ -1,3 +1,4 @@
+using FadlanWork;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using UnityEngine.UI;
 
 namespace AimarWork
 {
-    public class Night_BeliBahan : MonoBehaviour
+    public class Night_BeliBahan : BaseInteractableObject
     {
         [Header("Data Jamu")]
         public List<SO_BahanMentah> List_BahanMentah;
@@ -64,7 +65,7 @@ namespace AimarWork
             }
             Debug.Log("Mouse Exit");
         }
-        private void OnMouseDown()
+        /*private void OnMouseDown()
         {
             if (EventSystem.current.IsPointerOverGameObject())
             {
@@ -72,11 +73,15 @@ namespace AimarWork
             }
             if (Input.GetMouseButtonDown(0))
             {
-                Membuka_UI_Pembelian();
-                Debug.Log("Enter Beli Bahan");
+                
             }
+        }*/
+        public override void Interact(PlayerController player)
+        {
+            base.Interact(player);
+            Membuka_UI_Pembelian();
+            Debug.Log("Enter Beli Bahan");
         }
-
         private void MemasukkanDataBahanTerbuka()
         {
             foreach(SO_Jamu jamu in List_Jamu)
