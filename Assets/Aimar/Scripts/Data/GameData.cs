@@ -1,7 +1,9 @@
+using AimarWork.GameManagerLogic;
 using System;
 public class GameData
 {
     public DateTime Data_Tanggal;
+    public DayState DayState;
     public int exp_kini;
     public int uang_kini;
 
@@ -11,6 +13,7 @@ public class GameData
     public GameData()
     {
         Data_Tanggal = new DateTime(2024, 10, 1);
+        DayState = DayState.Day;
         exp_kini = 0;
         uang_kini = 0;
 
@@ -36,6 +39,7 @@ public class GameData
         Dictionary_DataBahanMentah.Add("Temulawak", new BahanMentahSaveData(0));
     }
 }
+[Serializable]
 public struct JamuSaveData
 {
     public int level;
@@ -46,6 +50,7 @@ public struct JamuSaveData
         this.terbuka = terbuka;
     }
 }
+[Serializable]
 public struct BahanMentahSaveData
 {
     int kuantitas;

@@ -43,7 +43,7 @@ public class Manager_Data : MonoBehaviour
         gameData = new GameData();
         Debug.Log("Created new Game Data");
         fileHandler.NewData();
-        fileHandler.SaveData(gameData);
+        //fileHandler.SaveData(gameData);
     }
     public void LoadGame()
     {

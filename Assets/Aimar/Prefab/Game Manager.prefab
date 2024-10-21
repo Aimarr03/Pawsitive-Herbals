@@ -90,6 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f33a4f280fb6f4aa2f613bdd7b5240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directivePath: Pawsitive Herbals
+  fileName: Game Data
 --- !u!1 &3997785246588737767
 GameObject:
   m_ObjectHideFlags: 0

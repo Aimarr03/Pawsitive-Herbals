@@ -65,9 +65,35 @@ namespace AimarWork
             {
                 exp_kini -= exp;
             }
-            public void LoadScene(string scene)
+            public void LoadSceneWithSave(string scene)
+            {
+                Manager_Data.instance.SaveGame();
+                SceneManager.LoadSceneAsync(scene);
+            }
+            public void LoadSceneWithoutSave(string scene)
             {
                 SceneManager.LoadSceneAsync(scene);
+            }
+            public void NewGame()
+            {
+                Debug.Log("New Game");
+                Manager_Data.instance.NewGame();
+                LoadSceneWithSave(SCENE_STORE);
+            }
+            public void LoadGame()
+            {
+                Debug.Log("Load Game");
+
+            }
+            public void ExitToMainMenu()
+            {
+                Debug.Log("Exit To Main Menu Game");
+                LoadSceneWithoutSave(SCENE_MAINMENU);
+            }
+            public void ExitGame()
+            {
+                Debug.Log("Exit Game");
+                Application.Quit();
             }
         }
     }
