@@ -32,7 +32,6 @@ namespace FadlanWork
 
         public void StartMinigame(string minigameName)
         {
-            Manager_Waktu.instance.IsPaused = true;
             if (IsMinigameActive)
                 return;
 
@@ -57,7 +56,11 @@ namespace FadlanWork
 
             IsMinigameActive = true;
         }
-
+        public void CancelMiniGame()
+        {
+            Destroy(ActiveMinigameObject);
+            IsMinigameActive = false;
+        }
         public void EndMinigame(float score)
         {
             if (!IsMinigameActive)
@@ -66,7 +69,6 @@ namespace FadlanWork
             Destroy(ActiveMinigameObject);
             SelesaiMengolah?.Invoke(tipe_pengolahan, score);
             IsMinigameActive = false;
-            Manager_Waktu.instance.IsPaused = false;
         }
     }
 }

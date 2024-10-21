@@ -43,6 +43,13 @@ namespace AimarWork
                     }
                 }
             }
+            else
+            {
+                foreach(UI_BahanMentah UI_bahanMentah in Dictionary_UI_BahanMentah.Values)
+                {
+                    UI_bahanMentah.UpdateBahanMentah(false);
+                }
+            }
         }
 
         private void Start()

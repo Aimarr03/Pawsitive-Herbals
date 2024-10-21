@@ -37,7 +37,7 @@ MonoBehaviour:
     langkah: Merebus Semua Bahans
   multiplierBase: 1.2
   multiplierPerLevel: 0.4
-  terbuka: 0
+  terbuka: 1
   kualitas: 0
   base_keuntungan: 12000
   base_exp: 0

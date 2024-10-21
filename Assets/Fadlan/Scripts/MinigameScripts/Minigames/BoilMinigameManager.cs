@@ -29,7 +29,8 @@ namespace FadlanWork
 
         [Title("Visual Representation Duration")]
         public TextMeshProUGUI textVisual;
-        
+        public Button CancelButton;
+
         private float boilTiming = 0f;
         private int boilCounter = 0;
         private int score = 0;
@@ -40,6 +41,7 @@ namespace FadlanWork
         {
             PerfectRectTransform.anchorMin = new Vector2(PerfectRectTransform.anchorMin.x, TimingPosition - PerfectRange / 2);
             PerfectRectTransform.anchorMax = new Vector2(PerfectRectTransform.anchorMax.x, TimingPosition + PerfectRange / 2);
+            CancelButton.onClick.AddListener(StoreMinigameManager.Instance.CancelMiniGame);
 
             TimingSlider.value = boilTiming;
             textVisual.text = "--/--";
@@ -135,6 +137,7 @@ namespace FadlanWork
             score = 0;
             TimingSlider.value = boilTiming;
             textVisual.text = $"{boilCounter}/{BoilCount}";
+            CancelButton.interactable = false;
             NextBoil();
         }
 

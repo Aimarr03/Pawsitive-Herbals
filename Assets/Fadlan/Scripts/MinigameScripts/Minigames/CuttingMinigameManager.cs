@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -37,6 +38,9 @@ namespace FadlanWork
         public float MinInterval = 0.1f;
         public float MaxInterval = 0.5f;
 
+        [Title("Visual")]
+        public Button CancelButton;
+
         private int cutCounter = 0;
         private float nextCutSpawnTime = 0f;
         private int score = 0;
@@ -53,6 +57,7 @@ namespace FadlanWork
         {
             PerfectRectTransform.anchorMin = new Vector2(PerfectRectTransform.anchorMin.x, 1 - (TimingPosition + PerfectRange / 2));
             PerfectRectTransform.anchorMax = new Vector2(PerfectRectTransform.anchorMax.x, 1 - (TimingPosition - PerfectRange / 2));
+            CancelButton.onClick.AddListener(StoreMinigameManager.Instance.CancelMiniGame);
         }
 
         void Update()
@@ -190,6 +195,8 @@ namespace FadlanWork
             cutCounter = 0;
             score = 0;
             nextCutSpawnTime = Time.time + UnityEngine.Random.Range(MinInterval, MaxInterval);
+
+            CancelButton.interactable = false;
 
             CutText.text = $"Cut: {cutCounter}/{CutCount}";
         }

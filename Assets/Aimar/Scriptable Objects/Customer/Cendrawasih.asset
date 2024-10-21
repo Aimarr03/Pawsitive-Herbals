@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b7f54123117d44d867b8a43ea5e3eb, type: 3}
+  m_Name: Cendrawasih
+  m_EditorClassIdentifier: 
+  tipeKarakter: {fileID: -371353655, guid: 01ff8b698201f1c4289459eaf676ab4e, type: 3}

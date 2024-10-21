@@ -32,6 +32,7 @@ namespace FadlanWork
 
         [Title("Visual Representation")]
         public Image timerVisual;
+        public Button CancelButton;
 
         private float blendTiming = 0f;
         private float blendTimer = 0f;
@@ -48,6 +49,7 @@ namespace FadlanWork
         {
             PerfectRectTransform.anchorMin = new Vector2(PerfectRectTransform.anchorMin.x, TimingPosition - PerfectRange / 2);
             PerfectRectTransform.anchorMax = new Vector2(PerfectRectTransform.anchorMax.x, TimingPosition + PerfectRange / 2);
+            CancelButton.onClick.AddListener(StoreMinigameManager.Instance.CancelMiniGame);
         }
 
         void Update()
@@ -125,6 +127,7 @@ namespace FadlanWork
             score = 0f;
             BlendText.text = $"Blending: {score:F1}/{BlendPerfectTime}";
             TimingSlider.value = blendTiming;
+            CancelButton.interactable = false;
         }
 
         private void GainBlend()

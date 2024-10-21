@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1404450867
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 11
   m_Sprite: {fileID: -590020554, guid: e970ebd0595055c44b7957bb66b09d26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7930466, g: 1, b: 0.42830187, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -307,7 +307,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1404450867
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 11
   m_Sprite: {fileID: -663880220, guid: e970ebd0595055c44b7957bb66b09d26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -391,7 +391,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1404450867
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1832596526, guid: bfedc08503147934cbf45ebd32f5388f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -523,6 +523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 353177854726456326}
   - component: {fileID: 7201492832927973880}
+  - component: {fileID: 1713976799014905206}
   m_Layer: 0
   m_Name: Counter Top
   m_TagString: Untagged
@@ -584,7 +585,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1404450867
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -789928702, guid: bfedc08503147934cbf45ebd32f5388f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -597,6 +598,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1713976799014905206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932369160473044834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &5069255074019327877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,7 +1159,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.23898494, y: 0.061559558}
+  m_Offset: {x: 0.2389849, y: 0.06155956}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1153,7 +1170,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.413333, y: 3.7770236}
+  m_Size: {x: 5.413333, y: 3.777024}
   m_EdgeRadius: 0
 --- !u!114 &420290318342345756
 MonoBehaviour:
@@ -1167,6 +1184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae18376384fe50c4f9d6c053145e82ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StandPositionOffset: {x: 0, y: -1.5}
   List_BahanMentah: []
   pilihanKini: []
   canvas: {fileID: 2786892760518291435}
