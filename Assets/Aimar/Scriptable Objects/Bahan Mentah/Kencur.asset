@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Kencur
   deskripsi: 
-  ikon_resep: {fileID: 0}
-  ikon_gameplay: {fileID: 0}
+  ikon_resep: {fileID: 21300000, guid: 7b03dc3077839f546ae41db50f6e12ab, type: 3}
+  ikon_gameplay: {fileID: 21300000, guid: 7b03dc3077839f546ae41db50f6e12ab, type: 3}
   kuantitasKini: 100
   hargaPerSatuan: 1250
   terbuka: 0

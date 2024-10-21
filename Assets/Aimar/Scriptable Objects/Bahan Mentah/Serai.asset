@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Serai
   deskripsi: 
-  ikon_resep: {fileID: 0}
-  ikon_gameplay: {fileID: 0}
-  kuantitasKini: 100
+  ikon_resep: {fileID: 21300000, guid: 544f890fdd652604ebbdae13ac869d1c, type: 3}
+  ikon_gameplay: {fileID: 21300000, guid: 544f890fdd652604ebbdae13ac869d1c, type: 3}
+  kuantitasKini: 92
   hargaPerSatuan: 1100
   terbuka: 0

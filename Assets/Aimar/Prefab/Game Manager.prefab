@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3235699423605956053}
   - component: {fileID: 6142214963017469070}
   - component: {fileID: 9002384096421107627}
+  - component: {fileID: 2922785826430809178}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exp_kini: 0
   uang_kini: 0
+  IsPaused: 0
 --- !u!114 &6142214963017469070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,10 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b98698fd94d2d1488e7601df5bb518b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsPaused: 0
   Segmen_Max: 6
-  RotasiJarumJam: {fileID: 0}
-  RotasiJarumMenit: {fileID: 0}
 --- !u!114 &9002384096421107627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +78,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MusicSource: {fileID: 1750629911083851886}
   SFXSource: {fileID: 2941783959117275827}
+--- !u!114 &2922785826430809178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123436265813293037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f33a4f280fb6f4aa2f613bdd7b5240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3997785246588737767
 GameObject:
   m_ObjectHideFlags: 0
