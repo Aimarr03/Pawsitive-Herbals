@@ -7,7 +7,6 @@ namespace AimarWork
 {
     public class UI_PlayerInventory : MonoBehaviour
     {
-        public Image UI_Image_Format;
         public RectTransform Container;
         private void Start()
         {
@@ -22,21 +21,23 @@ namespace AimarWork
             Bersihkan_Container();
             for(int index =  0; index < obj.Count; index++)
             {
-                Image UI_Image = Instantiate(UI_Image_Format, Container);
-                UI_Image.gameObject.SetActive(true);
+                Transform UI_Image = Container.GetChild(index);
 
-                UI_Image.sprite = obj[index].ikon_gameplay;
+                Image Data_Image = UI_Image.GetChild(0).GetComponent<Image>();
+                Data_Image.enabled = true;
+                Data_Image.sprite = obj[index].ikon_gameplay;
             }
         }
         private void Bersihkan_Container()
         {
             for(int index = 0; index < Container.childCount; index++)
             {
-                Image UI_Image = Container.GetChild(index).GetComponent<Image>();
-                if(UI_Image.gameObject != UI_Image_Format.gameObject)
-                {
-                    Destroy(UI_Image.gameObject);
-                }
+                Transform UI_Image = Container.GetChild(index);
+
+                Image Data_Image = UI_Image.GetChild(0).GetComponent<Image>();
+                Data_Image.enabled = false;
+                Data_Image.sprite = null;
+                
             }
         }
     }
