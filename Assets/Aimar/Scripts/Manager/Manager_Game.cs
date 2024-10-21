@@ -1,6 +1,8 @@
+using JetBrains.Annotations;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace AimarWork
 {
@@ -8,6 +10,9 @@ namespace AimarWork
     {
         public class Manager_Game : MonoBehaviour
         {
+            public readonly string SCENE_STORE= "Store";
+            public readonly string SCENE_BEDROOM = "Bedroom";
+            public readonly string SCENE_MAINMENU = "MainMenu";
             public static Manager_Game instance;
             PlayerInput inputs;
             public int exp_kini;
@@ -59,6 +64,10 @@ namespace AimarWork
             public void GunakanExp(int exp)
             {
                 exp_kini -= exp;
+            }
+            public void LoadScene(string scene)
+            {
+                SceneManager.LoadSceneAsync(scene);
             }
         }
     }

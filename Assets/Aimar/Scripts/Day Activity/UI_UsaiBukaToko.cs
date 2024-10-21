@@ -27,6 +27,7 @@ public class UI_UsaiBukaToko : MonoBehaviour
     private void Awake()
     {
         hidanganDiberikan = new Dictionary<SO_Jamu, int>();
+        UI_Rangkuman.SetActive(false);
     }
     void Start()
     {
@@ -54,13 +55,19 @@ public class UI_UsaiBukaToko : MonoBehaviour
 
     private void Customer_PergiDariToko()
     {
-        OnDisplayRangkuman();
+        int length = FindObjectsOfType<Customer>().Length;
+        if(!Manager_TokoJamu.instance.CekTokoBuka() && length == 0)
+        {
+            OnDisplayRangkuman();
+        }
     }
     private async void OnDisplayRangkuman()
     {
         await Task.Delay(1200);
+        UI_Rangkuman.SetActive(true);
         DateTime tanggalKini = Manager_Waktu.instance.TanggalKini;
-        tanggalTokoBuka.text = $"Tanggal: \t{tanggalKini.Date}/{tanggalKini.Month}/{tanggalKini.Year}";
+        tanggalTokoBuka.text = $"Tanggal: \t{tanggalKini.Day}/{tanggalKini.Month}/{tanggalKini.Year}";
+
 
         List<SO_Jamu> keys = new List<SO_Jamu>(hidanganDiberikan.Keys);
         List<int> values = new List<int>(hidanganDiberikan.Values);
@@ -80,24 +87,32 @@ public class UI_UsaiBukaToko : MonoBehaviour
             hargaKuantitas.text = $"Rp. {jamu.GetBaseKeuntungan().ToString("N2")}";
         }
 
-        float performa = Manager_TokoJamu.instance.kualitasPerforma;
+        float performa = Manager_TokoJamu.instance.kualitasPerforma();
         int formatSatuan = (int)performa;
         float performaPecahan = performa % 1;
-        for(int index = 0; index < formatSatuan; index++)
+        Debug.Log("Performa : " + performa);
+        Debug.Log("Format Satuan : " + formatSatuan);
+        Debug.Log("Performa Pecahan: "+performaPecahan);
+        for (int index = 0; index < formatSatuan; index++)
         {
-            Transform starKini = ContainerPemesanan.transform.GetChild(0);
+            Transform starKini = ContainerStar.transform.GetChild(0);
             starKini.GetChild(0).gameObject.SetActive(true);
         }
         if(formatSatuan < 5)
         {
-            Transform starTerakhir = ContainerPemesanan.transform.GetChild(formatSatuan);
+            Transform starTerakhir = ContainerStar.transform.GetChild(formatSatuan);
             GameObject gambarStarTerakhir = starTerakhir.GetChild(0).gameObject;
             gambarStarTerakhir.SetActive(true);
+            Debug.Log(gambarStarTerakhir.name);
             gambarStarTerakhir.GetComponent<Image>().fillAmount = performaPecahan;
         }
         overallCustomerDihidangkan.text = $"{performa.ToString("F1")}/{5}";
 
         uangYangDiperoleh.text = $"Uang Yang Diperoleh: Rp. {Manager_TokoJamu.instance.uangDiperoleh.ToString("N2")}";
         UI_Rangkuman.SetActive(true);
+    }
+    public void LoadSceneBedroom()
+    {
+        Manager_Game.instance.LoadScene(Manager_Game.instance.SCENE_BEDROOM);
     }
 }

@@ -31,7 +31,11 @@ namespace AimarWork
 
         public int pelangganMax = 0;
         public int pelangganDihidangkan = 0;
-        public float kualitasPerforma => pelangganDihidangkan / pelangganMax;
+        public float kualitasPerforma() 
+        { 
+            float kalkulasi = (pelangganDihidangkan * 1f) / pelangganMax;
+            return kalkulasi;
+        }
         public int uangDiperoleh;
         public int expDiperoleh;
 
@@ -41,7 +45,7 @@ namespace AimarWork
         public GameObject RotasiJarumMenit;
         
         private float DurasiKini;
-        [SerializeField] private float DurasiWaktu = 180;
+        [SerializeField] private float DurasiWaktu = 60;
         private bool IsOpen;
 
         private float KecepatanPutaranJam;
@@ -325,7 +329,7 @@ namespace AimarWork
         private void SetJam()
         {
             float derajatRotasiJam = DerajatRotasiPerJam * Manager_Waktu.instance.DataStatusHariKini.startingHour;
-            Debug.Log(derajatRotasiJam);
+            //Debug.Log(derajatRotasiJam);
             RotasiJarumJam.transform.rotation = Quaternion.Euler(0, 0, -derajatRotasiJam);
         }
         private void SetRotasiKecepatanJam() => KecepatanPutaranJam = (Manager_Waktu.instance.DataStatusHariKini.maxHour * DerajatRotasiPerJam) / DurasiWaktu;

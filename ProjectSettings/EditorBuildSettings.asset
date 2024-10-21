@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Aimar/Scene/Store.unity
+    guid: 6511b23911fa7c645b2bdc24655fe8c7
+  - enabled: 1
+    path: Assets/Aimar/Scene/Bedroom.unity
+    guid: cb056f3edc6ecb14394d504f2f3f3abc
   m_configObjects: {}

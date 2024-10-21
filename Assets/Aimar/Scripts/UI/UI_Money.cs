@@ -7,7 +7,7 @@ using UnityEngine;
 public class UI_Money : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI Text;
-
+    int uangKini = 0;
     private void Start()
     {
         Manager_Game.instance.OnChangeUang += Instance_OnChangeUang;
@@ -22,20 +22,21 @@ public class UI_Money : MonoBehaviour
     {
         StartCoroutine(StartChanging(Manager_Game.instance.uang_kini));
     }
-    private IEnumerator StartChanging(int targetValue)
+    private IEnumerator StartChanging(int UangTerbaru)
     {
-        int currentValue = int.Parse(Text.text); 
+        int currentValue = uangKini;
         float duration = 0.5f; 
         float elapsed = 0f; 
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            int newValue = (int)Mathf.Lerp(currentValue, targetValue, elapsed / duration);
-            Text.text = newValue.ToString("N0"); 
+            int newValue = (int)Mathf.Lerp(currentValue, UangTerbaru, elapsed / duration);
+            Text.text = "Rp. " + newValue.ToString("N0"); 
             yield return null; 
         }
 
-        Text.text = targetValue.ToString("N0");
+        Text.text = "Rp. " + UangTerbaru.ToString("N0");
+        uangKini += UangTerbaru;
     }
 }
