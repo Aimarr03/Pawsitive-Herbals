@@ -48,6 +48,7 @@ namespace AimarWork
             Manager_Game.instance.OnPauseInvoke -= CloseOptions;
             Manager_Game.instance.OnPauseInvoke += Resume;
         }
+        public void ExitToMainMenu() => Manager_Game.instance.ExitToMainMenu();
         public void ToggleMusic(bool value) => Manager_Audio.instance?.ToggleMusic(value);
         public void ToggleSFX(bool value) => Manager_Audio.instance?.ToggleSFX(value);
     }

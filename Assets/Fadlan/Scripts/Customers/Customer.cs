@@ -120,6 +120,7 @@ namespace FadlanWork
             if (currentPatience <= 0)
             {
                 currentState = CustomerState.Leaving;
+                customerAnimator.SetTrigger("Angry");
                 CustomersQueueManager.Instance.RemoveCustomer(this);
             }
         }
@@ -143,6 +144,7 @@ namespace FadlanWork
             if (currentPatience <= 0)
             {
                 currentState = CustomerState.Leaving;
+                customerAnimator.SetTrigger("Angry");
                 CustomersQueueManager.Instance.DequeueCustomer();
                 DihidangkanBenar?.Invoke(false);
             }
@@ -155,8 +157,11 @@ namespace FadlanWork
                 yield return null;
             }
             Debug.Log("Customer sedang berpikir");
-            yield return new WaitForSeconds(1);
+            customerAnimator.SetBool("Ordering", true);
+            yield return new WaitForSeconds(1.5f);
+            customerAnimator.SetBool("Ordering", false);
             wantToOrder = true;
+            
             Debug.Log("Customer siap memesan");
             jamu_inginDibeli = Manager_TokoJamu.instance.MencariPemesanan();
         }
@@ -237,6 +242,7 @@ namespace FadlanWork
             currentState = CustomerState.Leaving;
             CustomersQueueManager.Instance.DequeueCustomer();
             DihidangkanBenar?.Invoke(true);
+            customerAnimator.SetTrigger("Happy");
             StopAllCoroutines();
         }
         public void GettingDeliveredWrongJamu()
@@ -244,6 +250,7 @@ namespace FadlanWork
             Debug.Log("Customer Sedih!");
             currentState = CustomerState.Leaving;
             CustomersQueueManager.Instance.DequeueCustomer();
+            customerAnimator.SetTrigger("Angry");
             DihidangkanBenar?.Invoke(false);
             StopAllCoroutines();
         }

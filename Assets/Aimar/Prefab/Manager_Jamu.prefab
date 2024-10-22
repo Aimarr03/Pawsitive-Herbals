@@ -68,7 +68,10 @@ MonoBehaviour:
   olahanGagal: {fileID: 11400000, guid: 869e1bbf4e80ff742b5b147695af6e82, type: 2}
   pelangganMax: 0
   pelangganDihidangkan: 0
+  SebelumTokoBuka: {fileID: 8300000, guid: c73aeb6885cf69543992e7ca63727cb1, type: 3}
+  SetelahTokoBuka: {fileID: 8300000, guid: 2051915be3ce68642929c1ec7e49d880, type: 3}
   uangDiperoleh: 0
+  expDiperoleh: 0
   RotasiJarumJam: {fileID: 0}
   RotasiJarumMenit: {fileID: 0}
-  DurasiWaktu: 180
+  DurasiWaktu: 30

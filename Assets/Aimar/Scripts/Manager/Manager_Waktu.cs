@@ -58,6 +58,7 @@ namespace AimarWork
 
             }
         }
+        [Serializable]
         public struct DayStateData
         {
             public DayState dayState;
@@ -71,6 +72,7 @@ namespace AimarWork
                 this.maxHour = maxHour;
             }
         }
+        [Serializable]
         public enum DayState
         {
             Day,

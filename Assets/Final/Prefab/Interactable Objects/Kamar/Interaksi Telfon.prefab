@@ -4333,6 +4333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df2bea6f81dce342b5854ec944a812d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StandPositionOffset: {x: 0.5, y: 0}
   List_BahanMentah: []
   List_Jamu:
   - {fileID: 11400000, guid: 85311251436a78041b9ca959c528b8a6, type: 2}
