@@ -6,6 +6,7 @@ using AimarWork;
 using AimarWork.GameManagerLogic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace FadlanWork
 {
@@ -47,6 +48,7 @@ namespace FadlanWork
         private Vector3 targetPosition;
         [SerializeField] private SpriteRenderer visualCustomer;
 
+        public Image SpriteRenderer_JamuVIsual;
 
         public static event Action<bool> DihidangkanBenar;
         public static event Action PergiDariToko;
@@ -127,6 +129,7 @@ namespace FadlanWork
 
                 CurrentState = CustomerState.Leaving;
                 customerAnimator.SetTrigger("Angry");
+                customerAnimator.SetBool("Waiting Order", false);
                 CustomersQueueManager.Instance.RemoveCustomer(this);
             }
         }
@@ -152,6 +155,7 @@ namespace FadlanWork
                 CurrentState = CustomerState.Leaving;
                 customerAnimator.SetTrigger("Angry");
                 CustomersQueueManager.Instance.DequeueCustomer();
+                customerAnimator.SetBool("Waiting Order", false);
                 DihidangkanBenar?.Invoke(false);
             }
         }
@@ -164,12 +168,15 @@ namespace FadlanWork
             }
             Debug.Log("Customer sedang berpikir");
             customerAnimator.SetBool("Ordering", true);
+            wantToOrder = true;
             yield return new WaitForSeconds(1.5f);
             customerAnimator.SetBool("Ordering", false);
-            wantToOrder = true;
+            wantToOrder = false;
             
             Debug.Log("Customer siap memesan");
             jamu_inginDibeli = Manager_TokoJamu.instance.MencariPemesanan();
+            customerAnimator.SetBool("Waiting Order", true);
+            SpriteRenderer_JamuVIsual.sprite = jamu_inginDibeli.ikon;
         }
 
         public void HandleLeaving()
@@ -211,26 +218,6 @@ namespace FadlanWork
             lastQueueNumber = queueNumber;
         }
 
-        public void AskOrder()
-        {
-            if (orderAsked || !wantToOrder)
-                return;
-            Debug.Log("Customer ingin memesan " + jamu_inginDibeli.nama);
-            wantToOrder = false;
-            orderAsked = true;
-            //await Task.Delay(1000);
-            Manager_TokoJamu.instance.SetJamu(jamu_inginDibeli);
-
-            if (thinkingCoroutine != null) StopCoroutine(thinkingCoroutine);
-
-            thinkingCoroutine = StartCoroutine(ThinkingForOrder());
-        }
-
-        IEnumerator ThinkingForOrder()
-        {
-            yield return new WaitForSeconds(UnityEngine.Random.Range(2, 3));
-            Debug.Log("Order: " + Manager_TokoJamu.instance.jamu_difokuskan.nama);
-        }
 
         IEnumerator ImpatienceEmotion()
         {
@@ -248,6 +235,7 @@ namespace FadlanWork
         public void GettingDeliveredRightJamu()
         {
             Debug.Log("Customer Bahagia!");
+            customerAnimator.SetBool("Waiting Order", false);
             CurrentState = CustomerState.Leaving;
             CustomersQueueManager.Instance.DequeueCustomer();
             DihidangkanBenar?.Invoke(true);
@@ -257,6 +245,7 @@ namespace FadlanWork
         public void GettingDeliveredWrongJamu()
         {
             Debug.Log("Customer Sedih!");
+            customerAnimator.SetBool("Waiting Order", false);
             CurrentState = CustomerState.Leaving;
             CustomersQueueManager.Instance.DequeueCustomer();
             customerAnimator.SetTrigger("Angry");

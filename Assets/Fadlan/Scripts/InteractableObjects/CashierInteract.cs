@@ -15,11 +15,7 @@ namespace FadlanWork
             Customer firstCustomer = CustomersQueueManager.Instance.GetFirst();
             if (firstCustomer != null)
             {
-                if (firstCustomer.wantToOrder)
-                {
-                    firstCustomer.AskOrder();
-                }
-                else if(player.inventory.jamu != null)
+                if(player.inventory.jamu != null && !firstCustomer.wantToOrder)
                 {
                     Debug.Log("Memberikan Jamu ke Customer");
                     Manager_TokoJamu.instance.HandleMenghidangiJamu(firstCustomer);
