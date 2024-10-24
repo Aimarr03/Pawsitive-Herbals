@@ -17,13 +17,13 @@ namespace FadlanWork
         public GameObject customerPrefab;
 
         public List<Customer> CustomersQueue = new();
+        public event Action OnQueueChanged;
         public List<SO_Customer> List_Data_Customer;
-        
         public event Action OnAddedQueue;
+        public event Action OnRemovedQueue;
         public float durationToSpawn;
         public int maxQueue = 5;
         public float currentDuration;
-
         void Awake()
         {
             if (Instance != null)
@@ -34,15 +34,20 @@ namespace FadlanWork
 
         void Start()
         {
-            
+
         }
         private void Update()
         {
             if (Manager_Game.instance.IsPaused) return;
-            
-            if (!Manager_TokoJamu.instance.CekTokoBuka() || CustomersQueue.Count >= maxQueue) return;
+            if (CustomersQueue.Count >= maxQueue) return;
+
+            if (!Manager_TokoJamu.instance.CekTokoBuka()) {
+                ClearQueueExceptFirst();
+                return;
+            };
+
             currentDuration += Time.deltaTime;
-            if(currentDuration > durationToSpawn)
+            if (currentDuration > durationToSpawn)
             {
                 currentDuration = 0;
                 NewCustomer();
@@ -64,6 +69,8 @@ namespace FadlanWork
 
         public int GetQueueNumber(Customer customer)
         {
+            if (!CustomersQueue.Contains(customer)) return -1;
+
             return CustomersQueue.IndexOf(customer);
         }
 
@@ -74,13 +81,28 @@ namespace FadlanWork
 
         public void RemoveCustomer(Customer customer)
         {
+            customer.HandleLeaving();
             CustomersQueue.Remove(customer);
+            OnQueueChanged?.Invoke();
+            
             Destroy(customer.gameObject, 1.8f);
+            OnRemovedQueue?.Invoke();
         }
 
         public Customer GetFirst()
         {
             return CustomersQueue.First();
+        }
+
+        public void ClearQueueExceptFirst()
+        {
+            if (CustomersQueue.Count <= 1)
+                return;
+
+            for (int i = CustomersQueue.Count - 1; i > 0; i--)
+            {
+                RemoveCustomer(CustomersQueue[i]);
+            }
         }
     }
 }
