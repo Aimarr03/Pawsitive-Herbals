@@ -75,3 +75,6 @@ MonoBehaviour:
   RotasiJarumJam: {fileID: 0}
   RotasiJarumMenit: {fileID: 0}
   DurasiWaktu: 30
+  visualMauTutup: {fileID: 0}
+  SFX_TickTack: {fileID: 0}
+  SudahTutup: {fileID: 8300000, guid: 930fb55b335068d47a98afe7cd524383, type: 3}
