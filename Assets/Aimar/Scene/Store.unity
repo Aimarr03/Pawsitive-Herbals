@@ -2118,7 +2118,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dikit Lagi Tutup
+  m_text: 1 Jam Lagi
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 74abd3f48bf021649bb9f8f30ec6f198, type: 2}
   m_sharedMaterial: {fileID: 2932717697147851802, guid: 74abd3f48bf021649bb9f8f30ec6f198, type: 2}
@@ -7041,7 +7041,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 234417e401116ac45bb370496214fcc5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 773b43d7e96998e4fb865e97ae268b70, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
