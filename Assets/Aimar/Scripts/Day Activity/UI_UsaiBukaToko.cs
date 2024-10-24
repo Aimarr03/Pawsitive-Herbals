@@ -24,6 +24,7 @@ public class UI_UsaiBukaToko : MonoBehaviour
     public GameObject ContainerStar;
     public TextMeshProUGUI overallCustomerDihidangkan;
 
+    public AudioClip UsaiBukaToko;
     private void Awake()
     {
         hidanganDiberikan = new Dictionary<SO_Jamu, int>();
@@ -63,7 +64,9 @@ public class UI_UsaiBukaToko : MonoBehaviour
     }
     private async void OnDisplayRangkuman()
     {
+        Manager_Audio.instance.StopPlayingMusic();
         await Task.Delay(1200);
+        Manager_Audio.instance.PlaySFX(UsaiBukaToko);
         UI_Rangkuman.SetActive(true);
         DateTime tanggalKini = Manager_Waktu.instance.TanggalKini;
         tanggalTokoBuka.text = $"Tanggal: \t{tanggalKini.Day}/{tanggalKini.Month}/{tanggalKini.Year}";

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Gagal
   deskripsi: 
-  ikon_resep: {fileID: 0}
-  ikon_gameplay: {fileID: 0}
+  ikon_resep: {fileID: 21300000, guid: e8148e5507d8d254a829e4ab737e3904, type: 3}
+  ikon_gameplay: {fileID: 21300000, guid: e8148e5507d8d254a829e4ab737e3904, type: 3}
   Bahan_Original: []
   tipePengolahan: 0
   statusPengolahan: 0

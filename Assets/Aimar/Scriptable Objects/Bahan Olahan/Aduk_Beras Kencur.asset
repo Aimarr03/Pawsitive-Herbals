@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Adukkan Beras Kencur
   deskripsi: 
-  ikon_resep: {fileID: 0}
-  ikon_gameplay: {fileID: 0}
+  ikon_resep: {fileID: 21300000, guid: 35051e4514313ea4db89ae5b5bc29ac2, type: 3}
+  ikon_gameplay: {fileID: 21300000, guid: 35051e4514313ea4db89ae5b5bc29ac2, type: 3}
   Bahan_Original:
   - {fileID: 11400000, guid: ae57805d4340edd409cbf2e2646c5dfa, type: 2}
   - {fileID: 11400000, guid: c61771f09fe014e46a04f943affa64d9, type: 2}

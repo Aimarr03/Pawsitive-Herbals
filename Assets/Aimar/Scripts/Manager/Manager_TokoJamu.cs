@@ -215,6 +215,7 @@ namespace AimarWork
             if(List_PengambilanBahan.Count == 0)
             {
                 Debug.Log("Gagal Membuat Olahan");
+                playerInventory.BersihkanSemuaBahanDiInventory();
                 return olahanGagal;    
             }
             else
@@ -280,9 +281,6 @@ namespace AimarWork
             {
                 exp = 0;
             }
-
-            int sisapuluhan = exp % 100;
-            exp = exp - sisapuluhan;
             return exp;
         }
         

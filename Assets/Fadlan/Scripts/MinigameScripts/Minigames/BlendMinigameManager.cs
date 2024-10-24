@@ -1,3 +1,4 @@
+using AimarWork;
 using Sirenix.OdinInspector;
 using System;
 using TMPro;
@@ -33,6 +34,7 @@ namespace FadlanWork
         [Title("Visual Representation")]
         public Image timerVisual;
         public Button CancelButton;
+        public AudioClip blendAudio;
 
         private float blendTiming = 0f;
         private float blendTimer = 0f;
@@ -135,6 +137,7 @@ namespace FadlanWork
             blendTiming += BlendGainPerClick;
             blenderAnimator.SetTrigger("Numbuk");
             blendTiming = Mathf.Clamp(blendTiming, 0f, 1f);
+            Manager_Audio.instance.PlaySFX(blendAudio);
         }
 
         private void CloseGame()

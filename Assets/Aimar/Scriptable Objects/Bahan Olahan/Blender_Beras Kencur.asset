@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Rebus Kencur
   deskripsi: 
-  ikon_resep: {fileID: 0}
-  ikon_gameplay: {fileID: 0}
+  ikon_resep: {fileID: 21300000, guid: 404e0a9f2a9820749ba7d2ee870aa090, type: 3}
+  ikon_gameplay: {fileID: 21300000, guid: 404e0a9f2a9820749ba7d2ee870aa090, type: 3}
   Bahan_Original:
   - {fileID: 11400000, guid: f0197f27e1f31a447ab73eb558448380, type: 2}
   tipePengolahan: 3

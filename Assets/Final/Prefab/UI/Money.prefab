@@ -157,15 +157,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 100000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0e9870599f535aa4faee30cc18628184, type: 2}
-  m_sharedMaterial: {fileID: -1679326906485094945, guid: 0e9870599f535aa4faee30cc18628184, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 14a3da451dff4aa4782408446bc204f0, type: 2}
+  m_sharedMaterial: {fileID: -1679326906485094945, guid: 14a3da451dff4aa4782408446bc204f0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4293784315
+  m_fontColor: {r: 0.9843138, g: 0.9490197, b: 0.9294118, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

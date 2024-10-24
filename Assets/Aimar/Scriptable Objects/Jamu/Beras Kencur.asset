@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Beras Kencur
   level: 0
-  ikon: {fileID: 0}
+  ikon: {fileID: 21300000, guid: d5aa56e748df9a748ba7c199688d01c3, type: 3}
   deskripsi: "kjhfkhqk\t"
   manfaat: 'kqhewrqhurhqir
 

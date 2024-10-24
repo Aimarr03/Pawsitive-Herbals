@@ -1,3 +1,5 @@
+using DG.Tweening;
+using FadlanWork;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +13,13 @@ namespace AimarWork
         private void Start()
         {
             PlayerInventory.List_Berubah += PlayerInventory_List_Berubah;
+            MinigameInteract.TidakBisa += MinigameInteract_TidakBisa;
         }
+
         private void OnDisable()
         {
             PlayerInventory.List_Berubah -= PlayerInventory_List_Berubah;
+            MinigameInteract.TidakBisa -= MinigameInteract_TidakBisa;
         }
         private void PlayerInventory_List_Berubah(List<SO_BahanBase> obj)
         {
@@ -39,6 +44,12 @@ namespace AimarWork
                 Data_Image.sprite = null;
                 
             }
+        }
+        private void MinigameInteract_TidakBisa()
+        {
+            Container.DOAnchorPosY(Container.anchoredPosition.y + 30f, 0.25f)
+                 .SetLoops(2, LoopType.Yoyo)  // Limited jumps
+                 .SetEase(Ease.InOutSine);
         }
     }
 }

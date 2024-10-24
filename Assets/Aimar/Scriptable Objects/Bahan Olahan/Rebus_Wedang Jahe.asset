@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Rebus Wedang Jahe
   deskripsi: 
-  ikon_resep: {fileID: 0}
-  ikon_gameplay: {fileID: 0}
+  ikon_resep: {fileID: 21300000, guid: ed594d8129578784fa5f7fc7a3d49265, type: 3}
+  ikon_gameplay: {fileID: 21300000, guid: ed594d8129578784fa5f7fc7a3d49265, type: 3}
   Bahan_Original:
   - {fileID: 11400000, guid: 34928521de63a8d438c80fe13db04ac9, type: 2}
   - {fileID: 11400000, guid: 4f971672c3b7aaa428faac92b62256fa, type: 2}
