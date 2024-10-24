@@ -202,6 +202,8 @@ MonoBehaviour:
   MaxTurnCount: 8
   FormatMixing: {fileID: 2594147208089839953}
   containerMaxMixing: {fileID: 8443079409843745609}
+  mixingSound: {fileID: 8300000, guid: 6ac1965bd8771ed4e89fe5e0110449c4, type: 3}
+  CancelButton: {fileID: 6079340321768722936}
 --- !u!95 &5726076369748088821
 Animator:
   serializedVersion: 5
@@ -725,10 +727,10 @@ RectTransform:
   - {fileID: 4376048092838487329}
   m_Father: {fileID: 4050400986553753724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2714724240592826672
 GameObject:
@@ -1732,7 +1734,7 @@ GameObject:
   - component: {fileID: 4855306266755988707}
   - component: {fileID: 6079340321768722936}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Cancel Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

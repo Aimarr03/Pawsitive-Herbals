@@ -11,6 +11,7 @@ namespace AimarWork
         public List<SO_BahanBase> ListBahan;
         public SO_Jamu jamu;
         public static event Action<List<SO_BahanBase>> List_Berubah;
+        public int maximum = 6;
         private void Start()
         {
             StoreMinigameManager.SelesaiMengolah += StoreMinigameManager_SelesaiMengolah;
@@ -59,11 +60,15 @@ namespace AimarWork
         }
         public void PenambahanBahan(SO_BahanMentah bahanMentah)
         {
-            if (ListBahan.Contains(bahanMentah)) return;
+            if (ListBahan.Contains(bahanMentah) || maximum < 6)
+            {
+                return;
+            }
             ListBahan.Add(bahanMentah);
             bahanMentah.kuantitasKini--;
             
             List_Berubah?.Invoke(ListBahan);
+            maximum++;
         }
         public void PenguranganBahan(SO_BahanMentah bahanMentah)
         {
@@ -73,6 +78,7 @@ namespace AimarWork
                 bahanMentah.kuantitasKini++;
                 
                 List_Berubah?.Invoke(ListBahan);
+                maximum--;
             }
         }
         public void PembarisanInventory()

@@ -243,10 +243,10 @@ RectTransform:
   - {fileID: 8527596544897177935}
   m_Father: {fileID: 4277342265823522618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2464033639585129799
 GameObject:
@@ -961,6 +961,7 @@ MonoBehaviour:
   TimingPosition: 0.7
   timerVisual: {fileID: 8294176998945837456}
   CancelButton: {fileID: 1030540579851117439}
+  blendAudio: {fileID: 8300000, guid: abf612dec2949c04c8f16159d101c568, type: 3}
 --- !u!95 &3223035037088031455
 Animator:
   serializedVersion: 5

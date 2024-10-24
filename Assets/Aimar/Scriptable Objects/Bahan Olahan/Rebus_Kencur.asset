@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Rebus Parsial Kencur
   deskripsi: 
-  ikon_resep: {fileID: 0}
-  ikon_gameplay: {fileID: 0}
+  ikon_resep: {fileID: 21300000, guid: ed594d8129578784fa5f7fc7a3d49265, type: 3}
+  ikon_gameplay: {fileID: 21300000, guid: ed594d8129578784fa5f7fc7a3d49265, type: 3}
   Bahan_Original:
   - {fileID: 11400000, guid: 2b890e5454ce00f4481538280542ea11, type: 2}
   - {fileID: 11400000, guid: fe0ca5ec92fb6d342b5aafb55af8ef10, type: 2}

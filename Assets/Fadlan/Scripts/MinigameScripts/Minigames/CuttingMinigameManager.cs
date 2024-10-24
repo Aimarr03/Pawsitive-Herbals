@@ -1,3 +1,4 @@
+using AimarWork;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,7 @@ namespace FadlanWork
 
         [Title("Visual")]
         public Button CancelButton;
+        public AudioClip CuttingAudio;
 
         private int cutCounter = 0;
         private float nextCutSpawnTime = 0f;
@@ -205,6 +207,10 @@ namespace FadlanWork
         {
             cuttingAnimator.SetTrigger("Cutting");
             CheckForCuts();
+        }
+        public void InvokeSound()
+        {
+            Manager_Audio.instance.PlaySFX(CuttingAudio);
         }
 
         private void CloseGame()

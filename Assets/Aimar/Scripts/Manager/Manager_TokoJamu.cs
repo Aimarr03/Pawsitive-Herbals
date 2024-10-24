@@ -1,7 +1,9 @@
 using AimarWork.GameManagerLogic;
+using DG.Tweening;
 using FadlanWork;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -46,7 +48,7 @@ namespace AimarWork
         [Title("Data Waktu")]
         public GameObject RotasiJarumJam;
         public GameObject RotasiJarumMenit;
-        
+
         private float DurasiKini;
         [SerializeField] private float DurasiWaktu = 60;
         private bool IsOpen;
@@ -56,6 +58,12 @@ namespace AimarWork
         private float DerajatRotasiPerJam = 30;
 
         public event Action<SO_Jamu> MenghidangkanDenganBenar;
+
+        [Title("Data Mau Tutup Toko")]
+        public RectTransform visualMauTutup;
+        public AudioSource SFX_TickTack;
+        public AudioClip SudahTutup;
+        private float DurasiMauTutup = 0;
         private void Awake()
         {
             if(instance == null)
@@ -82,6 +90,8 @@ namespace AimarWork
                     Jamu_Terbuka.Add(jamu);
                 }
             }
+            DurasiMauTutup = (DurasiWaktu / Manager_Waktu.instance.DataStatusHariKini.maxHour) * (Manager_Waktu.instance.DataStatusHariKini.maxHour - 1);
+            Debug.Log("Interval Satu Jam Efek " +DurasiMauTutup);
         }
         private void Start()
         {
@@ -89,11 +99,15 @@ namespace AimarWork
             SetRotasiKecepatanJam();
             SetRotasiKecepatanMenit();
             CustomersQueueManager.Instance.OnAddedQueue += Instance_OnQueueChanged;
+            Manager_Audio.MuteSFX += Manager_Audio_MuteSFX;
             Manager_Audio.instance.PlayMusic(SebelumTokoBuka);
+            visualMauTutup.gameObject.SetActive(false);
         }
+
         private void OnDisable()
         {
             CustomersQueueManager.Instance.OnAddedQueue -= Instance_OnQueueChanged;
+            Manager_Audio.MuteSFX -= Manager_Audio_MuteSFX;
         }
         private void Update()
         {
@@ -101,7 +115,7 @@ namespace AimarWork
             switch (Manager_Waktu.instance.DataStatusHariKini.dayState)
             {
                 case DayState.Day:
-                    Logika_Siang();
+                    if(IsOpen) Logika_Siang();
                     break;
                 case DayState.Night:
                     break;
@@ -215,6 +229,7 @@ namespace AimarWork
             if(List_PengambilanBahan.Count == 0)
             {
                 Debug.Log("Gagal Membuat Olahan");
+                playerInventory.BersihkanSemuaBahanDiInventory();
                 return olahanGagal;    
             }
             else
@@ -280,9 +295,6 @@ namespace AimarWork
             {
                 exp = 0;
             }
-
-            int sisapuluhan = exp % 100;
-            exp = exp - sisapuluhan;
             return exp;
         }
         
@@ -319,6 +331,9 @@ namespace AimarWork
             else
             {
                 IsOpen = false;
+                visualMauTutup.gameObject.SetActive(false);
+                SFX_TickTack.Stop();
+                Manager_Audio.instance.PlaySFX(SudahTutup);
             }
         }
         public void BukaToko()
@@ -328,6 +343,7 @@ namespace AimarWork
             DurasiKini = 0;
             IsOpen = true;
             Manager_Audio.instance.PlayMusic(SetelahTokoBuka);
+            StartCoroutine(StartTickingForClosing());
         }
         
         public bool CekTokoBuka() => IsOpen;
@@ -337,8 +353,24 @@ namespace AimarWork
             //Debug.Log(derajatRotasiJam);
             RotasiJarumJam.transform.rotation = Quaternion.Euler(0, 0, -derajatRotasiJam);
         }
+        private IEnumerator StartTickingForClosing()
+        {
+            yield return new WaitUntil(() => DurasiKini > DurasiMauTutup);
+            visualMauTutup.gameObject.SetActive(true);
+            visualMauTutup.DOAnchorPosY(visualMauTutup.anchoredPosition.y + 0.35f, 1.5f)
+                 .SetLoops(-1, LoopType.Yoyo)
+                 .SetEase(Ease.InOutSine);
+            SFX_TickTack.Play();
+            SFX_TickTack.volume = 0.3f;
+            SFX_TickTack.DOFade(0.8f, DurasiWaktu - (DurasiMauTutup/1.5f));
+
+        }
         private void SetRotasiKecepatanJam() => KecepatanPutaranJam = (Manager_Waktu.instance.DataStatusHariKini.maxHour * DerajatRotasiPerJam) / DurasiWaktu;
         private void SetRotasiKecepatanMenit() => KecepatanPutaranMenit = 360 / (DurasiWaktu / Manager_Waktu.instance.DataStatusHariKini.maxHour);
+        private void Manager_Audio_MuteSFX(bool muteValue)
+        {
+            SFX_TickTack.mute = muteValue;
+        }
         #endregion
     }
 }

@@ -1,3 +1,5 @@
+using AimarWork;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using System;
 using TMPro;
@@ -30,13 +32,18 @@ namespace FadlanWork
         [Title("Visual Representation Duration")]
         public TextMeshProUGUI textVisual;
         public Button CancelButton;
+        public AudioSource audioSource;
+        public Animator animator;
 
         private float boilTiming = 0f;
         private int boilCounter = 0;
         private int score = 0;
 
         private GameState currentState = GameState.NotStarted;
-
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+        }
         void Start()
         {
             PerfectRectTransform.anchorMin = new Vector2(PerfectRectTransform.anchorMin.x, TimingPosition - PerfectRange / 2);
@@ -45,6 +52,14 @@ namespace FadlanWork
 
             TimingSlider.value = boilTiming;
             textVisual.text = "--/--";
+
+            Manager_Audio.MuteSFX += Manager_Audio_MuteSFX;
+
+            animator.speed = 0;
+        }
+        private void OnDisable()
+        {
+            Manager_Audio.MuteSFX -= Manager_Audio_MuteSFX;
         }
 
         void Update()
@@ -96,6 +111,8 @@ namespace FadlanWork
             }
             else
             {
+                animator.speed = 0;
+                audioSource.DOFade(0, 1.3f);
                 EndBoil();
             }
         }
@@ -138,6 +155,8 @@ namespace FadlanWork
             TimingSlider.value = boilTiming;
             textVisual.text = $"{boilCounter}/{BoilCount}";
             CancelButton.interactable = false;
+            audioSource.DOFade(1, 1.3f);
+            animator.speed = 1;
             NextBoil();
         }
 
@@ -160,6 +179,10 @@ namespace FadlanWork
         private void UpdateVisualTimer()
         {
 
+        }
+        private void Manager_Audio_MuteSFX(bool isMute)
+        {
+            audioSource.mute = isMute;
         }
     }
 }

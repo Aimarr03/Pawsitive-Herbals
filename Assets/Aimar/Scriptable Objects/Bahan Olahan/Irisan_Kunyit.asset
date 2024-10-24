@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Irisan Kunyit
   deskripsi: 
-  ikon_resep: {fileID: 0}
-  ikon_gameplay: {fileID: 0}
+  ikon_resep: {fileID: 21300000, guid: 594069eec2f5d9042a84d7aecc8aea9f, type: 3}
+  ikon_gameplay: {fileID: 21300000, guid: 594069eec2f5d9042a84d7aecc8aea9f, type: 3}
   Bahan_Original:
   - {fileID: 11400000, guid: ce0e115c54983f84eae4a959e5ac1d70, type: 2}
   tipePengolahan: 2

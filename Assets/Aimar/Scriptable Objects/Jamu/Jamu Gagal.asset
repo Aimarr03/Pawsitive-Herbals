@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Gagal Jamu
   level: 0
-  ikon: {fileID: 0}
+  ikon: {fileID: 21300000, guid: 64251d0a979993d4a8aaddbf72bd4db2, type: 3}
   deskripsi: 
   manfaat: 
   List_Bahan_Yang_Diperlukan: []

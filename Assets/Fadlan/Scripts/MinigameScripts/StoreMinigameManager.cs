@@ -1,5 +1,6 @@
 using AimarWork;
 using AimarWork.GameManagerLogic;
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace FadlanWork
             Instance = this;
         }
 
-        public void StartMinigame(string minigameName)
+        public async void StartMinigame(string minigameName)
         {
             if (IsMinigameActive)
                 return;
@@ -53,21 +54,24 @@ namespace FadlanWork
                     ActiveMinigameObject = Instantiate(BoilMinigamePrefab);
                     break;
             }
-
+            ActiveMinigameObject.transform.GetChild(0).DOLocalMoveY(1080, 0);
+            await ActiveMinigameObject.transform.GetChild(0).DOLocalMoveY(0, 0.8f).SetEase(Ease.OutExpo).AsyncWaitForCompletion();
             IsMinigameActive = true;
         }
-        public void CancelMiniGame()
+        public async void CancelMiniGame()
         {
+            await ActiveMinigameObject.transform.GetChild(0).DOLocalMoveY(1080, 0.8f).SetEase(Ease.OutExpo).AsyncWaitForCompletion();
             Destroy(ActiveMinigameObject);
             IsMinigameActive = false;
         }
-        public void EndMinigame(float score)
+        public async void EndMinigame(float score)
         {
             if (!IsMinigameActive)
                 return;
             
             Destroy(ActiveMinigameObject);
             SelesaiMengolah?.Invoke(tipe_pengolahan, score);
+            await ActiveMinigameObject.transform.GetChild(0).DOLocalMoveY(1080, 0.8f).SetEase(Ease.OutExpo).AsyncWaitForCompletion();
             IsMinigameActive = false;
         }
     }

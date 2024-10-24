@@ -1,3 +1,4 @@
+using AimarWork;
 using Sirenix.OdinInspector;
 using System;
 using TMPro;
@@ -32,6 +33,7 @@ namespace FadlanWork
         [Title("Format Max Mixing")]
         [SerializeField] private RectTransform FormatMixing;
         [SerializeField] private RectTransform containerMaxMixing;
+        public AudioClip mixingSound;
         public Button CancelButton;
 
         private float mixTiming = 0f;
@@ -162,6 +164,7 @@ namespace FadlanWork
         private void HandleMixPress()
         {
             mixAnimator.SetTrigger("Mixing");
+            Manager_Audio.instance.PlaySFX(mixingSound);
             if (Mathf.Abs(mixTiming - timingPosition) <= PerfectRange / 2)
             {
                 PerfectMix();
