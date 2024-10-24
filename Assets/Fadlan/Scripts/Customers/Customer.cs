@@ -28,6 +28,12 @@ namespace FadlanWork
         [Header("Customer Info")]
         public float currentPatience;
         public int queueNumber = -1;
+<<<<<<< Updated upstream
+=======
+        public bool wantToOrder = false;
+        public SO_Jamu jamu_inginDibeli = null;
+        public CustomerState CurrentState;
+>>>>>>> Stashed changes
 
         private int lastQueueNumber;
         private Vector3 queuePosition;
@@ -35,7 +41,6 @@ namespace FadlanWork
         private bool impatient = false;
 
         private NavMeshAgent agent;
-        private CustomerState currentState;
         private Coroutine impatientCoroutine;
         private Coroutine thinkingCoroutine;
 
@@ -50,16 +55,27 @@ namespace FadlanWork
             agent.updateRotation = false;
             agent.updateUpAxis = false;
 
-            currentState = CustomerState.WaitingInQueue;
+            CurrentState = CustomerState.WaitingInQueue;
 
+<<<<<<< Updated upstream
             CustomersQueueManager.Instance.OnQueueChanged += QueueChanged;
+=======
+            CustomersQueueManager.Instance.OnAddedQueue += QueueChanged;
+            CustomersQueueManager.Instance.OnRemovedQueue -= QueueChanged;
+>>>>>>> Stashed changes
             QueueChanged();
         }
 
         void OnDestroy()
         {
+<<<<<<< Updated upstream
             CustomersQueueManager.Instance.OnQueueChanged -= QueueChanged;
 
+=======
+            CustomersQueueManager.Instance.OnAddedQueue -= QueueChanged;
+            CustomersQueueManager.Instance.OnRemovedQueue -= QueueChanged;
+            PergiDariToko?.Invoke();
+>>>>>>> Stashed changes
             if (impatientCoroutine != null)
                 StopCoroutine(impatientCoroutine);
 
@@ -73,7 +89,16 @@ namespace FadlanWork
         if (Manager_Waktu.instance.IsPaused) return;
         switch (currentState)
         {
+<<<<<<< Updated upstream
             switch (currentState)
+=======
+            if (Manager_Game.instance.IsPaused) return;
+            if (StoreMinigameManager.Instance.IsMinigameActive) return;
+            customerAnimator.SetBool("Moving", Vector2.Distance(transform.position, targetPosition) > 0.1f);
+            /*Debug.Log(transform.position);
+            Debug.Log(targetPosition);*/
+            switch (CurrentState)
+>>>>>>> Stashed changes
             {
                 case CustomerState.WaitingInQueue:
                     HandleWaitingInQueue();
@@ -105,7 +130,12 @@ namespace FadlanWork
 
             if (currentPatience <= 0)
             {
+<<<<<<< Updated upstream
                 currentState = CustomerState.Leaving;
+=======
+                CurrentState = CustomerState.Leaving;
+                customerAnimator.SetTrigger("Angry");
+>>>>>>> Stashed changes
                 CustomersQueueManager.Instance.RemoveCustomer(this);
             }
         }
@@ -128,14 +158,26 @@ namespace FadlanWork
 
             if (currentPatience <= 0)
             {
+<<<<<<< Updated upstream
                 currentState = CustomerState.Leaving;
+=======
+                CurrentState = CustomerState.Leaving;
+                customerAnimator.SetTrigger("Angry");
+>>>>>>> Stashed changes
                 CustomersQueueManager.Instance.DequeueCustomer();
             }
         }
 
-        private void HandleLeaving()
+        public void HandleLeaving()
         {
+<<<<<<< Updated upstream
             agent.SetDestination(CustomersQueueManager.Instance.QueueSpawnTransform.position);
+=======
+            CurrentState = CustomerState.Leaving;
+            Vector3 targetPos = CustomersQueueManager.Instance.QueueSpawnTransform.position;
+            agent.SetDestination(targetPos);
+            targetPosition = targetPos;
+>>>>>>> Stashed changes
         }
 
         void QueueChanged()
@@ -152,12 +194,14 @@ namespace FadlanWork
                     impatient = false;
             }
 
-            if (currentState == CustomerState.WaitingInQueue && queueNumber == 0)
+            if (CurrentState == CustomerState.WaitingInQueue && queueNumber == 0)
             {
-                currentState = CustomerState.Ordering;
+                CurrentState = CustomerState.Ordering;
                 currentPatience = OrderPatience;
                 impatient = false;
             }
+
+            visualCustomer.sortingOrder = 10 - queueNumber;
 
             lastQueueNumber = queueNumber;
         }
@@ -196,5 +240,31 @@ namespace FadlanWork
             }
             ImpatientObject.SetActive(false);
         }
+<<<<<<< Updated upstream
+=======
+        public void GettingDeliveredRightJamu()
+        {
+            Debug.Log("Customer Bahagia!");
+            CurrentState = CustomerState.Leaving;
+            CustomersQueueManager.Instance.DequeueCustomer();
+            DihidangkanBenar?.Invoke(true);
+            customerAnimator.SetTrigger("Happy");
+            StopAllCoroutines();
+        }
+        public void GettingDeliveredWrongJamu()
+        {
+            Debug.Log("Customer Sedih!");
+            CurrentState = CustomerState.Leaving;
+            CustomersQueueManager.Instance.DequeueCustomer();
+            customerAnimator.SetTrigger("Angry");
+            DihidangkanBenar?.Invoke(false);
+            StopAllCoroutines();
+        }
+
+        public void SetUpData(SO_Customer data)
+        {
+            visualCustomer.sprite = data.tipeKarakter;
+        }
+>>>>>>> Stashed changes
     }
 }

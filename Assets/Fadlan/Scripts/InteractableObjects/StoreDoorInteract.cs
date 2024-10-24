@@ -38,7 +38,7 @@ namespace FadlanWork
             {
                 Vector3 newPos = playerTransform.position;
 
-                if (Vector3.Distance(startPos, newPos) > 1f)
+                if (Vector3.Distance(startPos, newPos) > 1.5f)
                 {
                     cancelled = true;
                     break;
