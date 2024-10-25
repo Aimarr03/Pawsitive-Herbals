@@ -50,13 +50,13 @@ namespace AimarWork
         {
             SFXSource.mute = !value;
             MusicMute = SFXSource.mute;
-            MuteMusic?.Invoke(MusicMute);
+            MuteSFX?.Invoke(MusicMute);
         }
         public void ToggleMusic(bool value)
         {
             MusicSource.mute = !value;
             SFXMute = SFXSource.mute;
-            MuteSFX.Invoke(SFXMute);
+            MuteMusic?.Invoke(SFXMute);
         }
     }
 }
