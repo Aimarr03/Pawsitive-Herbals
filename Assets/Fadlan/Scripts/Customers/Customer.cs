@@ -16,6 +16,7 @@ namespace FadlanWork
         {
             WaitingInQueue,
             Ordering,
+            Consuming,
             Leaving
         }
 
@@ -25,11 +26,14 @@ namespace FadlanWork
         public float OrderPatience = 25;
         public float TurnImpatientPatience = 15;
         public int ImpatientSeconds = 5;
+        public float ConsumingTimer = 10f;
         public GameObject ImpatientObject;
 
         [Header("Customer Info")]
         public float currentPatience;
         public int queueNumber = -1;
+        public int SeatNumber = -1;
+
 
         public bool wantToOrder = false;
         public SO_Jamu jamu_inginDibeli = null;
@@ -69,7 +73,7 @@ namespace FadlanWork
 
             CustomersQueueManager.Instance.OnQueueChanged += QueueChanged;
             CustomersQueueManager.Instance.OnAddedQueue += QueueChanged;
-            CustomersQueueManager.Instance.OnRemovedQueue -= QueueChanged;
+            CustomersQueueManager.Instance.OnRemovedQueue += QueueChanged;
             QueueChanged();
         }
 
@@ -101,6 +105,9 @@ namespace FadlanWork
                     break;
                 case CustomerState.Ordering:
                     HandleOrdering();
+                    break;
+                case CustomerState.Consuming:
+                    HandleConsuming();
                     break;
                 case CustomerState.Leaving:
                     HandleLeaving();
@@ -146,7 +153,7 @@ namespace FadlanWork
 
                 if (impatientCoroutine != null)
                     StopCoroutine(impatientCoroutine);
-                
+
                 impatientCoroutine = StartCoroutine(ImpatienceEmotion());
             }
 
@@ -172,20 +179,37 @@ namespace FadlanWork
             yield return new WaitForSeconds(1.5f);
             customerAnimator.SetBool("Ordering", false);
             wantToOrder = false;
-            
+
             Debug.Log("Customer siap memesan");
             jamu_inginDibeli = Manager_TokoJamu.instance.MencariPemesanan();
             customerAnimator.SetBool("Waiting Order", true);
             SpriteRenderer_JamuVIsual.sprite = jamu_inginDibeli.ikon;
         }
 
-        public void HandleLeaving()
+        private void HandleConsuming()
         {
-            CurrentState = CustomerState.Leaving;
+            Vector3 targetPosition = CustomersQueueManager.Instance.GetSeatPosition(this);
+            agent.SetDestination(targetPosition);
+            ConsumingTimer -= Time.deltaTime;
+
+            if (ConsumingTimer <= 0)
+            {
+                CustomersQueueManager.Instance.RemoveSeat(this);
+                CurrentState = CustomerState.Leaving;
+            }
+        }
+
+        private void HandleLeaving()
+        {
             Vector3 targetPos = CustomersQueueManager.Instance.QueueSpawnTransform.position;
             agent.SetDestination(targetPos);
-            targetPosition = targetPos;
+
+            if (Vector3.Distance(transform.position, targetPos) < 1)
+            {
+                Destroy(gameObject, 0.5f);
+            }
         }
+
 
         void QueueChanged()
         {
@@ -236,12 +260,23 @@ namespace FadlanWork
         {
             Debug.Log("Customer Bahagia!");
             customerAnimator.SetBool("Waiting Order", false);
-            CurrentState = CustomerState.Leaving;
+
+            float wantToSitRandom = UnityEngine.Random.Range(0f, 1f);
+            if (wantToSitRandom > 0.5f && CustomersQueueManager.Instance.IsSeatAvailable())
+            {
+                CustomersQueueManager.Instance.AssignSeat(this);
+                CurrentState = CustomerState.Consuming;
+            }
+            else
+            {
+                CurrentState = CustomerState.Leaving;
+            }
+
             CustomersQueueManager.Instance.DequeueCustomer();
-            DihidangkanBenar?.Invoke(true);
             customerAnimator.SetTrigger("Happy");
             StopAllCoroutines();
         }
+
         public void GettingDeliveredWrongJamu()
         {
             Debug.Log("Customer Sedih!");

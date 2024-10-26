@@ -17,6 +17,8 @@ namespace FadlanWork
         public GameObject customerPrefab;
 
         public List<Customer> CustomersQueue = new();
+        public List<Customer> SeatCostumers = new();
+        public List<Transform> SeatList = new();
         public event Action OnQueueChanged;
         public List<SO_Customer> List_Data_Customer;
         public event Action OnAddedQueue;
@@ -66,6 +68,7 @@ namespace FadlanWork
             customer.transform.position = QueueSpawnTransform.position;
 
             CustomersQueue.Add(customer);
+            OnQueueChanged?.Invoke();
             OnAddedQueue?.Invoke();
         }
 
@@ -83,11 +86,8 @@ namespace FadlanWork
 
         public void RemoveCustomer(Customer customer)
         {
-            customer.HandleLeaving();
             CustomersQueue.Remove(customer);
             OnQueueChanged?.Invoke();
-            
-            Destroy(customer.gameObject, 1.8f);
             OnRemovedQueue?.Invoke();
         }
 
@@ -105,6 +105,49 @@ namespace FadlanWork
             {
                 RemoveCustomer(CustomersQueue[i]);
             }
+        }
+
+        public bool IsSeatAvailable()
+        {
+            return SeatCostumers.Count < SeatList.Count;
+        }
+
+        public void AssignSeat(Customer customer)
+        {
+            if (!IsSeatAvailable()) return;
+
+            SeatCostumers.Add(customer);
+
+            int seatNumber = 0;
+            for (int i=0; i<SeatList.Count; i++)
+            {
+                bool found = true;
+                foreach (Customer cs in SeatCostumers)
+                {
+                    if (cs.SeatNumber == seatNumber)
+                        found = false;
+                }
+
+                if (found)
+                {
+                    break;
+                } else {
+                    seatNumber++;
+                }
+            }
+
+            customer.SeatNumber = seatNumber;
+        }
+
+        public Vector3 GetSeatPosition(Customer customer)
+        {
+            if (!SeatCostumers.Contains(customer)) return Vector3.zero;
+            return SeatList[customer.SeatNumber].position;
+        }
+
+        public void RemoveSeat(Customer customer)
+        {
+            SeatCostumers.Remove(customer);
         }
     }
 }
