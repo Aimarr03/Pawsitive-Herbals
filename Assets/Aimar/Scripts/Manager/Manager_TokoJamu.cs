@@ -34,8 +34,10 @@ namespace AimarWork
         public int pelangganMax = 0;
         public int pelangganDihidangkan = 0;
 
+        [Title("AUDIO ASSETS")]
         public AudioClip SebelumTokoBuka;
         public AudioClip SetelahTokoBuka;
+        public AudioClip DapetUang;
         public float kualitasPerforma() 
         { 
             float kalkulasi = (pelangganDihidangkan * 1f) / pelangganMax;
@@ -142,6 +144,7 @@ namespace AimarWork
                 
                 customer.GettingDeliveredRightJamu();
                 MenghidangkanDenganBenar?.Invoke(jamu_difokuskan);
+                Manager_Audio.instance.PlaySFX(DapetUang);
                 pelangganDihidangkan++;
             }
             else

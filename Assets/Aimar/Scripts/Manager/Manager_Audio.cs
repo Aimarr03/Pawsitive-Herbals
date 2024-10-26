@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,12 @@ namespace AimarWork
 {
     public class Manager_Audio : MonoBehaviour
     {
+        public enum ENUM_AudioGeneralType
+        {
+            Click,
+            Toggle,
+            Switch
+        }
         [SerializeField] private AudioSource MusicSource;
         [SerializeField] private AudioSource SFXSource;
 
@@ -15,6 +22,9 @@ namespace AimarWork
 
         public static event Action<bool> MuteMusic;
         public static event Action<bool> MuteSFX;
+
+        [Title("Audio List")]
+        SerializableDictionary<ENUM_AudioGeneralType, AudioClip> AudioGeneral;
         public bool MusicMute { get; private set; }
         public bool SFXMute { get; private set; }
         private void Awake()
@@ -45,6 +55,10 @@ namespace AimarWork
         public void PlaySFX(AudioClip audioClip)
         {
             SFXSource.PlayOneShot(audioClip);
+        }
+        public void PlaySFX(ENUM_AudioGeneralType type)
+        {
+            SFXSource.PlayOneShot(AudioGeneral[type]);
         }
         public void ToggleSFX(bool value)
         {
