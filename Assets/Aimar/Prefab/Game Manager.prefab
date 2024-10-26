@@ -89,6 +89,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MusicSource: {fileID: 1750629911083851886}
   SFXSource: {fileID: 2941783959117275827}
+  AudioGeneral:
+  - type: 0
+    clip: {fileID: 8300000, guid: a47470fce4f378e438f02227a5502384, type: 3}
+  - type: 1
+    clip: {fileID: 8300000, guid: 18abf6bf4110d5444b3a3ada4f45ffc6, type: 3}
+  - type: 2
+    clip: {fileID: 8300000, guid: 6004ae24d81652d478d43d5c6f99de01, type: 3}
 --- !u!114 &2922785826430809178
 MonoBehaviour:
   m_ObjectHideFlags: 0

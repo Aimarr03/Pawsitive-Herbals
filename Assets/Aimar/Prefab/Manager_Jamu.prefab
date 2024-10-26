@@ -70,6 +70,7 @@ MonoBehaviour:
   pelangganDihidangkan: 0
   SebelumTokoBuka: {fileID: 8300000, guid: c73aeb6885cf69543992e7ca63727cb1, type: 3}
   SetelahTokoBuka: {fileID: 8300000, guid: 2051915be3ce68642929c1ec7e49d880, type: 3}
+  DapetUang: {fileID: 8300000, guid: b2c5bb3a54866f344b7b476934933f8a, type: 3}
   uangDiperoleh: 0
   expDiperoleh: 0
   RotasiJarumJam: {fileID: 0}
@@ -77,4 +78,4 @@ MonoBehaviour:
   DurasiWaktu: 30
   visualMauTutup: {fileID: 0}
   SFX_TickTack: {fileID: 0}
-  SudahTutup: {fileID: 8300000, guid: 930fb55b335068d47a98afe7cd524383, type: 3}
+  SudahTutup: {fileID: 8300000, guid: 2cc0777745ad82a41a71ccbdfcdf0146, type: 3}

@@ -15,6 +15,12 @@ namespace AimarWork
             Toggle,
             Switch
         }
+        [Serializable]
+        public struct AudioData
+        {
+            public ENUM_AudioGeneralType type;
+            public AudioClip clip;
+        }
         [SerializeField] private AudioSource MusicSource;
         [SerializeField] private AudioSource SFXSource;
 
@@ -24,7 +30,7 @@ namespace AimarWork
         public static event Action<bool> MuteSFX;
 
         [Title("Audio List")]
-        SerializableDictionary<ENUM_AudioGeneralType, AudioClip> AudioGeneral;
+        public List<AudioData> AudioGeneral;
         public bool MusicMute { get; private set; }
         public bool SFXMute { get; private set; }
         private void Awake()
@@ -58,7 +64,11 @@ namespace AimarWork
         }
         public void PlaySFX(ENUM_AudioGeneralType type)
         {
-            SFXSource.PlayOneShot(AudioGeneral[type]);
+            foreach(AudioData data in AudioGeneral)
+            {
+                if (data.type == type) SFXSource.PlayOneShot(data.clip);
+            }
+            
         }
         public void ToggleSFX(bool value)
         {
