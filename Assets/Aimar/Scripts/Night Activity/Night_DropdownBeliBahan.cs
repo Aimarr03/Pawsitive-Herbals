@@ -44,6 +44,7 @@ public class Night_DropdownBeliBahan : MonoBehaviour
     {
         tmp_dropdown.ClearOptions();
         List<TMP_Dropdown.OptionData> dropdownOptions = new List<TMP_Dropdown.OptionData>();
+        Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Click);
         foreach (SO_BahanMentah bahanMentah in logika_BeliBahan.List_BahanMentah)
         {
             TMP_Dropdown.OptionData optionData = new TMP_Dropdown.OptionData();
@@ -67,12 +68,14 @@ public class Night_DropdownBeliBahan : MonoBehaviour
         teks_totalharga.gameObject.SetActive(true);
 
         MemasukkanPerubahanPemesanan?.Invoke();
+        Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Click);
         Debug.Log("Pilihan Bahan Mentah " + pilihanBahanMentah.nama);
     }
     public void Inkremen_Jumlah()
     {
         kuantitas_pembelianbahan++;
         teks_kuantitasbahan.text = kuantitas_pembelianbahan.ToString();
+        Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Click);
         Cek_Tombol();
         Update_TotalHarga();
         MemasukkanPerubahanPemesanan?.Invoke();
@@ -81,6 +84,7 @@ public class Night_DropdownBeliBahan : MonoBehaviour
     {
         kuantitas_pembelianbahan--;
         teks_kuantitasbahan.text = kuantitas_pembelianbahan.ToString();
+        Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Click);
         Cek_Tombol();
         Update_TotalHarga();
         MemasukkanPerubahanPemesanan?.Invoke();

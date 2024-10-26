@@ -13,7 +13,8 @@ namespace AimarWork
         {
             Click,
             Toggle,
-            Switch
+            Switch,
+            Buy
         }
         [Serializable]
         public struct AudioData

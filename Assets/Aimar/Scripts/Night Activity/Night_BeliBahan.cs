@@ -1,4 +1,6 @@
+using AimarWork.GameManagerLogic;
 using FadlanWork;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +29,10 @@ namespace AimarWork
         [SerializeField] private Button button_Pesan;
         [SerializeField] private Button button_TambahPesanan;
         [SerializeField] private TextMeshProUGUI JumlahPemesanan;
+
+        [Title("AudioClip")]
+        public AudioClip AddRemoveList;
+        public AudioClip PaperFlip;
 
         private string STRING_bisa_pesan = "Tambah Pesanan";
         private string STRING_tidak_bisa_pesan= "Tidak Bisa Pesan";
@@ -79,6 +85,7 @@ namespace AimarWork
         public override void Interact(PlayerController player)
         {
             base.Interact(player);
+            Manager_Audio.instance.PlaySFX(PaperFlip);
             Membuka_UI_Pembelian();
             Debug.Log("Enter Beli Bahan");
         }
@@ -129,6 +136,7 @@ namespace AimarWork
         private void Night_DropdownBeliBahan_Event_MengurangiBahan(Night_DropdownBeliBahan obj)
         {
             List_Pembelian.Remove(obj);
+            Manager_Audio.instance.PlaySFX(AddRemoveList);
             Destroy(obj.gameObject);
             PerubahanPemesanan();
             UpdateTombolMenambahPesanan();
@@ -138,6 +146,7 @@ namespace AimarWork
         {
             Night_DropdownBeliBahan tipe_pembelian_daftar = Instantiate(formatPembelian, PembelianContainer);
             tipe_pembelian_daftar.gameObject.SetActive(true);
+            Manager_Audio.instance.PlaySFX(AddRemoveList);
             if (!List_Pembelian.Contains(tipe_pembelian_daftar)) List_Pembelian.Add(tipe_pembelian_daftar);
             UpdateTombolMenambahPesanan();
         }
@@ -168,6 +177,15 @@ namespace AimarWork
         {
             BersihkanDaftarPembelian();
             UI_Container.gameObject.SetActive(false);
+        }
+        public void BeliBahan()
+        {
+            Manager_Game.instance.GunakanUang(TotalBiaya);
+            foreach(Night_DropdownBeliBahan PembelianBahan in List_Pembelian)
+            {
+                SO_BahanMentah bahanMentah = PembelianBahan.pilihanBahanMentah;
+                bahanMentah.kuantitasKini += PembelianBahan.kuantitas_pembelianbahan;
+            }
         }
         #endregion
     }
