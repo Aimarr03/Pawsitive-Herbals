@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf0273cde05738459242e2bf97a2bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exp_kini: 0
+  exp_kini: 1200
   uang_kini: 0
   IsPaused: 0
 --- !u!114 &6142214963017469070
@@ -96,6 +96,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 18abf6bf4110d5444b3a3ada4f45ffc6, type: 3}
   - type: 2
     clip: {fileID: 8300000, guid: 6004ae24d81652d478d43d5c6f99de01, type: 3}
+  - type: 3
+    clip: {fileID: 8300000, guid: b2c5bb3a54866f344b7b476934933f8a, type: 3}
 --- !u!114 &2922785826430809178
 MonoBehaviour:
   m_ObjectHideFlags: 0

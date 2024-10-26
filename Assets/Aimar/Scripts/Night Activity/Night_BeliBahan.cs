@@ -1,4 +1,5 @@
 using AimarWork.GameManagerLogic;
+using DG.Tweening;
 using FadlanWork;
 using Sirenix.OdinInspector;
 using System;
@@ -24,7 +25,8 @@ namespace AimarWork
         [SerializeField] private RectTransform PembelianContainer;
 
         [Header("UI")]
-        [SerializeField] private Canvas UI_Container;
+        [SerializeField] private Canvas UI_Canvas;
+        [SerializeField] private RectTransform UI_OverallBackground;
         [SerializeField] private TextMeshProUGUI text_TotalHarga;
         [SerializeField] private Button button_Pesan;
         [SerializeField] private Button button_TambahPesanan;
@@ -169,14 +171,18 @@ namespace AimarWork
         public void Membuka_UI_Pembelian()
         {
             BersihkanDaftarPembelian();
-            MenambahkanDaftarBeli();
+            //MenambahkanDaftarBeli();
 
-            UI_Container.gameObject.SetActive(true);
+            UI_OverallBackground.transform.DOLocalMoveY(-1620, 0f);
+            UI_Canvas.gameObject.SetActive(true);
+            UI_OverallBackground.transform.DOLocalMoveY(-540, 0.8f).SetEase(Ease.InOutQuad);
         }
-        public void Menutup_UI_Pembelian()
+        public async void Menutup_UI_Pembelian()
         {
             BersihkanDaftarPembelian();
-            UI_Container.gameObject.SetActive(false);
+            Manager_Audio.instance.PlaySFX(PaperFlip);
+            await UI_OverallBackground.transform.DOLocalMoveY(-1620, 0.8f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion();
+            UI_Canvas.gameObject.SetActive(false);
         }
         public void BeliBahan()
         {
@@ -186,6 +192,8 @@ namespace AimarWork
                 SO_BahanMentah bahanMentah = PembelianBahan.pilihanBahanMentah;
                 bahanMentah.kuantitasKini += PembelianBahan.kuantitas_pembelianbahan;
             }
+            Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Buy);
+            Menutup_UI_Pembelian();
         }
         #endregion
     }
