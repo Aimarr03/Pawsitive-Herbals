@@ -1,4 +1,5 @@
 using AimarWork;
+using DG.Tweening;
 using FadlanWork;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,11 +12,13 @@ public class Penglihatan_Resep : BaseInteractableObject
 {
     public List<SO_Jamu> List_Resep_Jamu;
     public Canvas canvas;
+    public RectTransform containerTransform;
 
     [Header("UI Jamu")]
     public TextMeshProUGUI namaJamu;
     public Button HalamanSelanjutnya;
     public Button HalamanSebelumnya;
+    public AudioClip PaperAudio;
 
     [Header("Bahan")] 
     public RectTransform containerGambarBahanBahan;
@@ -41,13 +44,16 @@ public class Penglihatan_Resep : BaseInteractableObject
     public override void Interact(PlayerController player)
     {
         base.Interact(player);
-
+        containerTransform.DOLocalMoveY(-1620, 0);
         currentIndex = 0;
         UpdateResep();
         canvas.gameObject.SetActive(true);
+        containerTransform.DOLocalMoveY(-540, 0.8f).SetEase(Ease.OutExpo);
     }
     public void UpdateResep()
     {
+        Manager_Audio.instance.PlaySFX(PaperAudio);
+        
         Cek_Button();
         SO_Jamu jamu = List_Resep_Jamu[currentIndex];
         namaJamu.text = jamu.nama;
@@ -68,9 +74,6 @@ public class Penglihatan_Resep : BaseInteractableObject
                 currentBahan.sprite = bahanMentah.ikon_gameplay;
             }
         }
-        
-        
-        
         for(int index = 0; index < containerMetode.childCount; index++)
         {
             TextMeshProUGUI currentMetode = containerMetode.GetChild(index).GetComponent<TextMeshProUGUI>();
@@ -101,8 +104,10 @@ public class Penglihatan_Resep : BaseInteractableObject
         currentIndex--;
         UpdateResep();
     }
-    public void TutupResep()
+    public async void TutupResep()
     {
+        Manager_Audio.instance.PlaySFX(PaperAudio);
+        await containerTransform.DOLocalMoveY(-1620, 0.8f).SetEase(Ease.OutExpo).AsyncWaitForCompletion();
         canvas.gameObject.SetActive(false);
         currentIndex = 0;
     }

@@ -2239,6 +2239,7 @@ MonoBehaviour:
   durationToSpawn: 3
   maxQueue: 5
   currentDuration: 0
+  OpenDoor: {fileID: 8300000, guid: 4bd008fac18746b48b986c5b45a8e09f, type: 3}
 --- !u!4 &431090428
 Transform:
   m_ObjectHideFlags: 0

@@ -24,6 +24,8 @@ namespace FadlanWork
         public float durationToSpawn;
         public int maxQueue = 5;
         public float currentDuration;
+
+        public AudioClip OpenDoor;
         void Awake()
         {
             if (Instance != null)
@@ -56,7 +58,7 @@ namespace FadlanWork
         public void NewCustomer()
         {
             Customer customer = Instantiate(customerPrefab).GetComponent<Customer>();
-
+            Manager_Audio.instance.PlaySFX(OpenDoor);
             SO_Customer randomizeData = List_Data_Customer[UnityEngine.Random.Range(0, List_Data_Customer.Count)];
             customer.SetUpData(randomizeData);
 
