@@ -25,6 +25,7 @@ namespace AimarWork
             Manager_Game.instance.IsPaused = true;
             container.gameObject.SetActive(true);
             containerOptions.gameObject.SetActive(false);
+            Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Switch);
             Manager_Game.instance.OnPauseInvoke -= Paused;
             Manager_Game.instance.OnPauseInvoke += Resume;
         }
@@ -33,6 +34,7 @@ namespace AimarWork
             Manager_Game.instance.IsPaused = false;
             Manager_Game.instance.OnPauseInvoke -= Resume;
             Manager_Game.instance.OnPauseInvoke += Paused;
+            Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Switch);
             container.gameObject.SetActive(false);
             containerOptions.gameObject.SetActive(false);
         }
@@ -48,9 +50,21 @@ namespace AimarWork
             Manager_Game.instance.OnPauseInvoke -= CloseOptions;
             Manager_Game.instance.OnPauseInvoke += Resume;
         }
-        public void ExitToMainMenu() => Manager_Game.instance.ExitToMainMenu();
-        public void ToggleMusic(bool value) => Manager_Audio.instance?.ToggleMusic(value);
-        public void ToggleSFX(bool value) => Manager_Audio.instance?.ToggleSFX(value);
+        public void ExitToMainMenu()
+        {
+            Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Switch);
+            Manager_Game.instance.ExitToMainMenu();
+        }
+        public void ToggleMusic(bool value)
+        {
+            Manager_Audio.instance?.ToggleMusic(value);
+            Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Toggle);
+        }
+        public void ToggleSFX(bool value)
+        {
+            Manager_Audio.instance?.ToggleSFX(value);
+            Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Toggle);
+        }
     }
 }
 

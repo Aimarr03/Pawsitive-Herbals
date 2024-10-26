@@ -1,4 +1,5 @@
 using AimarWork.GameManagerLogic;
+using DG.Tweening;
 using FadlanWork;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
@@ -14,7 +15,8 @@ namespace AimarWork
     public class Night_BukuRiset : BaseInteractableObject
     {
         [TitleGroup("Deskripsi Umum")]
-        [SerializeField] private Canvas UI_BukuRiset;
+        [SerializeField] private Canvas UI_Canvas;
+        [SerializeField] private RectTransform UI_BukuRiset;
         [SerializeField] private TextMeshProUGUI namaJamu;
         [SerializeField] private TextMeshProUGUI deskripsi;
         [SerializeField] private TextMeshProUGUI manfaat;
@@ -51,12 +53,14 @@ namespace AimarWork
         [SerializeField] private Color color_tidakAda;
         [SerializeField] private float alpha_tidakAda;
 
+        public AudioClip PaperFlip;
+
         [SerializeField, Header("Data Jamu")] private List<SO_Jamu> Jamus = new List<SO_Jamu>();
         private int maxIndex => Jamus.Count;
         private SO_Jamu DataJamu => Jamus[currentIndex];
         private void Awake()
         {
-            UI_BukuRiset.gameObject.SetActive(false);
+            UI_Canvas.gameObject.SetActive(false);
             Jamus.OrderBy(jamus => jamus.terbuka);
         }
 
@@ -94,12 +98,17 @@ namespace AimarWork
         }
         public void BukaBukuRiset()
         {
-            UI_BukuRiset.gameObject.SetActive(true);
+            UI_Canvas.gameObject.SetActive(true);
+            Manager_Audio.instance.PlaySFX(PaperFlip);
+            UI_BukuRiset.transform.DOLocalMoveY(-1620, 0).SetEase(Ease.InOutQuad);
+            UI_BukuRiset.transform.DOLocalMoveY(-540, 0.8f).SetEase(Ease.InOutQuad);
             DisplayDataJamu();
         }
-        public void TutupBukuRiset()
+        public async void TutupBukuRiset()
         {
-            UI_BukuRiset.gameObject.SetActive(false);
+            Manager_Audio.instance.PlaySFX(PaperFlip);
+            await UI_BukuRiset.transform.DOLocalMoveY(-1620, 0.8f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion();
+            UI_Canvas.gameObject.SetActive(false);
             currentIndex = 0;
         }
         public void DisplayDataJamu()
@@ -237,11 +246,13 @@ namespace AimarWork
         public void HalamanSelanjutnya()
         {
             currentIndex++;
+            Manager_Audio.instance.PlaySFX(PaperFlip);
             DisplayDataJamu();
         }
         public void HalamanSebelumnya()
         {
             currentIndex--;
+            Manager_Audio.instance.PlaySFX(PaperFlip);
             DisplayDataJamu();
         }
     }

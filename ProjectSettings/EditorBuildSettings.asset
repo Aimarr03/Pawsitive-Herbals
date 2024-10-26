@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Aimar/Scene/Bedroom.unity
     guid: cb056f3edc6ecb14394d504f2f3f3abc
+  - enabled: 1
+    path: Assets/Aimar/Scene/MainMenu.unity
+    guid: 9cc333a94598ecd4d9a5e6c3bb30c05b
   m_configObjects: {}
