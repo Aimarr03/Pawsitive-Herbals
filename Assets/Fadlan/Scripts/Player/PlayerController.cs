@@ -93,6 +93,7 @@ namespace FadlanWork
                     targetObject = interactable;
                     Vector3 targetPosition = targetObject.transform.position + new Vector3(targetObject.StandPositionOffset.x, targetObject.StandPositionOffset.y, 0);
                     MoveToTarget(targetPosition);
+                    Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Click);
                     playerAnimator.SetBool("Moving", true);
                 }
             }
@@ -100,6 +101,7 @@ namespace FadlanWork
             {
                 targetObject = null;
                 MoveToTarget(mainCamera.ScreenToWorldPoint(Input.mousePosition));
+                Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Click);
                 playerAnimator.SetBool("Moving", true);
             }
         }

@@ -13,7 +13,8 @@ namespace AimarWork
         {
             Click,
             Toggle,
-            Switch
+            Switch,
+            Buy
         }
         [SerializeField] private AudioSource MusicSource;
         [SerializeField] private AudioSource SFXSource;
