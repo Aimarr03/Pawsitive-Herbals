@@ -22,6 +22,7 @@ namespace AimarWork
             //private int MaksimumJamAnalog = 12;
             private int Segmen_Kini = 0;
             public int Segmen_Max = 6;
+            public int Sisa_Hari = 15;
 
             public event Action OnChangeStatusHari;
             public event Action ChangeHari;
@@ -50,7 +51,8 @@ namespace AimarWork
             }
             public void GantiHari()
             {
-                TanggalKini.AddDays(1);
+                TanggalKini = TanggalKini.AddDays(1);
+                Sisa_Hari--;
             }
             public bool CekAktifitas(int harga) => Segmen_Kini >= harga;
             public void IncrementPausedSegment()
