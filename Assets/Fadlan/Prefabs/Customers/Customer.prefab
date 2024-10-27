@@ -311,10 +311,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099ce2c083795504da0e57b2d4d85758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QueuePatience: 35
-  MovePatienceIncrease: 3
-  OrderPatience: 25
-  TurnImpatientPatience: 15
+  QueuePatience: 45
+  MovePatienceIncrease: 6
+  OrderPatience: 30
+  TurnImpatientPatience: 10
   ImpatientSeconds: 5
   ConsumingTimer: 10
   ImpatientObject: {fileID: 5923422340831610255}
