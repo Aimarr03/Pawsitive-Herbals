@@ -1,8 +1,12 @@
+using DG.Tweening;
 using JetBrains.Annotations;
+using Sirenix.OdinInspector;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace AimarWork
 {
@@ -20,6 +24,10 @@ namespace AimarWork
             public bool IsPaused = false;
             public event Action OnPauseInvoke;
             public event Action OnChangeUang;
+
+            [Title("Loading Screen")]
+            public Image backgroundLoadingScreen;
+            public Image LogoScreen;
             private void Awake()
             {
                 if(instance == null)
@@ -65,14 +73,49 @@ namespace AimarWork
             {
                 exp_kini -= exp;
             }
-            public void LoadSceneWithSave(string scene)
+            public async void LoadSceneWithSave(string scene)
             {
+                await backgroundLoadingScreen.DOFade(1, 1.3f).AsyncWaitForCompletion();
+                await LogoScreen.DOFade(1, 0.3f).AsyncWaitForCompletion();
+
                 Manager_Data.instance.SaveGame();
-                SceneManager.LoadSceneAsync(scene);
+
+                AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(scene);
+
+                while (!loadingOperation.isDone)
+                {
+                    if (loadingOperation.progress == 1.0f)
+                        break;
+
+                    await Task.Yield();
+                }
+
+                await LogoScreen.DOFade(0, 0.3f).AsyncWaitForCompletion();
+                loadingOperation.allowSceneActivation = true;
+                await Task.Delay(500);
+                await backgroundLoadingScreen.DOFade(0, 1f).AsyncWaitForCompletion();
             }
-            public void LoadSceneWithoutSave(string scene)
+            public async void LoadSceneWithoutSave(string scene)
             {
-                SceneManager.LoadSceneAsync(scene);
+                await backgroundLoadingScreen.DOFade(1, 1.3f).AsyncWaitForCompletion();
+                await LogoScreen.DOFade(1, 0.3f).AsyncWaitForCompletion();
+
+                //Manager_Data.instance.SaveGame();
+
+                AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(scene);
+
+                while (!loadingOperation.isDone)
+                {
+                    if (loadingOperation.progress == 1.0f)
+                        break;
+
+                    await Task.Yield();
+                }
+
+                await LogoScreen.DOFade(0, 0.3f).AsyncWaitForCompletion();
+                loadingOperation.allowSceneActivation = true;
+                await Task.Delay(500);
+                await backgroundLoadingScreen.DOFade(0, 1f).AsyncWaitForCompletion();
             }
             public void NewGame()
             {
