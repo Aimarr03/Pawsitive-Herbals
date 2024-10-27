@@ -16,7 +16,7 @@ public class UI_MainMenu : MonoBehaviour
         Manager_Data.instance.LoadGame();
         OptionsContainer.gameObject.SetActive(false);
         CreditsContainer.gameObject.SetActive(false);
-        ContinueButton.interactable = Manager_Data.instance.HasGameData();
+        ContinueButton.gameObject.SetActive(Manager_Data.instance.HasGameData());
         Manager_Audio.instance.PlayMusic(BGM);
     }
     public void NewGame() => Manager_Game.instance.NewGame();
