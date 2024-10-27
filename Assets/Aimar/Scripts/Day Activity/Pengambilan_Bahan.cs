@@ -1,7 +1,9 @@
+using DG.Tweening;
 using FadlanWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace AimarWork
@@ -13,9 +15,15 @@ namespace AimarWork
         public List<SO_BahanMentah> pilihanKini;
 
         public Canvas canvas;
+        public RectTransform background;
 
         public RectTransform Bahan_Container;
         public UI_BahanMentah format_PemilihanBahanMentah;
+
+        public int maximum = 6;
+        public TextMeshProUGUI TextMaksimalIndikasi;
+
+        public AudioClip OpenDrawer;
 
         PlayerInventory inventory;
         Dictionary<SO_BahanMentah,UI_BahanMentah> Dictionary_UI_BahanMentah;
@@ -24,6 +32,12 @@ namespace AimarWork
         public override void Interact(PlayerController player)
         {
             base.Interact(player);
+            TextMaksimalIndikasi.text = $"Maksimal ambil bahan {pilihanKini.Count}/{maximum}";
+            
+            Manager_Audio.instance.PlaySFX(OpenDrawer);
+            background.transform.DOMoveY(1540, 0);
+            background.transform.DOMoveY(540, 0.8f).SetEase(Ease.InOutQuad);
+            
             canvas.gameObject.SetActive(true);
             inventory = player.inventory;
             pilihanKini = new List<SO_BahanMentah>();
@@ -51,7 +65,7 @@ namespace AimarWork
                 }
             }
         }
-
+        
         private void Start()
         {
             canvas.gameObject.SetActive(false);
@@ -65,6 +79,7 @@ namespace AimarWork
                 UI_BahanMentah UI_BahanMentah = Instantiate(format_PemilihanBahanMentah, Bahan_Container);
                 UI_BahanMentah.gameObject.SetActive(true);
                 UI_BahanMentah.SetUpBahanMentah(bahanMentah);
+                UI_BahanMentah.pengambilan_bahan = this;
                 Dictionary_UI_BahanMentah.Add(bahanMentah,UI_BahanMentah);
             }
             
@@ -78,17 +93,30 @@ namespace AimarWork
 
         private void UI_BahanMentah_KurangBahanMentah(SO_BahanMentah obj)
         {
+            pilihanKini.Remove(obj);
             inventory.PenguranganBahan(obj);
+            
+            TextMaksimalIndikasi.text = $"Maksimal ambil bahan {pilihanKini.Count}/{maximum}";
             UpdateBahan?.Invoke();
         }
 
         private void UI_BahanMentah_TambahBahanMentah(SO_BahanMentah obj)
         {
+            if(pilihanKini.Count >= maximum)
+            {
+                return;
+            }
+            pilihanKini.Add(obj);
             inventory.PenambahanBahan(obj);
+            
+            TextMaksimalIndikasi.text = $"Maksimal ambil bahan {pilihanKini.Count}/{maximum}";
+            UpdateBahan?.Invoke();
         }
 
-        public void KonfirmasiPilihan()
+        public async void KonfirmasiPilihan()
         {
+            Manager_Audio.instance.PlaySFX(OpenDrawer);
+            await background.transform.DOMoveY(1540, 0.8f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion();
             canvas.gameObject.SetActive(false);
             inventory.PembarisanInventory();
         }

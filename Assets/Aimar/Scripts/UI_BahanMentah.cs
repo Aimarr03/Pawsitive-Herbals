@@ -1,5 +1,6 @@
 using AimarWork;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +11,11 @@ public class UI_BahanMentah : MonoBehaviour
 
     public Image GambarBahan;
     public Image IndikasiDipilih;
+    public TextMeshProUGUI kuantitas;
 
     public static event Action<SO_BahanMentah> TambahBahanMentah;
     public static event Action<SO_BahanMentah> KurangBahanMentah;
+    public Pengambilan_Bahan pengambilan_bahan;
     public Color lockedCurrentImage;
     private void Awake()
     {
@@ -37,10 +40,21 @@ public class UI_BahanMentah : MonoBehaviour
         }
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(TambahBahan);
+        kuantitas.text = so_BahanMentah.kuantitasKini.ToString();
     }
     private void Pengambilan_Bahan_UpdateBahan()
     {
-        
+        if(pengambilan_bahan.pilihanKini.Count == pengambilan_bahan.maximum)
+        {
+            if (!pengambilan_bahan.pilihanKini.Contains(so_BahanMentah))
+            {
+                button.interactable = false;
+            }
+        }
+        else
+        {
+            button.interactable = true;
+        }
     }
 
     private void TambahBahan()
@@ -51,6 +65,7 @@ public class UI_BahanMentah : MonoBehaviour
 
         button.onClick.RemoveListener(TambahBahan);
         button.onClick.AddListener(KurangBahan);
+        Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Click);
     }
     private void KurangBahan()
     {
@@ -60,6 +75,7 @@ public class UI_BahanMentah : MonoBehaviour
 
         button.onClick.RemoveListener(KurangBahan);
         button.onClick.AddListener(TambahBahan);
+        Manager_Audio.instance.PlaySFX(Manager_Audio.ENUM_AudioGeneralType.Click);
     }
     public void UpdateBahanMentah(bool adaBahanMentahDiPlayerInventory)
     {

@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,322 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Inside Box_0
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 475
+        width: 172
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05faea885e899db40aa1868ff3da51fd
+      internalID: -1958398814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_1
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 477
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba98224222e99a24da107e069411c9fe
+      internalID: -1844433667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_2
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 477
+        width: 169
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b77c75a2e1f064f49a45f4f853cdc35f
+      internalID: 8352001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_3
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 477
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95a628ab425a2a74c9c425d94fa3e3c0
+      internalID: 1598413961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_4
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 475
+        width: 173
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fe015158a92438498fb55c11a12c94f
+      internalID: 1897714160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_5
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 281
+        width: 170
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c9dfe5fb75b1da4f89f204b1ae89fd8
+      internalID: -784245743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_6
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 281
+        width: 170
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dfb108b31da103469aeff044030a6f8
+      internalID: 382867876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_7
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 281
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47d00b1b904a847479d875d8658ed4a9
+      internalID: 226646224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_8
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 281
+        width: 171
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9c5f02ed252de64d9debced7ed01d9f
+      internalID: 2006917485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_9
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 282
+        width: 171
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa4c038a2fb1d9848ab4718be22e73fe
+      internalID: 1103473270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_10
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 88
+        width: 173
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f8d7b49fa5e1be49814e2fa8f7862b8
+      internalID: -886984324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_11
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 85
+        width: 170
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92e4928ddcb415c418e2c8cf72888a49
+      internalID: 928369154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_12
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 85
+        width: 169
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42616d202da22b9499baf9dae692a2df
+      internalID: -317779707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_13
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 85
+        width: 170
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e390fc2a34872ea4484bedf3ed2e49c1
+      internalID: 2017440959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inside Box_14
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 88
+        width: 172
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 759cb33e1df70c243b2d59c200dee857
+      internalID: 1041472205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +434,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Inside Box_0: -1958398814
+      Inside Box_1: -1844433667
+      Inside Box_10: -886984324
+      Inside Box_11: 928369154
+      Inside Box_12: -317779707
+      Inside Box_13: 2017440959
+      Inside Box_14: 1041472205
+      Inside Box_2: 8352001
+      Inside Box_3: 1598413961
+      Inside Box_4: 1897714160
+      Inside Box_5: -784245743
+      Inside Box_6: 382867876
+      Inside Box_7: 226646224
+      Inside Box_8: 2006917485
+      Inside Box_9: 1103473270
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
