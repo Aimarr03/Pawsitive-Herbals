@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nama: Temulawak
   level: 0
-  ikon: {fileID: 0}
-  deskripsi: "hihruihwiojrl\t"
-  manfaat: sfkajbgrjklqwbnkwrlmqe
+  ikon: {fileID: 21300000, guid: 2e8b2d225d70a6c4dbe4e2e87237fe5a, type: 3}
+  deskripsi: Temulawak adalah jamu yang menggunakan ekstrak temulawak sebagai bahan
+    utama. Minuman ini sering digunakan untuk menjaga kesehatan hati dan meningkatkan
+    fungsi pencernaan.
+  manfaat:
+  - Meningkatkan fungsi hati
+  - Merangsang produksi empedu untuk pencernaan
+  - Membantu mengurangi nyeri sendi
   List_Bahan_Yang_Diperlukan:
   - {fileID: 11400000, guid: cc06a1f6816a5064fb2e82f38e52d1c8, type: 2}
   List_Bahan_Mentah:

@@ -15,10 +15,13 @@ MonoBehaviour:
   nama: Beras Kencur
   level: 0
   ikon: {fileID: 21300000, guid: d5aa56e748df9a748ba7c199688d01c3, type: 3}
-  deskripsi: "kjhfkhqk\t"
-  manfaat: 'kqhewrqhurhqir
-
-'
+  deskripsi: Beras Kencur adalah minuman tradisional khas Indonesia yang terbuat
+    dari beras dan kencur, sering diminum untuk menjaga stamina dan meningkatkan
+    nafsu makan. Rasanya manis dan segar dengan aroma khas kencur.
+  manfaat:
+  - Meningkatkan stamina dan energi
+  - Membantu mengatasi lelah dan pegal
+  - Merangsang nafsu makan
   List_Bahan_Yang_Diperlukan:
   - {fileID: 11400000, guid: c96feb199f357e148a1513e58347dc69, type: 2}
   List_Bahan_Mentah:

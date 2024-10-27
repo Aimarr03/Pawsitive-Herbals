@@ -15,8 +15,13 @@ MonoBehaviour:
   nama: Wedang Jahe
   level: 0
   ikon: {fileID: 21300000, guid: b46b1fca316a28d48a02d5a2dd45e8be, type: 3}
-  deskripsi: "fjkhafiuqurqhiqwebn\t"
-  manfaat: "nkfhqhriu\tqhriqjrklqnrkqew"
+  deskripsi: Wedang Jahe adalah minuman tradisional yang dibuat dari jahe dan gula
+    merah. Minuman ini sangat populer di Indonesia, terutama untuk menghangatkan
+    tubuh di cuaca dingin.
+  manfaat:
+  - Menghangatkan tubuh
+  - Meningkatkan sirkulasi darah
+  - Membantu meredakan mual dan masuk angin
   List_Bahan_Yang_Diperlukan:
   - {fileID: 11400000, guid: 85848a6573ba96f4f922573972af1ec0, type: 2}
   List_Bahan_Mentah:

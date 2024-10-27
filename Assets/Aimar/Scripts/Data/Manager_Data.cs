@@ -74,7 +74,13 @@ public class Manager_Data : MonoBehaviour
         }
         fileHandler.SaveData(gameData);
     }
-
+    public void DeleteGame()
+    {
+        if(gameData != null)
+        {
+            fileHandler.DeleteData();
+        }
+    }
     /*public void OnApplicationQuit()
     {
         SaveGame();

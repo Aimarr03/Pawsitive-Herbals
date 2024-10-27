@@ -159,7 +159,12 @@ namespace AimarWork
             {
                 RisetButton.onClick.AddListener(RisetMeningkatkanJamu);
                 deskripsi.text = DataJamu.deskripsi;
-                manfaat.text = DataJamu.manfaat;
+                manfaat.text = "";
+                foreach(string textManfaat in DataJamu.manfaat)
+                {
+                    manfaat.text += textManfaat + "\n";
+                }
+                
                 for (int index = 0; index < DataJamu.List_Bahan_Mentah.Count; index++)
                 {
                     //Debug.Log("Bahan dibuat");
@@ -178,7 +183,7 @@ namespace AimarWork
                 text_profit.text = "Profit: " + DataJamu.GetBaseKeuntungan();
                 Ningkat_Jamu.gameObject.SetActive(true);
 
-                text_NingkatExp.text = $"EXP: {expDibutuhkan}";
+                text_BukaExp.text = $"EXP: {expDibutuhkan}/{Manager_Game.instance.exp_kini}";
                 bool resepLengkap = true;
                 bool exp_cukup = Manager_Game.instance.exp_kini >= expDibutuhkan;
                 foreach (SO_BahanMentah bahanMentah in DataJamu.List_Bahan_Mentah)
@@ -205,12 +210,12 @@ namespace AimarWork
                 deskripsi.text = "???";
                 text_profit.text = "Profit: ???";
                 //bahan_bahan.text = "???";
-                for (int index = 0; index < 3; index++)
+                /*for (int index = 0; index < 3; index++)
                 {
                     Image bahanKini = Instantiate(bahanFormat, bahan_container);
                     bahanKini.color = color_tidakAda;
                     bahanKini.gameObject.SetActive(true);
-                }
+                }*/
                 for (int index = 0; index < 3; index++)
                 {
                     TextMeshProUGUI metodeKini = Instantiate(metodeFormat, metodeContainer);
@@ -220,7 +225,7 @@ namespace AimarWork
 
                 Buka_Jamu.gameObject.SetActive(true);
                 
-                text_BukaExp.text = $"EXP: {expDibutuhkan}";
+                text_BukaExp.text = $"EXP: {expDibutuhkan}/{Manager_Game.instance.exp_kini}";
                 RisetButton.interactable = Manager_Game.instance.exp_kini >= expDibutuhkan;
             }
         }

@@ -335,7 +335,7 @@ namespace DialogueEditor
 
             SetColorAlpha(DialogueBackground, t);
             SetColorAlpha(NpcIcon, t);
-            SetColorAlpha(NameText, t);
+            //SetColorAlpha(NameText, t);
         }
 
         private void ScrollingText_Update()
@@ -445,7 +445,7 @@ namespace DialogueEditor
 
             SetColorAlpha(DialogueBackground, 1 - t);
             SetColorAlpha(NpcIcon, 1 - t);
-            SetColorAlpha(NameText, 1 - t);
+            //SetColorAlpha(NameText, 1 - t);
         }
 
 

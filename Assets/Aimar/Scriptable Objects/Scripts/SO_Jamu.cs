@@ -24,8 +24,7 @@ namespace AimarWork
         public Sprite ikon;
         [TextArea(5, 5)]
         public string deskripsi;
-        [TextArea(5, 5)]
-        public string manfaat;
+        public List<string> manfaat;
         
         [Title("Bahan Bahan Yang Relevansi")]
         public List<SO_BahanBase> List_Bahan_Yang_Diperlukan;

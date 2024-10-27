@@ -63,4 +63,8 @@ public class DataHandler
             File.Delete(Path.Combine(directoryPath, fileName));
         }
     }
+    public void DeleteData()
+    {
+        File.Delete(Path.Combine(directoryPath, fileName));
+    }
 }
