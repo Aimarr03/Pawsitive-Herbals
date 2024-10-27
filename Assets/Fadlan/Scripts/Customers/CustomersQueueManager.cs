@@ -45,10 +45,7 @@ namespace FadlanWork
             if (Manager_Game.instance.IsPaused) return;
             if (CustomersQueue.Count >= maxQueue) return;
 
-            if (!Manager_TokoJamu.instance.CekTokoBuka()) {
-                ClearQueueExceptFirst();
-                return;
-            };
+            if (!Manager_TokoJamu.instance.CekTokoBuka()) return;
 
             currentDuration += Time.deltaTime;
             if (currentDuration > durationToSpawn)
@@ -93,18 +90,8 @@ namespace FadlanWork
 
         public Customer GetFirst()
         {
+            if (CustomersQueue.Count == 0) return null;
             return CustomersQueue.First();
-        }
-
-        public void ClearQueueExceptFirst()
-        {
-            if (CustomersQueue.Count <= 1)
-                return;
-
-            for (int i = CustomersQueue.Count - 1; i > 0; i--)
-            {
-                RemoveCustomer(CustomersQueue[i]);
-            }
         }
 
         public bool IsSeatAvailable()
