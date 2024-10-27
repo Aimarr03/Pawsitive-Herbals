@@ -52,7 +52,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6438019858146924897
 RectTransform:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078577274401058905}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -316,13 +316,16 @@ MonoBehaviour:
   OrderPatience: 25
   TurnImpatientPatience: 15
   ImpatientSeconds: 5
+  ConsumingTimer: 10
   ImpatientObject: {fileID: 5923422340831610255}
   currentPatience: 0
   queueNumber: -1
+  SeatNumber: -1
   wantToOrder: 0
   jamu_inginDibeli: {fileID: 0}
   CurrentState: 0
   visualCustomer: {fileID: 2271043338529332021}
+  emoticonCircle: {fileID: 2078577274401058905}
   SpriteRenderer_JamuVIsual: {fileID: 932061121025132272}
 --- !u!50 &-8417596078632992394
 Rigidbody2D:
@@ -469,7 +472,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3351555030917499488}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

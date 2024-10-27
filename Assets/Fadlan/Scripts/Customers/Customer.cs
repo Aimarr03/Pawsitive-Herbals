@@ -51,6 +51,7 @@ namespace FadlanWork
         private Animator customerAnimator;
         private Vector3 targetPosition;
         [SerializeField] private SpriteRenderer visualCustomer;
+        [SerializeField] private GameObject emoticonCircle;
 
         public Image SpriteRenderer_JamuVIsual;
 
@@ -137,6 +138,7 @@ namespace FadlanWork
                 CurrentState = CustomerState.Leaving;
                 customerAnimator.SetTrigger("Angry");
                 customerAnimator.SetBool("Waiting Order", false);
+                emoticonCircle.SetActive(false);
                 CustomersQueueManager.Instance.RemoveCustomer(this);
             }
         }
@@ -163,6 +165,7 @@ namespace FadlanWork
                 customerAnimator.SetTrigger("Angry");
                 CustomersQueueManager.Instance.DequeueCustomer();
                 customerAnimator.SetBool("Waiting Order", false);
+                emoticonCircle.SetActive(false);
                 DihidangkanBenar?.Invoke(false);
             }
         }
@@ -183,6 +186,7 @@ namespace FadlanWork
             Debug.Log("Customer siap memesan");
             jamu_inginDibeli = Manager_TokoJamu.instance.MencariPemesanan();
             customerAnimator.SetBool("Waiting Order", true);
+            emoticonCircle.SetActive(true);
             SpriteRenderer_JamuVIsual.sprite = jamu_inginDibeli.ikon;
         }
 
@@ -260,6 +264,7 @@ namespace FadlanWork
         {
             Debug.Log("Customer Bahagia!");
             customerAnimator.SetBool("Waiting Order", false);
+            emoticonCircle.SetActive(false);
 
             float wantToSitRandom = UnityEngine.Random.Range(0f, 1f);
             if (wantToSitRandom > 0.5f && CustomersQueueManager.Instance.IsSeatAvailable())
@@ -281,6 +286,7 @@ namespace FadlanWork
         {
             Debug.Log("Customer Sedih!");
             customerAnimator.SetBool("Waiting Order", false);
+            emoticonCircle.SetActive(false);
             CurrentState = CustomerState.Leaving;
             CustomersQueueManager.Instance.DequeueCustomer();
             customerAnimator.SetTrigger("Angry");
